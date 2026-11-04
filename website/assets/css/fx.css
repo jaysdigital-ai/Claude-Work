@@ -33,7 +33,7 @@
   font-size: clamp(7rem, 17vw, 17rem); font-weight: 600; letter-spacing: -0.07em; line-height: 1;
   color: transparent; -webkit-text-stroke: 1px var(--line-strong);
 }
-@media (max-width: 900px) { .fx-bignum { right: 0; top: -.15em; font-size: 9rem; } [data-fx~="1"] .svc__head { position: relative !important; } }
+@media (max-width: 900px) { .fx-bignum { right: 0; top: -.15em; font-size: 9rem; } [data-fx~="1"] .svc__head { position: relative !important; top: 0 !important; } }
 
 /* "what's included" rows */
 [data-fx~="1"] .svc .list li { position: relative; transition: padding .5s var(--ease), color .3s; }
@@ -218,7 +218,8 @@
 @media (max-width: 640px) { .fx-mail { grid-template-columns: 1fr; } .fx-mail__steps { grid-template-columns: repeat(4, 1fr); } .fx-mail__steps button { padding: 7px 8px; } .fx-mail__steps b { font-size: 12.5px; } }
 
 /* seo */
-.fx-serp { position: relative; }
+/* flow-root keeps the search box's top margin inside, below the position label on phones */
+.fx-serp { position: relative; display: flow-root; }
 .fx-serp__q { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: 999px; background: var(--bg); box-shadow: 0 0 0 1px var(--line-strong); font-size: 14px; margin-bottom: 12px; }
 .fx-serp__q svg { width: 16px; height: 16px; color: var(--muted); }
 .fx-serp__list { position: relative; list-style: none; margin: 0; padding: 0; height: calc(38px * 9); overflow: hidden; }
