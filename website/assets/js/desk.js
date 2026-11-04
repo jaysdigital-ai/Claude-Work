@@ -278,22 +278,23 @@ function beakGeometry() {
 function buildFlyingEagle() {
   const brown = new THREE.MeshStandardMaterial({ color: '#3b2a1f', roughness: 0.75, flatShading: true, side: THREE.DoubleSide });
   const brownDark = new THREE.MeshStandardMaterial({ color: '#2a1d15', roughness: 0.75, flatShading: true, side: THREE.DoubleSide });
-  const white = new THREE.MeshStandardMaterial({ color: '#f1eee7', roughness: 0.7, flatShading: true, side: THREE.DoubleSide });
+  const white = new THREE.MeshStandardMaterial({ color: '#f1eee7', roughness: 0.7, side: THREE.DoubleSide });
+  const body = new THREE.MeshStandardMaterial({ color: '#3b2a1f', roughness: 0.75 });
   const yellow = new THREE.MeshStandardMaterial({ color: '#e9b02c', roughness: 0.45, flatShading: true });
   const dark = new THREE.MeshStandardMaterial({ color: '#111', roughness: 0.3 });
   const mesh = (geo, mat) => { const m = new THREE.Mesh(geo, mat); m.castShadow = true; return m; };
 
   const bird = new THREE.Group();
-  const bodyGeo = new THREE.SphereGeometry(0.3, 16, 12);
+  const bodyGeo = new THREE.SphereGeometry(0.3, 32, 24);
   bodyGeo.scale(0.95, 0.8, 2.3);
-  bird.add(mesh(bodyGeo, brown));
+  bird.add(mesh(bodyGeo, body));
 
   const head = new THREE.Group();
   head.position.set(0, 0.12, 0.72);
-  const skull = new THREE.SphereGeometry(0.21, 14, 10);
+  const skull = new THREE.SphereGeometry(0.21, 32, 24);
   skull.scale(0.9, 0.95, 1.2);
   head.add(mesh(skull, white));
-  const neck = new THREE.SphereGeometry(0.24, 12, 8);
+  const neck = new THREE.SphereGeometry(0.24, 28, 20);
   neck.scale(1, 0.9, 1);
   const neckMesh = mesh(neck, white);
   neckMesh.position.set(0, -0.06, -0.14);
@@ -646,7 +647,7 @@ async function init() {
     const p = geo.attributes.position;
     for (let k = 0; k < p.count; k++) {
       const t = p.getY(k) / h;
-      const x = p.getX(k) * Math.pow(1 - t, 0.55) * (t < 0.08 ? 0.6 + t * 5 : 1);
+      const x = p.getX(k) * Math.pow(Math.max(0, 1 - t), 0.55) * (t < 0.08 ? 0.6 + t * 5 : 1);
       const tw = twist * t;
       p.setXYZ(k, x * Math.cos(tw), p.getY(k), x * Math.sin(tw) + Math.pow(t, 2) * bend * h + Math.abs(p.getX(k)) * -0.4);
     }
@@ -693,7 +694,9 @@ async function init() {
   const speakerTopMat = new THREE.MeshBasicMaterial({ color: '#e39b2b', toneMapped: false, transparent: true, opacity: 0.9 });
   const speakerTop = at(new THREE.Mesh(new THREE.CircleGeometry(0.28, 40), speakerTopMat), 0, 0.965, 0);
   speakerTop.rotation.x = -Math.PI / 2;
-  speaker.add(speakerBody, speakerTop);
+  const speakerLight = new THREE.PointLight('#e39b2b', 0, 4, 2);
+  speakerLight.position.y = 1.2;
+  speaker.add(speakerBody, speakerTop, speakerLight);
   addObject('speaker', speaker, -6.7, 2.2);
 
   /* Turntable with a spinning record ----------------------------------------------------------- */
@@ -771,15 +774,21 @@ async function init() {
   eagleRig.add(flyer.bird);
   flyer.bird.scale.setScalar(0.85);
   scene.add(eagleRig);
-  // A loop around the room with two swoops right past the camera
-  const flightPath = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-12, 7, -3), new THREE.Vector3(-6, 10, -8), new THREE.Vector3(3, 9, -9),
-    new THREE.Vector3(11, 7.5, -4), new THREE.Vector3(13, 6.5, 3), new THREE.Vector3(7, 9.5, 10),
-    new THREE.Vector3(1.5, 12.8, 14.5), new THREE.Vector3(-6, 10.5, 11), new THREE.Vector3(-10, 6.5, 5),
-    new THREE.Vector3(-4, 4.4, 1.5), new THREE.Vector3(3, 5.6, -2), new THREE.Vector3(9, 8.5, 2),
-    new THREE.Vector3(5, 12, 12.5), new THREE.Vector3(-3, 13.2, 15.5), new THREE.Vector3(-12, 10, 5),
-    new THREE.Vector3(-15, 8, -4),
-  ], true, 'catmullrom', 0.5);
+  // A loop around the room with two swoops right past the camera. The swoop
+  // points sit two-thirds of the way from the desk to the camera, so they are
+  // rebuilt whenever the camera moves (screen size changes).
+  let flightPath = null;
+  function buildFlight(camAt, lookAt) {
+    const swoop = (t, dx, dy) => lookAt.clone().lerp(camAt, t).add(new THREE.Vector3(dx, dy, 0));
+    flightPath = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-12, 7, -3), new THREE.Vector3(-6, 10, -8), new THREE.Vector3(3, 9, -9),
+      new THREE.Vector3(11, 7.5, -4), new THREE.Vector3(13, 6.5, 3), new THREE.Vector3(7, 9.5, 10),
+      swoop(0.72, 3.2, -1.2), new THREE.Vector3(-6, 10.5, 11), new THREE.Vector3(-10, 6.5, 5),
+      new THREE.Vector3(-4, 4.4, 1.5), new THREE.Vector3(3, 5.6, -2), new THREE.Vector3(9, 8.5, 2),
+      new THREE.Vector3(5, 12, 12.5), swoop(0.7, -3, -0.4), new THREE.Vector3(-12, 10, 5),
+      new THREE.Vector3(-15, 8, -4),
+    ], true, 'catmullrom', 0.5);
+  }
 
   /* Theme: palette accent + day / night --------------------------------------------- */
   let night = true;
@@ -830,7 +839,7 @@ async function init() {
   function homeView(out) {
     const aspect = camera.aspect;
     const vfov = THREE.MathUtils.degToRad(camera.fov);
-    const deskW = aspect < 0.8 ? 13.5 : 21;     // on phones, crop to the middle of the desk
+    const deskW = aspect < 0.8 ? 16 : 21;     // on phones, crop to the middle of the desk
     const fitW = (deskW / 2) / (Math.tan(vfov / 2) * aspect);
     const dist = Math.max(fitW, 21);
     const dir = new THREE.Vector3(0, 0.62, 0.78).normalize();
@@ -936,7 +945,7 @@ async function init() {
 
   /* Small object actions ------------------------------------------------------------ */
   let sipT = -1, waterT = -1, printT = -1, partyT = -1, spinning = true, recordSpeed = 1;
-  let flightU = 0.08, eBank = 0, eFlap = 0.3, ePhase = 0;
+  let flightU = 0.08, eBank = 0, eFlap = 0.3, ePhase = 0, eagleHold = false;
   const ePos = new THREE.Vector3(), eTan = new THREE.Vector3(), eLook = new THREE.Vector3(), ePrev = new THREE.Vector3(1, 0, 0);
   function printLead() {
     const n = store.get('agila-leads', 0) + 1;
@@ -1000,7 +1009,9 @@ async function init() {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    if (!focus) { homeView(view); }
+    const home = homeView({ pos: new THREE.Vector3(), look: new THREE.Vector3() });
+    buildFlight(home.pos, home.look);
+    if (!focus) { view.pos.copy(home.pos); view.look.copy(home.look); }
     else {
       const f = FOCUS[focus];
       const t = f.screen ? screenView(f.screen, f.fill) : objectView(objects[focus], f.offset, f.lift || 0);
@@ -1112,10 +1123,12 @@ async function init() {
     if (partyT >= 0) speakerTopMat.color.setHSL((time * 0.6) % 1, 0.8, 0.55);
     else speakerTopMat.color.copy(accentColor);
     speakerTopMat.opacity = partyT >= 0 ? 0.6 + 0.4 * Math.abs(Math.sin(time * 8)) : 0.45 + 0.35 * Math.sin(time * 1.6);
+    speakerLight.color.copy(speakerTopMat.color);
+    speakerLight.intensity = partyT >= 0 ? 6 + 6 * Math.abs(Math.sin(time * 8)) : 0;
 
     // Eagle: flies the loop, banking into turns; beats its wings when climbing
     // or turning hard, glides when descending
-    flightU = (flightU + dt / 24) % 1;
+    if (!eagleHold) flightU = (flightU + dt / 24) % 1;
     flightPath.getPointAt(flightU, ePos);
     flightPath.getTangentAt(flightU, eTan);
     eagleRig.position.copy(ePos);
@@ -1143,6 +1156,17 @@ async function init() {
   }
   renderer.setAnimationLoop(() => { if (!document.hidden) frame(); });
   document.body.classList.add('desk-ready');
+
+  // Test hook (only with ?debug in the URL): where each object and the eagle sit on screen
+  if (location.search.includes('debug')) {
+    const toScreen = (v) => { const p = v.clone().project(camera); return [Math.round((p.x + 1) / 2 * innerWidth), Math.round((1 - p.y) / 2 * innerHeight), Number(p.z.toFixed(3))]; };
+    window.__desk = {
+      screenOf: (id) => { const b = new THREE.Box3().setFromObject(objects[id]); return toScreen(b.getCenter(new THREE.Vector3())); },
+      eagle: () => ({ screen: toScreen(eagleRig.position), distance: Number(eagleRig.position.distanceTo(camera.position).toFixed(2)), u: Number(flightU.toFixed(3)) }),
+      state: () => ({ spinning, recordSpeed: Number(recordSpeed.toFixed(2)), partyT: Number(partyT.toFixed(2)), night }),
+      holdEagle: (u) => { eagleHold = u !== null; if (u !== null) flightU = u; },
+    };
+  }
 }
 
 if (host) init();

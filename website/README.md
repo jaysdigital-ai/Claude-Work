@@ -22,9 +22,18 @@ Once one is chosen, make it the default and remove the switcher (`.palette` in s
 - Phone → short scripted chat ending in "Book a free strategy call"
 - Notebook → our story · Business card → contact details · Lead printer → prints an example "new lead" receipt
 - Lamp → day / night · Mug → sip · Plant → water it · Picture frame (eagle photo) → our story
-- A 3D bald eagle flies a long loop around the room (`flightPath` in desk.js): wingbeats when climbing or turning, glides when descending, banks into turns
+- Smart speaker → a colour light show that washes onto the desk · Turntable → stop / start the record (the tone arm lifts and drops)
+- Decorative props: reading glasses, pen cup and handwritten sticky notes
+- A 3D bald eagle flies a 24-second loop around the room (`buildFlight` in desk.js): wingbeats when climbing or turning, glides when descending, banks into turns, and two swoops pass close to the camera. The swoop points are worked out from the camera position, so they stay close on any screen size.
 
-The text on each screen lives in the HTML `[data-ui]` panels (so Google can read it); `desk.js` lays each panel exactly over its 3D screen. Screen behaviour lives in `assets/js/desk-ui.js`.
+The text on each screen lives in the HTML `[data-ui]` panels (so Google can read it); `desk.js` lays each panel exactly over its 3D screen. On phones the laptop and tablet open as full-size panels instead. Screen behaviour lives in `assets/js/desk-ui.js`.
+
+### Testing hook
+Add `?debug` to the address to get `window.__desk` in the browser console:
+- `__desk.screenOf('turntable')`: an object's position on screen
+- `__desk.eagle()`: where the eagle is and how far it is from the camera
+- `__desk.holdEagle(0.37)`: freeze the eagle at a point on its loop (`holdEagle(null)` lets it fly again)
+- `__desk.state()`: record, speaker and day / night state
 
 ## Eagle photo
 The picture frame on the desk shows `assets/img/eagle-flight.jpg`. `assets/img/eagle-front.jpg` is no longer used on the site. Before launch, confirm you have the rights to use the eagle photo.
