@@ -45,9 +45,15 @@ The picture frame on the desk shows `assets/img/eagle-flight.jpg`. `assets/img/e
 - Type: Instrument Sans + Instrument Serif (italic)
 - Logo mark: `assets/img/mark.svg` (eagle head with the Philippine eagle's crest)
 
+## Inner pages: effects and gallery
+- `assets/js/fx.js` loads two effect sets on About, Services and Contact (styles in `assets/css/fx.css`):
+  - **Editorial** (`fx/option-1.js`): heading letters react to the cursor, paragraphs fill with ink as you scroll, headings lean with scroll speed, the skills list runs as a marquee, outline numerals and a "Now reading" counter on Services, focus underlines on the form.
+  - **Hands-on** (`fx/option-3.js`): a small working demo inside each service (funnel calculator, automation run, website preview, drag-and-drop pipeline, email sequence, search ranking, before/after design), a "Hear it" pronunciation button, and a live project brief beside the contact form. All demo numbers are illustrative.
+- `assets/js/gallery.js` draws the marketing mockups (styles in `assets/css/gallery.css`): a sideways-scrolling "What we make" rail on Services, a collage on About and a drifting strip on Contact. The businesses in them are made up; swap tiles for real client work when you have it.
+
 ## Still to replace
-- Founder portrait of Jayson Perucho: add `assets/img/portrait.jpg` and uncomment the `<img>` in about.html
-- `hello@thedigitalagila.com` is shown on the site as the contact email: set up that mailbox (or forward it to your Gmail, e.g. with Cloudflare Email Routing)
+- Founder portrait: `assets/img/portrait.jpg` is a 3D avatar for now; replace it with a photo when ready
+- `hello@thedigitalagila.com` forwards to Gmail through Cloudflare Email Routing
 - `assets/img/og-image.jpg` (1200×630 social share image)
 - Check the "Within 1 business day" reply-time claim on contact.html
 

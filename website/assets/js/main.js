@@ -59,6 +59,13 @@
     });
   });
 
+  // Effects options (fx.js) start once headings are split and triggers exist
+  window.agila = { lenis, animate, reduce, finePointer, ready: false };
+  function ready() {
+    window.agila.ready = true;
+    window.dispatchEvent(new Event('agila:ready'));
+  }
+
   /* Header: solid after scrolling, hides on the way down ------------------- */
   const header = document.querySelector('.header');
   let lastY = window.scrollY;
@@ -302,8 +309,11 @@
         });
       });
       ScrollTrigger.refresh();
+      ready();
     };
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(run);
+  } else {
+    ready();
   }
 
   /* Contact form ------------------------------------------------------------ */

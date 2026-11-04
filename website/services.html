@@ -20,6 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/gallery.css">
+  <link rel="stylesheet" href="assets/css/fx.css">
   <script>(function(){var d=document.documentElement,t=(location.search.match(/theme=([abc])/)||[])[1];try{t=t||localStorage.getItem('agila-theme')}catch(e){}d.dataset.theme=t||'a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="application/ld+json">
@@ -80,6 +82,17 @@
           <nav class="crumbs" aria-label="Breadcrumb" data-reveal="2"><a href="index.html">Home</a> / Services</nav>
         </div>
       </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery gallery--rail" style="padding-top:clamp(40px,6vw,80px)">
+      <div class="wrap">
+        <div class="grid12 head-row">
+          <h2 data-lines>What we <em>make</em></h2>
+          <p data-reveal>Landing pages, social posts, ads, emails, dashboards and automations, all built to work together. Concept pieces shown.</p>
+        </div>
+      </div>
+      <div class="rail" aria-hidden="true"><div class="rail__track" data-gallery="rail"></div></div>
     </section>
 
     <section class="section" style="padding-top:clamp(40px,6vw,80px)">
@@ -216,6 +229,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/fx.js" defer></script>
 </body>
 </html>

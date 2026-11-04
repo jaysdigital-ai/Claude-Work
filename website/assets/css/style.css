@@ -306,7 +306,10 @@ body, .dark, .header, .btn, .index__row::before { transition: background-color .
    ========================================================================== */
 .story { row-gap: 48px; align-items: start; }
 .portrait { grid-column: 1 / span 5; position: relative; aspect-ratio: 4 / 5; background: var(--bg-2); overflow: hidden; border-radius: 3px; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+/* the portrait has a white studio background: let it take the frame colour on light palettes */
+[data-theme="a"] .portrait img, [data-theme="c"] .portrait img { mix-blend-mode: multiply; }
+[data-theme="b"] .portrait { background: #fff; color: #0f0f0f; }
 .portrait__ph { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 22px; font-size: 13px; color: var(--muted); }
 .portrait__ph span { position: absolute; top: 20px; left: 22px; }
 .portrait__ph b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(5rem, 11vw, 10rem); line-height: .8; color: var(--ink); letter-spacing: -0.04em; }
@@ -385,7 +388,8 @@ body, .dark, .header, .btn, .index__row::before { transition: background-color .
 .field input:user-invalid, .field textarea:user-invalid { border-bottom-color: var(--accent); }
 fieldset.field { border: 0; margin: 0; min-width: 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip { position: relative; }
+.chip input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .chip span { display: inline-block; padding: 9px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line-strong); font-size: 14.5px; cursor: pointer; transition: background .4s var(--ease), color .4s; user-select: none; }
 .chip span:hover { box-shadow: inset 0 0 0 1px var(--ink); }
 .chip input:checked + span { background: var(--ink); color: var(--bg); box-shadow: none; }

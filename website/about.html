@@ -20,6 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/gallery.css">
+  <link rel="stylesheet" href="assets/css/fx.css">
   <script>(function(){var d=document.documentElement,t=(location.search.match(/theme=([abc])/)||[])[1];try{t=t||localStorage.getItem('agila-theme')}catch(e){}d.dataset.theme=t||'a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="application/ld+json">
@@ -102,8 +104,7 @@
     <section class="section" style="padding-top:0">
       <div class="wrap grid12 story">
         <figure class="portrait" data-reveal style="margin:0">
-          <!-- Replace with the founder photo: <img src="assets/img/portrait.jpg" alt="Jayson Perucho, founder of The Digital Agila"> -->
-          <div class="portrait__ph"><span>Founder portrait</span><b>JP</b></div>
+          <img src="assets/img/portrait.jpg" alt="Jayson Perucho, founder of The Digital Agila, holding a laptop" width="1024" height="1024" loading="lazy">
           <figcaption><span>Jayson Perucho</span><span class="muted">Founder</span></figcaption>
         </figure>
         <div class="story__text">
@@ -142,6 +143,17 @@
         <ul class="skills" data-reveal>
           <li>Funnel strategy</li><li>Landing page design</li><li>Conversion copywriting</li><li>Marketing automation</li><li>Workflow design</li><li>CRM architecture</li><li>Pipeline management</li><li>Lead scoring</li><li>Email sequences</li><li>Newsletter campaigns</li><li>Website design</li><li>Website development</li><li>Technical SEO</li><li>Keyword research</li><li>Local SEO</li><li>Content strategy</li><li>Ad creatives</li><li>Social graphics</li><li>Brand kits</li><li>Analytics &amp; tracking</li><li>A/B testing</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" style="padding-top:0">
+      <div class="wrap">
+        <div class="grid12 head-row">
+          <h2 data-lines>From idea to <em>in-feed</em></h2>
+          <p data-reveal>Posts, pages, emails and dashboards, designed as one system. These are concept pieces showing the kind of work we make.</p>
+        </div>
+        <div class="collage" data-gallery="collage" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -191,6 +203,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/fx.js" defer></script>
 </body>
 </html>
