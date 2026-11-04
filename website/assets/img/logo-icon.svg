@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="24 30 440 334">
+  <!-- The Digital Agila: an eagle rising out of a growth chart -->
+  <defs>
+    <linearGradient id="agila-body" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#7ccff2"/>
+      <stop offset=".55" stop-color="#7ea6f4"/>
+      <stop offset="1" stop-color="#8a6cf0"/>
+    </linearGradient>
+    <linearGradient id="agila-bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#62e0f2"/>
+      <stop offset="1" stop-color="#8a6cf0"/>
+    </linearGradient>
+  </defs>
+  <!-- rising bars -->
+  <path fill="url(#agila-bar)" d="M35 265 L88 238 L88 355 L35 355 Z"/>
+  <path fill="url(#agila-bar)" d="M100 212 L155 175 L155 355 L100 355 Z"/>
+  <!-- head and neck: the tallest bar -->
+  <path fill="url(#agila-body)" d="M207 355 L207 226 L184 216 L205 198 L178 182 L201 166 L172 141 L214 121
+    C232 78 280 48 330 44 C350 42 364 46 372 52 L376 108 C350 116 326 126 306 142
+    C284 160 266 186 262 222 L262 355 Z"/>
+  <!-- beak -->
+  <path fill="#e2c79a" d="M350 60 C384 46 424 52 442 82 C452 100 453 122 444 144 C437 124 425 107 405 100 C389 95 373 101 361 110 Z"/>
+  <circle cx="390" cy="74" r="4.5" fill="#b89a68"/>
+  <!-- brow and eye -->
+  <path d="M287 67 Q320 50 361 57" fill="none" stroke="#141238" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="328" cy="77" r="10.5" fill="#141238"/>
+  <circle cx="324.5" cy="73.5" r="3.2" fill="#ffffff"/>
+  <!-- feather lines on the neck -->
+  <path d="M232 208 L259 186 L286 196" fill="none" stroke="#5a86d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M220 281 L236 265 L252 281 M220 313 L236 297 L252 313" fill="none" stroke="#6c58cc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

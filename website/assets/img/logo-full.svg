@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="The Digital Agila. See further. Grow higher.">
+  <defs>
+    <linearGradient id="lf-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7ccff2"/>
+      <stop offset=".55" stop-color="#7ea6f4"/>
+      <stop offset="1" stop-color="#8a6cf0"/>
+    </linearGradient>
+    <linearGradient id="lf-bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#62e0f2"/>
+      <stop offset="1" stop-color="#8a6cf0"/>
+    </linearGradient>
+    <linearGradient id="lf-word" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9eeaf5"/>
+      <stop offset="1" stop-color="#6fd6f2"/>
+    </linearGradient>
+    <linearGradient id="lf-rule" x1="336" y1="0" x2="496" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9c089"/>
+      <stop offset="1" stop-color="#6fd6f2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- icon: an eagle rising out of a growth chart -->
+  <g transform="translate(8 18) scale(.26) translate(-24 -30)">
+    <path fill="url(#lf-bar)" d="M35 265 L88 238 L88 355 L35 355 Z"/>
+    <path fill="url(#lf-bar)" d="M100 212 L155 175 L155 355 L100 355 Z"/>
+    <path fill="url(#lf-body)" d="M207 355 L207 226 L184 216 L205 198 L178 182 L201 166 L172 141 L214 121
+      C232 78 280 48 330 44 C350 42 364 46 372 52 L376 108 C350 116 326 126 306 142
+      C284 160 266 186 262 222 L262 355 Z"/>
+    <path fill="#e2c79a" d="M350 60 C384 46 424 52 442 82 C452 100 453 122 444 144 C437 124 425 107 405 100 C389 95 373 101 361 110 Z"/>
+    <circle cx="390" cy="74" r="4.5" fill="#b89a68"/>
+    <path d="M287 67 Q320 50 361 57" fill="none" stroke="#141238" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="328" cy="77" r="10.5" fill="#141238"/>
+    <circle cx="324.5" cy="73.5" r="3.2" fill="#ffffff"/>
+    <path d="M232 208 L259 186 L286 196" fill="none" stroke="#5a86d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M220 281 L236 265 L252 281 M220 313 L236 297 L252 313" fill="none" stroke="#6c58cc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- circuit traces off the wordmark -->
+  <g fill="none" stroke="#6fd6f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+    <path d="M392 42 V20 H378"/><circle cx="373" cy="20" r="4"/>
+    <path d="M436 42 V14 H452"/><circle cx="457" cy="14" r="4"/>
+    <path d="M478 42 V22 H500"/><circle cx="505" cy="22" r="4"/>
+    <path d="M506 58 H530 L540 48"/><circle cx="543.5" cy="44.5" r="4"/>
+    <path d="M506 70 H526 L536 80"/><circle cx="539.5" cy="83.5" r="4"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="134" y="78" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="52" fill="url(#lf-word)" textLength="228" lengthAdjust="spacingAndGlyphs">The Digital</text>
+  <text x="372" y="78" font-family="'Instrument Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="44" fill="#ffffff" letter-spacing="-1" textLength="128" lengthAdjust="spacingAndGlyphs">Agila</text>
+
+  <!-- tagline and rule -->
+  <text x="136" y="112" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="20" fill="#d9c089" textLength="186" lengthAdjust="spacingAndGlyphs">See further. Grow higher.</text>
+  <path d="M336 106 H496" stroke="url(#lf-rule)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="501" cy="106" r="4" fill="none" stroke="#6fd6f2" stroke-width="2"/>
+</svg>

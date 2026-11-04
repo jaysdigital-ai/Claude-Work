@@ -26,7 +26,7 @@ const safeUrl = (u) => {
   try { const url = new URL(withScheme); return /^https?:$/.test(url.protocol) ? url.href : ''; } catch (e) { return ''; }
 };
 
-function shell({ preheader, body, footer }) {
+function shell({ preheader, body, footer, siteUrl }) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><meta name="supported-color-schemes" content="dark light"><title>The Digital Agila</title></head>
 <body style="margin:0;padding:0;background:${C.paper};">
@@ -34,8 +34,8 @@ function shell({ preheader, body, footer }) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.paper};">
   <tr><td align="center" style="padding:32px 16px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;">
-      <tr><td style="padding:0 4px 20px;font-family:${SANS};font-size:18px;color:${C.ink};border-bottom:2px solid ${C.accent};">
-        <span style="font-family:${SERIF};font-style:italic;">The Digital</span> <b>Agila</b>
+      <tr><td bgcolor="${C.paper}" style="padding:0 4px 18px;background:${C.paper};border-bottom:2px solid ${C.accent};">
+        <a href="${escapeHtml(siteUrl)}" style="text-decoration:none;"><img src="${escapeHtml(siteUrl)}/assets/img/logo-email.png" width="320" height="80" alt="The Digital Agila. See further. Grow higher." style="display:block;width:320px;max-width:100%;height:auto;border:0;color:${C.ink};font-family:${SANS};font-size:18px;"></a>
       </td></tr>
       <tr><td style="height:20px;"></td></tr>
       <tr><td style="background:${C.card};border:1px solid ${C.line};border-radius:14px;padding:36px 32px;font-family:${SANS};color:${C.ink};">
@@ -102,7 +102,7 @@ export function notificationEmail(d, meta, settings) {
     `Received ${when} via ${settings.siteUrl}. Reply to this email to answer ${firstName(d.name)} directly.`,
   ].join('\n');
 
-  return { subject, html: shell({ preheader: `${d.services || 'New inquiry'}: ${String(d.message).slice(0, 90)}`, body, footer }), text };
+  return { subject, html: shell({ preheader: `${d.services || 'New inquiry'}: ${String(d.message).slice(0, 90)}`, body, footer, siteUrl: settings.siteUrl }), text };
 }
 
 /* Confirmation to the lead ------------------------------------------------ */
@@ -156,5 +156,5 @@ export function confirmationEmail(d, settings) {
     `You received this because you sent an inquiry at ${settings.siteUrl}. Reply to this email to add anything.`,
   ].join('\n');
 
-  return { subject, html: shell({ preheader: 'We received your inquiry and will reply within one business day.', body, footer }), text };
+  return { subject, html: shell({ preheader: 'We received your inquiry and will reply within one business day.', body, footer, siteUrl: settings.siteUrl }), text };
 }
