@@ -7,7 +7,7 @@
   <meta name="description" content="Sales funnel design, marketing automation, website design, CRM setup, email marketing, SEO and graphic design. Done-for-you digital marketing services from The Digital Agila, built to generate leads and sales.">
   <link rel="canonical" href="https://www.thedigitalagila.com/services.html">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#eeece7">
+  <meta name="theme-color" content="#050318">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Digital Agila">
   <meta property="og:title" content="Digital Marketing Services Built to Convert | The Digital Agila">
@@ -22,7 +22,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/gallery.css">
   <link rel="stylesheet" href="assets/css/fx.css">
-  <script>(function(){var d=document.documentElement,t=(location.search.match(/theme=([abc])/)||[])[1];try{t=t||localStorage.getItem('agila-theme')}catch(e){}d.dataset.theme=t||'a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
+  <link rel="stylesheet" href="assets/css/neo.css">
+  <link rel="stylesheet" href="assets/css/neo-pages.css">
+  <script>(function(){var d=document.documentElement;d.dataset.theme='a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="application/ld+json">
   {
@@ -41,7 +43,7 @@
   }
   </script>
 </head>
-<body>
+<body class="neo neo-page neo-page--services" data-scene="grid">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="curtain is-reveal" aria-hidden="true"></div>
 
@@ -140,7 +142,7 @@
             <p>Spreadsheets and sticky notes don't scale. We set up and customise your CRM with pipelines, tags, custom fields and lead scoring, so you always know who to call next and where your revenue really comes from.</p>
             <div class="svc__cols">
               <div><h4>What's included</h4><ul class="list"><li>CRM selection, setup &amp; migration</li><li>Sales pipelines &amp; deal stages</li><li>Tags, fields &amp; segmentation</li><li>Lead scoring &amp; hot-lead alerts</li><li>Dashboards &amp; reporting</li><li>Team training &amp; documentation</li></ul></div>
-              <div><h4>Ideal for</h4><ul class="list"><li>Growing sales teams</li><li>Businesses with messy contact data</li><li>Agencies &amp; multi-service businesses</li><li>Anyone switching CRM platforms</li></ul></div>
+              <div><h4>Ideal for</h4><ul class="list"><li>Growing sales teams</li><li>Businesses with messy contact data</li><li>Marketing teams &amp; multi-service businesses</li><li>Anyone switching CRM platforms</li></ul></div>
             </div>
             <a class="link" href="contact.html">Organise my pipeline <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
           </div>
@@ -216,13 +218,20 @@
   <footer class="footer" style="border-top:1px solid var(--line)">
     <div class="wrap">
       <div class="grid12 footer__top">
-        <div><p>The Digital Agila is a digital marketing agency for sales funnels, automation, CRM, websites, email marketing and SEO. <span class="tagline">See further. Grow higher.</span></p></div>
+        <div><p>The Digital Agila is Jayson Perucho, a full-stack digital marketing specialist building sales funnels, automation, CRM, websites, email marketing and SEO.</p></div>
         <div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
         <div class="footer__col"><h4>Services</h4><ul><li><a href="services.html#funnels">Sales Funnels</a></li><li><a href="services.html#automation">Automation</a></li><li><a href="services.html#website">Websites</a></li><li><a href="services.html#crm">CRM</a></li><li><a href="services.html#email">Email</a></li><li><a href="services.html#seo">SEO</a></li><li><a href="services.html#graphics">Design</a></li></ul></div>
         <div class="footer__col"><h4>Contact</h4><ul><li><a href="mailto:hello@thedigitalagila.com">Email</a></li><li><a href="contact.html">Book a call</a></li></ul></div>
       </div>
-      <div class="footer__big" aria-hidden="true"><em>The Digital</em>Agila</div>
-      <div class="footer__bottom"><span>© <span data-year>2026</span> The Digital Agila</span><span>Agila (n.) Filipino for eagle</span></div>
+      <div class="footer__sign">
+        <a class="footer__mark" href="index.html" aria-label="The Digital Agila, home"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="mark-ink" d="M7 45L6 33 1 27l8 1.5L7 19l7 5.5L15 13l5.5 7 4.5-6.5c4-.5 8 .5 11 2.5l4 1.5-4 10.5-3 3.5-5.5 5.5L24 45z"/><path class="mark-amber" d="M35 15.6l5.5 1q7 2.9 5.9 9.9L44.6 31l-2-3.6q-3.1-1.1-7.2.2L33.6 23z"/><circle class="mark-amber" cx="30.4" cy="20.6" r="2.1"/><circle fill="#0e0f10" cx="30.8" cy="20.6" r=".9"/></svg></a>
+        <p class="footer__line">See further. <em>Grow higher.</em></p>
+        <a class="btn" href="contact.html">Book a free call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> The Digital Agila. The Digital Agila is owned and operated by JPerucho Digital Marketing Services.</span>
+        <nav class="footer__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookie Policy</a></nav>
+      </div>
     </div>
   </footer>
 
@@ -232,5 +241,6 @@
   <script src="assets/js/gallery.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/fx.js" defer></script>
+  <script type="module" src="assets/js/neo-bg.js"></script>
 </body>
 </html>

@@ -71,15 +71,13 @@ html:has(.desk-page) { background: #120f0d; }
   background: rgba(255, 255, 255, .92); color: #111; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .4);
 }
 .desk-back kbd { font: inherit; font-size: 11px; padding: 2px 6px; border-radius: 5px; background: rgba(0, 0, 0, .07); color: #555; }
-.is-focused .header, .is-focused .palette { opacity: 0; pointer-events: none; }
+.is-focused .header { opacity: 0; pointer-events: none; }
 
 .desk-tip {
   position: fixed; left: 0; top: 0; z-index: 10; pointer-events: none; padding: 7px 12px; border-radius: 10px;
   background: rgba(18, 17, 16, .82); color: #fff; font-size: 13px; white-space: nowrap;
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
-.desk-page .palette { left: 16px; transform: none; bottom: 16px; }
-@media (max-width: 900px) { .desk-page .palette { display: none; } }
 .desk-page .cursor { display: none; }
 .desk-noscript { position: fixed; inset: auto 20px 20px; z-index: 3; color: var(--desk-ink); }
 
@@ -223,4 +221,42 @@ html:has(.desk-page) { background: #120f0d; }
   .os { font-size: 2.2cqw; }
   .os__grid { grid-template-columns: repeat(2, 1fr); }
   .os__apps { display: none; }
+}
+
+/* Founder: "Hi, I'm Jayson" button under the headline */
+.desk-meet {
+  display: inline-flex; align-items: center; gap: 12px; margin-top: 22px; padding: 6px 18px 6px 6px; border-radius: 999px;
+  border: 1px solid var(--desk-chip-line); background: var(--desk-chip); color: var(--desk-muted); cursor: pointer; pointer-events: auto;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 14px; text-align: left;
+  transition: transform .5s var(--ease), color .3s, border-color .3s;
+}
+.desk-meet img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: 50% 4%; background: #fff; transform: scale(1); }
+.desk-meet span { display: flex; flex-direction: column; line-height: 1.25; }
+.desk-meet b { color: var(--desk-ink); font-weight: 600; font-size: 15px; }
+.desk-meet i { font-style: normal; color: var(--accent); transition: transform .5s var(--ease); }
+.desk-meet:hover { transform: translateY(-2px); color: var(--desk-ink); border-color: var(--accent); }
+.desk-meet:hover i { transform: translateX(4px); }
+
+/* Founder panel */
+.founder {
+  left: 50% !important; top: 50% !important; transform: translate(-50%, -46%); transition: opacity .35s ease, transform .6s var(--ease); container-type: normal;
+  width: min(92vw, 780px); display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: center; overflow: hidden;
+  border-radius: 18px; background: #fbf9f4; color: #141210; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .6);
+}
+.founder.is-open { transform: translate(-50%, -50%); }
+.founder__photo { margin: 0; align-self: stretch; background: #fff; }
+.founder__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.founder__text { padding: clamp(24px, 4vw, 44px); }
+.founder small { color: #8a7f6c; font-size: 13px; }
+.founder h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 8px 0 14px; }
+.founder h2 em { color: var(--accent-deep); }
+.founder p { color: #3a3631; font-size: 16px; line-height: 1.5; margin: 0 0 24px; }
+.founder__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.founder .btn { background: #141210; color: #fff; }
+@media (max-width: 640px) {
+  /* sits below the "Back to the desk" button */
+  .founder { grid-template-columns: 1fr; top: calc(50% + 30px) !important; max-height: calc(100svh - 140px); overflow: auto; }
+  .founder__photo { height: 230px; }
+  .founder__photo img { object-position: 50% 6%; }
+  .founder p { font-size: 15px; }
 }

@@ -15,31 +15,25 @@
     window.scrollTo(0, 0);
   }
 
-  /* Palette switcher (preview only; remove once a palette is chosen) ------- */
-  const THEMES = [
-    ['a', 'Paper & Amber', ['#eeece7', '#0f0f0f', '#e39b2b']],
-    ['b', 'Obsidian & Ember', ['#09090a', '#f3efe9', '#ff4a26']],
-    ['c', 'Glacier & Gold', ['#edf1f4', '#0d1b2e', '#f2b11a']],
-  ];
-  const bar = document.createElement('div');
-  bar.className = 'palette';
-  bar.setAttribute('role', 'group');
-  bar.setAttribute('aria-label', 'Colour palette');
-  bar.innerHTML = '<span>Palette</span>' + THEMES.map(([id, name, sw]) =>
-    `<button type="button" data-theme-id="${id}"><i>${sw.map((c) => `<b style="background:${c}"></b>`).join('')}</i><em>${id.toUpperCase()} · ${name}</em></button>`).join('');
-  document.body.appendChild(bar);
-  const setTheme = (id) => {
-    doc.dataset.theme = id;
-    try { localStorage.setItem('agila-theme', id); } catch (e) { /* storage unavailable */ }
-    bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.themeId === id)));
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = getComputedStyle(doc).getPropertyValue('--bg').trim();
-    window.dispatchEvent(new Event('agila:theme'));
-  };
-  bar.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setTheme(b.dataset.themeId); });
-  setTheme(doc.dataset.theme || 'a');
-
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  /* Cookie notice: shown once; the site only uses essential storage -------- */
+  let noticeSeen = false;
+  try { noticeSeen = localStorage.getItem('agila-cookie-notice') === '1'; } catch (e) { /* storage unavailable */ }
+  if (!noticeSeen) {
+    const note = document.createElement('div');
+    note.className = 'cookie-note';
+    note.setAttribute('role', 'region');
+    note.setAttribute('aria-label', 'Cookie notice');
+    note.innerHTML = '<p>This site uses no tracking or advertising cookies, only what it needs to run. <a href="cookies.html">Cookie Policy</a></p><button type="button">OK</button>';
+    document.body.appendChild(note);
+    requestAnimationFrame(() => note.classList.add('is-in'));
+    note.querySelector('button').addEventListener('click', () => {
+      try { localStorage.setItem('agila-cookie-notice', '1'); } catch (e) { /* storage unavailable */ }
+      note.classList.remove('is-in');
+      setTimeout(() => note.remove(), 500);
+    });
+  }
 
   /* Smooth scroll ---------------------------------------------------------- */
   let lenis = null;
@@ -276,20 +270,10 @@
       flip('.steps, .principles', { rotateX: -65, transformOrigin: '50% 0%' }, 0.1);
       flip('.faq, .why__list', { rotateX: -50, transformOrigin: '50% 0%' }, 0.06);
 
-      // Footer wordmark rises letter by letter
-      document.querySelectorAll('.footer__big').forEach((el) => {
-        const text = [...el.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
-        if (!text) return;
-        const frag = document.createDocumentFragment();
-        [...text.textContent.trim()].forEach((ch) => {
-          const s = document.createElement('span');
-          s.className = 'ch';
-          s.textContent = ch;
-          frag.appendChild(s);
-        });
-        el.replaceChild(frag, text);
-        gsap.from(el.querySelectorAll('.ch'), {
-          yPercent: 100, rotateX: -90, opacity: 0, duration: 1.4, ease: 'expo.out', stagger: 0.07,
+      // Footer sign-off: the eagle icon and line rise in together
+      document.querySelectorAll('.footer__sign').forEach((el) => {
+        gsap.from(el.children, {
+          y: 30, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.1,
           scrollTrigger: { trigger: el, start: 'top 95%' },
         });
       });

@@ -212,7 +212,7 @@ const DEMOS = {
   },
 
   seo() {
-    const others = ['competitor-one.com', 'bigdirectory.com', 'citylistings.net', 'reviewsite.com', 'oldblog.org', 'another-agency.com', 'marketplace.com', 'news-site.com'];
+    const others = ['competitor-one.com', 'bigdirectory.com', 'citylistings.net', 'reviewsite.com', 'oldblog.org', 'another-studio.com', 'marketplace.com', 'news-site.com'];
     const c = card('Search ranking', 'Scroll to watch it climb · example', `
       <div class="fx-serp">
         <div class="fx-serp__q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>bakery near me</div>

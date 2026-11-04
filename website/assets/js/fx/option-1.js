@@ -2,7 +2,7 @@
    Option 1 · Editorial
    Kinetic type: letters that react to the cursor, paragraphs that fill with
    ink as you read, headings that lean with scroll speed, a running skills
-   marquee, outline numerals and a "now reading" counter on Services.
+   marquee and outline numerals on Services.
    ========================================================================== */
 const { gsap, ScrollTrigger } = window;
 const { animate, finePointer } = window.agila;
@@ -78,7 +78,7 @@ function inkFill(p) {
   p.textContent = '';
   p.appendChild(frag);
   if (!animate) return;
-  gsap.fromTo(words, { opacity: 0.14 }, {
+  gsap.fromTo(words, { opacity: 0.3 }, {
     opacity: 1, ease: 'none', stagger: 0.1,
     scrollTrigger: { trigger: p, start: 'top 82%', end: 'bottom 48%', scrub: 0.4 },
   });
@@ -89,11 +89,15 @@ $$('.story__text p, .svc__body > p, .cta__row p, .head-row p').forEach(inkFill);
 if (animate) {
   const heads = $$('main h2:not(.cta h2)');
   const setters = heads.map((h) => gsap.quickTo(h, 'skewY', { duration: 0.5, ease: 'power3.out' }));
+  let settle = 0;
   ScrollTrigger.create({
     start: 0, end: 'max',
     onUpdate: (self) => {
       const skew = gsap.utils.clamp(-5, 5, self.getVelocity() / -400);
       setters.forEach((set) => set(skew));
+      // straighten up once scrolling stops, even after an abrupt stop
+      clearTimeout(settle);
+      settle = setTimeout(() => setters.forEach((set) => set(0)), 120);
     },
   });
 }
@@ -148,7 +152,7 @@ $$('.skills').forEach((ul) => {
 
 /* About: the portrait opens like a shutter --------------------------------- */
 if (animate) {
-  $$('.portrait').forEach((fig) => {
+  $$('.portrait:not(.bio)').forEach((fig) => {
     gsap.fromTo(fig, { clipPath: 'inset(18% 12% 18% 12%)' }, {
       clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
       scrollTrigger: { trigger: fig, start: 'top 95%', end: 'top 35%', scrub: true },
@@ -174,47 +178,6 @@ services.forEach((svc, i) => {
     });
   }
 });
-
-/* Services: a "now reading" counter that rolls to the current service ------ */
-if (services.length) {
-  const names = services.map((s) => s.querySelector('h2').getAttribute('aria-label') || s.querySelector('h2').textContent.trim());
-  const chip = document.createElement('a');
-  chip.className = 'fx-now';
-  chip.href = '#' + services[0].id;
-  chip.innerHTML = `<span class="fx-now__num"><span class="fx-now__roll">${names.map((_, i) => `<b>${String(i + 1).padStart(2, '0')}</b>`).join('')}</span></span>
-    <span class="fx-now__text"><small>Now reading · of 07</small><span class="fx-now__win"><span class="fx-now__names">${names.map((n) => `<em>${n}</em>`).join('')}</span></span></span>
-    <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16"/><circle class="fx-now__ring" cx="18" cy="18" r="16" pathLength="1"/></svg>`;
-  chip.setAttribute('aria-label', 'Jump to the next service');
-  document.body.appendChild(chip);
-  const roll = chip.querySelector('.fx-now__roll');
-  const nameList = chip.querySelector('.fx-now__names');
-  const ring = chip.querySelector('.fx-now__ring');
-  let current = 0;
-  const setActive = (i) => {
-    current = i;
-    roll.style.transform = `translateY(${-i * 100 / names.length}%)`;
-    nameList.style.transform = `translateY(${-i * 100 / names.length}%)`;
-    chip.href = '#' + services[Math.min(i + 1, services.length - 1)].id;
-  };
-  services.forEach((svc, i) => {
-    ScrollTrigger.create({
-      trigger: svc, start: 'top 55%', end: 'bottom 55%',
-      onToggle: (self) => { if (self.isActive) setActive(i); },
-      onUpdate: (self) => { if (i === current) ring.style.strokeDashoffset = String(1 - self.progress); },
-    });
-  });
-  const section = services[0].closest('section');
-  ScrollTrigger.create({
-    trigger: section, start: 'top 60%', end: 'bottom 70%',
-    onToggle: (self) => chip.classList.toggle('is-on', self.isActive),
-  });
-  chip.addEventListener('click', (e) => {
-    e.preventDefault();
-    const target = services[Math.min(current + 1, services.length - 1)];
-    if (window.agila.lenis) window.agila.lenis.scrollTo(target, { offset: -70, duration: 1.4 });
-    else target.scrollIntoView({ behavior: 'smooth' });
-  });
-}
 
 /* Services: "What's included" lines draw in one after another -------------- */
 if (animate) {

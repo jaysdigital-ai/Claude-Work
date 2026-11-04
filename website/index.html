@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Digital Agila | Digital Marketing Agency for Funnels, Automation, CRM &amp; SEO</title>
-  <meta name="description" content="The Digital Agila is a digital marketing agency building high-converting sales funnels, marketing automation, CRM systems, websites, email marketing and SEO that turn traffic into paying clients. Book a free strategy call.">
+  <title>Full-Stack Digital Marketing Specialist | The Digital Agila</title>
+  <meta name="description" content="The Digital Agila builds sales funnels, marketing automation, CRM, websites, email and SEO for small businesses worldwide. Book a free 30-minute strategy call.">
   <link rel="canonical" href="https://www.thedigitalagila.com/">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#16120f">
+  <meta name="theme-color" content="#050318">
+  <meta name="author" content="Jayson Perucho">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Digital Agila">
   <meta property="og:title" content="The Digital Agila | Digital Marketing With an Eagle's Eye">
-  <meta property="og:description" content="Sales funnels, marketing automation, CRM, websites, email marketing and SEO, built as one connected system. Everything on our desk is clickable.">
+  <meta property="og:description" content="Funnels, automation, CRM, websites, email and SEO, built as one system so every lead is captured, answered and followed up.">
   <meta property="og:url" content="https://www.thedigitalagila.com/">
   <meta property="og:image" content="https://www.thedigitalagila.com/assets/img/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,44 +21,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/desk.css">
-  <script>(function(){var d=document.documentElement,t=(location.search.match(/theme=([abc])/)||[])[1];try{t=t||localStorage.getItem('agila-theme')}catch(e){}d.dataset.theme=t||'a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
+  <link rel="stylesheet" href="assets/css/neo.css">
+  <script>(function(){var d=document.documentElement;d.dataset.theme='a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": "https://www.thedigitalagila.com/#business",
-    "name": "The Digital Agila",
-    "slogan": "See further. Grow higher.",
-    "url": "https://www.thedigitalagila.com/",
-    "logo": "https://www.thedigitalagila.com/assets/img/mark.svg",
-    "email": "hello@thedigitalagila.com",
-    "founder": {"@type": "Person", "name": "Jayson Perucho"},
-    "description": "Digital marketing agency offering sales funnels, marketing automation, website design, CRM setup, email marketing, SEO and graphic design.",
-    "areaServed": "Worldwide",
-    "knowsAbout": ["Digital Marketing", "Sales Funnels", "Marketing Automation", "Website Design", "CRM", "Email Marketing", "Search Engine Optimization", "Graphic Design"],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Digital Marketing Services",
-      "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sales Funnel Design & Build"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Marketing Automation"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Design & Development"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CRM Setup & Management"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Email Marketing"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Search Engine Optimization"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Graphic Design"}}
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.thedigitalagila.com/#business",
+        "name": "The Digital Agila",
+        "slogan": "See further. Grow higher.",
+        "url": "https://www.thedigitalagila.com/",
+        "logo": "https://www.thedigitalagila.com/assets/img/mark.svg",
+        "image": "https://www.thedigitalagila.com/assets/img/portrait.jpg",
+        "email": "hello@thedigitalagila.com",
+        "founder": {"@id": "https://www.thedigitalagila.com/#founder"},
+        "description": "Full-stack digital marketing specialist offering sales funnels, marketing automation, website design, CRM setup, email marketing, SEO and graphic design for small businesses.",
+        "areaServed": "Worldwide",
+        "knowsAbout": ["Digital Marketing", "Sales Funnels", "Marketing Automation", "Website Design", "CRM", "Email Marketing", "Search Engine Optimization", "Graphic Design"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.thedigitalagila.com/#founder",
+        "name": "Jayson Perucho",
+        "jobTitle": "Founder & Digital Marketing Specialist",
+        "worksFor": {"@id": "https://www.thedigitalagila.com/#business"},
+        "url": "https://www.thedigitalagila.com/about.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "What does The Digital Agila do?", "acceptedAnswer": {"@type": "Answer", "text": "The Digital Agila builds the marketing systems a small business runs on: websites and sales funnels that win the lead, automation and CRM that follow it up, and SEO, email marketing and design that keep new customers coming. You can hire us for one service or the full set."}},
+          {"@type": "Question", "name": "Do you work with businesses outside the Philippines?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All work is done remotely, and we work with clients worldwide. Calls are scheduled at a time that suits your time zone."}},
+          {"@type": "Question", "name": "How much does a project cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on what you need. After a free 30-minute call you get a written proposal with the scope, timeline and a fixed price, so you know the cost before any work starts."}},
+          {"@type": "Question", "name": "Can you work with the website and tools I already have?", "acceptedAnswer": {"@type": "Answer", "text": "Usually, yes. We start by looking at what you already use and only suggest replacing something when it is holding your marketing back."}},
+          {"@type": "Question", "name": "What happens on the free strategy call?", "acceptedAnswer": {"@type": "Answer", "text": "We look at your website, how leads come in and how they are followed up today, then agree on the first things worth fixing. You leave with clear next steps whether or not you work with us."}}
+        ]
+      }
+    ]
   }
   </script>
 </head>
-<body class="desk-page">
+<body class="neo">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="curtain is-reveal" aria-hidden="true"></div>
-  <div class="desk-stage" data-desk aria-hidden="true"></div>
-  <div class="desk-tip" data-desk-tip hidden></div>
+  <div class="neo-stage" data-neo-stage aria-hidden="true"></div>
 
   <header class="header">
     <a class="brand" href="index.html" aria-label="The Digital Agila, home">
@@ -83,151 +93,150 @@
     <div class="menu__foot"><a href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a><span class="tagline">See further. Grow higher.</span></div>
   </div>
 
-  <main id="main" class="desk-ui">
-    <div class="desk-hero">
-      <h1 data-reveal="0">Digital marketing with an <em>eagle's eye.</em></h1>
-      <p data-reveal="1">We build the funnels, automations, CRM, websites, emails and SEO that bring in leads and close sales. Everything on this desk is clickable.</p>
-    </div>
-
-    <nav class="desk-chips" aria-label="Explore the desk" data-reveal="2">
-      <div class="desk-chips__row">
-        <button type="button" data-open="laptop"><b>Laptop</b> Our services</button>
-        <button type="button" data-open="tablet"><b>Tablet</b> Growth dashboard</button>
-        <button type="button" data-open="phone"><b>Phone</b> Book a call</button>
-      </div>
-      <div class="desk-chips__row desk-chips__row--quiet">
-        <button type="button" data-open="notebook">Read our story</button>
-        <button type="button" data-open="card">Take our card</button>
-        <button type="button" data-open="printer">Print a lead</button>
-        <button type="button" data-open="lamp">Lights on/off</button>
-      </div>
-    </nav>
-
-    <button type="button" class="desk-back" data-desk-back hidden><span aria-hidden="true">←</span> Back to the desk <kbd>Esc</kbd></button>
-
-    <!-- LAPTOP: services -->
-    <section class="device-ui os" data-ui="laptop" hidden aria-label="Our services">
-      <div class="os__bar"><b>The Digital Agila</b><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a><span class="os__spacer"></span><span data-clock></span></div>
-      <div class="os__desk">
-        <div class="os__win">
-          <div class="os__winbar"><i></i><i></i><i></i><span>Services</span></div>
-          <div class="os__body">
-            <h2>Seven services, one connected system.</h2>
-            <p>Digital marketing built around one outcome: more qualified leads and more sales. Open one to see what's included.</p>
-            <div class="os__grid">
-              <a href="services.html#funnels"><span>01</span><b>Sales Funnels</b><small>Landing pages, offers, upsells and follow-up that close the sale.</small></a>
-              <a href="services.html#automation"><span>02</span><b>Marketing Automation</b><small>Instant replies, follow-ups and booking reminders on autopilot.</small></a>
-              <a href="services.html#website"><span>03</span><b>Website Design</b><small>Fast, mobile-first sites built to rank and convert.</small></a>
-              <a href="services.html#crm"><span>04</span><b>CRM Setup</b><small>Pipelines, tagging and lead scoring so no lead is lost.</small></a>
-              <a href="services.html#email"><span>05</span><b>Email Marketing</b><small>Welcome, nurture and sales sequences that build trust.</small></a>
-              <a href="services.html#seo"><span>06</span><b>SEO</b><small>Technical, on-page, local and content SEO.</small></a>
-              <a href="services.html#graphics"><span>07</span><b>Graphic Design</b><small>Ad creatives and visuals that earn the click.</small></a>
-              <a href="contact.html" class="os__cta"><span>→</span><b>Book a free call</b><small>30 minutes. Clear next steps.</small></a>
-            </div>
-          </div>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero neo-hero" data-neo-key="hero" aria-labelledby="hero-title">
+      <div class="wrap neo-hero__copy">
+        <p class="neo-eyebrow" data-reveal="0">Funnels · Automation · CRM · Websites · Email · SEO</p>
+        <h1 id="hero-title" data-lines>Digital marketing with an <em>eagle's eye.</em></h1>
+        <p class="neo-lead" data-reveal="1">The Digital Agila builds the marketing systems small businesses run on: the website and funnel that win the lead, the automation and CRM that follow it up, and the SEO and email that bring the next customer in.</p>
+        <div class="neo-ctas" data-reveal="2">
+          <a class="btn" href="contact.html">Book a free 30-minute call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="link" href="services.html">See our services</a>
         </div>
-        <nav class="os__apps" aria-label="Apps">
-          <a href="services.html"><i>▦</i>Services</a>
-          <a href="about.html"><i>☺</i>About</a>
-          <a href="contact.html"><i>✉</i>Contact</a>
-          <a href="mailto:hello@thedigitalagila.com"><i>@</i>Email</a>
-        </nav>
+        <a class="neo-meet" href="#founder" data-reveal="3">
+          <img src="assets/img/portrait-cutout.png" alt="" width="489" height="950">
+          <span><b>Hi, I'm Jayson</b> Founder · meet me</span>
+          <i aria-hidden="true">→</i>
+        </a>
       </div>
     </section>
 
-    <!-- TABLET: dashboard -->
-    <section class="device-ui dash" data-ui="tablet" hidden aria-label="Growth dashboard example">
-      <header><div><h2>Growth dashboard</h2><p>Example of the reporting every client gets. Sample data.</p></div><span class="dash__live">Live</span></header>
-      <div class="dash__kpis">
-        <div><small>Visitors</small><b data-count="12480">0</b></div>
-        <div><small>Leads</small><b data-count="1036">0</b></div>
-        <div><small>Calls booked</small><b data-count="214">0</b></div>
-        <div><small>New clients</small><b data-count="61">0</b></div>
-      </div>
-      <div class="dash__cols">
-        <div class="dash__funnel">
-          <h3>Funnel</h3>
-          <div style="--w:100%"><span>Attract</span></div>
-          <div style="--w:62%"><span>Capture</span></div>
-          <div style="--w:38%"><span>Nurture</span></div>
-          <div style="--w:21%"><span>Convert</span></div>
+    <!-- THE PROBLEM -->
+    <section class="section neo-panel neo-problem" data-neo-key="problem" aria-labelledby="problem-title">
+      <div class="wrap grid12">
+        <div class="neo-problem__head">
+          <h2 id="problem-title" data-lines>Most businesses don't have a traffic problem.</h2>
+          <p class="neo-big" data-reveal>They have a follow-up problem.</p>
         </div>
-        <div class="dash__auto">
-          <h3>Automations running</h3>
-          <ul>
-            <li><i></i>New lead → tag in CRM + welcome email</li>
-            <li><i></i>No reply in 2 days → friendly follow-up</li>
-            <li><i></i>Call booked → reminder SMS</li>
-            <li><i></i>Lead score 80+ → alert the sales team</li>
+        <div class="neo-problem__body">
+          <p data-reveal>Someone fills in your form and waits two days for a reply. A lead sits in an inbox until it goes cold. Nobody can say which ad actually paid for itself. More traffic won't fix any of that.</p>
+          <p data-reveal>We build the pieces as one system, so every lead is captured, answered within minutes, tracked in a CRM and followed up until they buy or say no.</p>
+          <h3 class="neo-small-title" data-reveal>Sound familiar?</h3>
+          <ul class="neo-checks" data-stagger>
+            <li>Enquiries come in, but replies take days</li>
+            <li>The website looks fine but rarely brings in leads</li>
+            <li>You can't tell which marketing is working</li>
+            <li>Your email list hasn't heard from you in months</li>
           </ul>
-          <a href="services.html#automation">See marketing automation →</a>
         </div>
       </div>
     </section>
 
-    <!-- PHONE: booking chat -->
-    <section class="device-ui chat" data-ui="phone" hidden aria-label="Book a call">
-      <header><b>Agila assistant</b><small>Replies instantly</small></header>
-      <div class="chat__log" data-chat-log>
-        <p class="them">Hi! I'm the Agila assistant. What would you like more of?</p>
+    <!-- SERVICES -->
+    <section class="section neo-panel neo-services" data-neo-key="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="grid12 head-row">
+          <h2 id="services-title" data-lines>What we build</h2>
+          <p data-reveal>Hire us for one piece or the whole system. Every service connects to the others, so nothing you pay for works on its own.</p>
+        </div>
+        <ul class="neo-list">
+          <li><a href="services.html#funnels"><span class="neo-list__num">01</span><h3>Sales funnels</h3><p>Landing pages, lead magnets, order forms and upsells that turn ad clicks and visitors into enquiries.</p><i aria-hidden="true">→</i></a></li>
+          <li><a href="services.html#automation"><span class="neo-list__num">02</span><h3>Marketing automation</h3><p>Instant replies, booking reminders and follow-up emails and texts that run without you.</p><i aria-hidden="true">→</i></a></li>
+          <li><a href="services.html#website"><span class="neo-list__num">03</span><h3>Website design</h3><p>Fast, mobile-first websites with clear messaging, set up to rank on Google and win enquiries.</p><i aria-hidden="true">→</i></a></li>
+          <li><a href="services.html#crm"><span class="neo-list__num">04</span><h3>CRM setup</h3><p>Pipelines, tags and lead scoring, so you always know who to call next and where sales come from.</p><i aria-hidden="true">→</i></a></li>
+          <li><a href="services.html#email"><span class="neo-list__num">05</span><h3>Email marketing</h3><p>Welcome, nurture and sales sequences plus campaigns that bring past customers back.</p><i aria-hidden="true">→</i></a></li>
+          <li><a href="services.html#seo"><span class="neo-list__num">06</span><h3>SEO</h3><p>Technical fixes, on-page work, local SEO and content that grow organic traffic month after month.</p><i aria-hidden="true">→</i></a></li>
+          <li><a href="services.html#graphics"><span class="neo-list__num">07</span><h3>Graphic design</h3><p>Ad creatives, social graphics and funnel visuals designed to get the click.</p><i aria-hidden="true">→</i></a></li>
+        </ul>
       </div>
-      <div class="chat__choices" data-chat-choices>
-        <button type="button" data-reply="leads">More leads</button>
-        <button type="button" data-reply="time">Less admin</button>
-        <button type="button" data-reply="rank">Rank on Google</button>
-      </div>
-      <a class="chat__cta" href="contact.html">Book a free strategy call</a>
     </section>
 
-    <!-- NOTEBOOK: story -->
-    <section class="device-ui paper" data-ui="story" hidden aria-label="Our story">
-      <small>a·gi·la · noun, Filipino · eagle</small>
-      <h2>Wide vision, <em>precise</em> execution.</h2>
-      <p>Agila is the Filipino word for eagle, a nod to the Philippine eagle. An eagle rises high enough to see the whole landscape, picks its moment and commits with precision. That's how we approach digital marketing.</p>
-      <p>The Digital Agila was founded by Jayson Perucho, a digital marketing specialist who builds the systems behind growth: the funnel, the follow-up, the CRM and the data.</p>
-      <a class="link" href="about.html">Read the full story →</a>
+    <!-- PROCESS -->
+    <section class="section neo-panel neo-process" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="grid12 head-row">
+          <h2 id="process-title" data-lines>How a project runs</h2>
+          <p data-reveal>No long contracts to sign before you know what you're getting.</p>
+        </div>
+        <ol class="neo-steps" data-stagger>
+          <li><h3><span>1</span>Free call</h3><p>Thirty minutes on your website, your ads and how leads are handled today.</p></li>
+          <li><h3><span>2</span>Written plan</h3><p>Priorities, timeline and a fixed price, in writing, before any work starts.</p></li>
+          <li><h3><span>3</span>Build</h3><p>We build, connect and test every piece. You see progress as it happens.</p></li>
+          <li><h3><span>4</span>Launch and improve</h3><p>We go live, watch the numbers and send you a plain-English report each month.</p></li>
+        </ol>
+      </div>
     </section>
 
-    <!-- BUSINESS CARD -->
-    <section class="device-ui bizcard" data-ui="card" hidden aria-label="Contact card">
-      <div class="bizcard__front">
-        <span class="bizcard__brand"><em>The Digital</em> Agila</span>
-        <b>Jayson Perucho</b>
-        <span>Founder · Digital Marketing Specialist</span>
-        <a href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a>
-        <span>thedigitalagila.com</span>
+    <!-- FOUNDER -->
+    <section class="section neo-panel neo-founder" id="founder" data-neo-key="founder" aria-labelledby="founder-title">
+      <div class="wrap grid12">
+        <figure class="neo-founder__photo bio" data-bio data-reveal>
+          <div class="bio__stage"><span class="bio__halo"></span><span class="bio__ring"></span><span class="bio__floor"></span><img class="bio__img" src="assets/img/portrait-cutout.png" alt="Jayson Perucho, founder of The Digital Agila, holding a laptop" width="489" height="950" loading="lazy"><span class="bio__tag" style="--a:-58deg">Funnels</span><span class="bio__tag" style="--a:58deg">Automation</span><span class="bio__tag" style="--a:-118deg">CRM</span><span class="bio__tag" style="--a:118deg">SEO</span></div>
+          <figcaption><b>Jayson Perucho</b><span>Founder</span></figcaption>
+        </figure>
+        <div class="neo-founder__text">
+          <h2 id="founder-title" data-lines>Hi, I'm <em>Jayson.</em></h2>
+          <p class="neo-lead" data-reveal>I started The Digital Agila after seeing the same thing again and again: good businesses spending on ads and websites, then losing the leads because nothing happened after the click.</p>
+          <p data-reveal>I'm a digital marketing specialist, and I build the part most marketers skip: the funnel, the follow-up, the CRM and the reporting behind it. When you hire me, you work with me directly, from the first call to launch day.</p>
+          <p data-reveal><i>Agila</i> is Filipino for eagle. It's how I like to work: look at the whole picture first, then act on the parts that matter.</p>
+          <a class="link" href="about.html" data-reveal>More about me and how I work</a>
+        </div>
       </div>
-      <div class="bizcard__actions"><a class="btn" href="contact.html">Book a call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
     </section>
 
-    <!-- LEAD PRINTER: receipt -->
-    <section class="device-ui receipt" data-ui="receipt" hidden aria-label="Example lead receipt">
-      <div class="receipt__paper">
-        <b>THE DIGITAL AGILA</b>
-        <span>NEW LEAD CAPTURED</span>
-        <hr>
-        <dl>
-          <dt>Lead</dt><dd>#<span data-lead-no>0001</span></dd>
-          <dt>Time</dt><dd data-lead-time>--:--</dd>
-          <dt>Source</dt><dd data-lead-src>Funnel landing page</dd>
-          <dt>CRM</dt><dd>Tagged, scored: hot</dd>
-          <dt>Welcome email</dt><dd>Sent in 1 min</dd>
-          <dt>Follow-up</dt><dd>Scheduled</dd>
-          <dt>Call</dt><dd>Booking link sent</dd>
-        </dl>
-        <hr>
-        <span>This is how our automations treat every lead.</span>
+    <!-- FAQ -->
+    <section class="section neo-panel neo-faq" aria-labelledby="faq-title">
+      <div class="wrap grid12 faq-wrap">
+        <h2 id="faq-title" data-lines>Questions people ask</h2>
+        <div class="faq">
+          <details><summary>What does The Digital Agila do?<i></i></summary><p>We build the marketing systems a small business runs on: websites and sales funnels that win the lead, automation and CRM that follow it up, and SEO, email marketing and design that keep new customers coming. You can hire us for one service or the full set.</p></details>
+          <details><summary>Do you work with businesses outside the Philippines?<i></i></summary><p>Yes. All work is done remotely, and we work with clients worldwide. Calls are scheduled at a time that suits your time zone.</p></details>
+          <details><summary>How much does a project cost?<i></i></summary><p>It depends on what you need. After a free 30-minute call you get a written proposal with the scope, timeline and a fixed price, so you know the cost before any work starts.</p></details>
+          <details><summary>Can you work with the website and tools I already have?<i></i></summary><p>Usually, yes. We start by looking at what you already use and only suggest replacing something when it is holding your marketing back.</p></details>
+          <details><summary>What happens on the free strategy call?<i></i></summary><p>We look at your website, how leads come in and how they are followed up today, then agree on the first things worth fixing. You leave with clear next steps whether or not you work with us.</p></details>
+        </div>
       </div>
-      <a class="link" href="services.html#automation">How marketing automation works →</a>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta neo-cta" data-neo-key="cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <h2 id="cta-title" data-drift>Let's <em>talk.</em></h2>
+        <div class="grid12 cta__row">
+          <p>Book a free 30-minute call. I'll look at what you have now and tell you honestly what I'd fix first, even if you decide to do it yourself.</p>
+          <a class="link cta__mail" href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a>
+          <a class="btn" href="contact.html">Book a free call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <noscript><p class="desk-noscript">The interactive desk needs JavaScript. Explore our <a href="services.html">services</a>, read <a href="about.html">about us</a> or <a href="contact.html">get in touch</a>.</p></noscript>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="grid12 footer__top">
+        <div><p>The Digital Agila is Jayson Perucho, a full-stack digital marketing specialist building sales funnels, automation, CRM, websites, email marketing and SEO.</p></div>
+        <div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer__col"><h4>Services</h4><ul><li><a href="services.html#funnels">Sales Funnels</a></li><li><a href="services.html#automation">Automation</a></li><li><a href="services.html#website">Websites</a></li><li><a href="services.html#crm">CRM</a></li><li><a href="services.html#email">Email</a></li><li><a href="services.html#seo">SEO</a></li><li><a href="services.html#graphics">Design</a></li></ul></div>
+        <div class="footer__col"><h4>Contact</h4><ul><li><a href="mailto:hello@thedigitalagila.com">Email</a></li><li><a href="contact.html">Book a call</a></li></ul></div>
+      </div>
+      <div class="footer__sign">
+        <a class="footer__mark" href="index.html" aria-label="The Digital Agila, home"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="mark-ink" d="M7 45L6 33 1 27l8 1.5L7 19l7 5.5L15 13l5.5 7 4.5-6.5c4-.5 8 .5 11 2.5l4 1.5-4 10.5-3 3.5-5.5 5.5L24 45z"/><path class="mark-amber" d="M35 15.6l5.5 1q7 2.9 5.9 9.9L44.6 31l-2-3.6q-3.1-1.1-7.2.2L33.6 23z"/><circle class="mark-amber" cx="30.4" cy="20.6" r="2.1"/><circle fill="#0e0f10" cx="30.8" cy="20.6" r=".9"/></svg></a>
+        <p class="footer__line">See further. <em>Grow higher.</em></p>
+        <a class="btn" href="contact.html">Book a free call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> The Digital Agila. The Digital Agila is owned and operated by JPerucho Digital Marketing Services.</span>
+        <nav class="footer__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookie Policy</a></nav>
+      </div>
+    </div>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/desk-ui.js" defer></script>
-  <script type="module" src="assets/js/desk.js"></script>
+  <script src="assets/js/bio.js" defer></script>
+  <script src="assets/js/neo.js" defer></script>
 </body>
 </html>

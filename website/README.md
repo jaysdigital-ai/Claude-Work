@@ -15,8 +15,11 @@ Three colour brandings are built in. Switch with the bar at the bottom of the pa
 - C: Glacier & Gold (light, cool navy)
 Once one is chosen, make it the default and remove the switcher (`.palette` in style.css and the switcher block in main.js).
 
-## Home: the interactive desk
-`index.html` is a full-screen 3D desk (`assets/js/desk.js`, styles in `assets/css/desk.css`), built entirely in code with no 3D model downloads. Every object responds:
+## Home: the neon eagle
+`index.html` is a scrolling page over a fixed 3D scene: the neon eagle (`assets/img/neon-eagle.jpg`, its purple background removed in code) beats its wings in a tunnel of neon rings. `assets/js/neo.js` sets where the eagle is, how big and how bright for each part of the page (hover in the hero, dive through it, faint while you read, full size again at the end); `assets/js/neo/hyperspace.js` draws it with Three.js. Styles: `assets/css/neo.css`. The text sections sit on near-solid panels so the copy stays readable. A larger eagle image (2048px PNG) would make it sharper.
+
+## desk.html: the previous home page
+`desk.html` (not linked, noindex) is the earlier interactive desk, kept for reference. It is a full-screen 3D desk (`assets/js/desk.js`, styles in `assets/css/desk.css`), built entirely in code with no 3D model downloads. Every object responds:
 - Laptop → services desktop (links to services.html)
 - Tablet → growth dashboard (sample data, labelled as such)
 - Phone → short scripted chat ending in "Book a free strategy call"
@@ -47,7 +50,7 @@ The picture frame on the desk shows `assets/img/eagle-flight.jpg`. `assets/img/e
 
 ## Inner pages: effects and gallery
 - `assets/js/fx.js` loads two effect sets on About, Services and Contact (styles in `assets/css/fx.css`):
-  - **Editorial** (`fx/option-1.js`): heading letters react to the cursor, paragraphs fill with ink as you scroll, headings lean with scroll speed, the skills list runs as a marquee, outline numerals and a "Now reading" counter on Services, focus underlines on the form.
+  - **Editorial** (`fx/option-1.js`): heading letters react to the cursor, paragraphs fill with ink as you scroll, headings lean with scroll speed, the skills list runs as a marquee and outline numerals on Services, focus underlines on the form.
   - **Hands-on** (`fx/option-3.js`): a small working demo inside each service (funnel calculator, automation run, website preview, drag-and-drop pipeline, email sequence, search ranking, before/after design), a "Hear it" pronunciation button, and a live project brief beside the contact form. All demo numbers are illustrative.
 - `assets/js/gallery.js` draws the marketing mockups (styles in `assets/css/gallery.css`): a sideways-scrolling "What we make" rail on Services, a collage on About and a drifting strip on Contact. The businesses in them are made up; swap tiles for real client work when you have it.
 
@@ -76,3 +79,8 @@ Email designs live in `server/emails.js`. Spam protection: a hidden honeypot fie
 If the API key is missing, visitors see a "didn't go through" message and the Cloudflare logs say `RESEND_API_KEY is not set`. If only the lead's confirmation fails (e.g. the domain isn't verified yet), you still get the notification, with a red warning line saying the confirmation could not be sent.
 
 The local preview server (`serve.ps1`) can't run Cloudflare Functions, so submitting the form locally shows the error message. That's expected; it works once deployed.
+
+## Legal pages and cookie notice
+`privacy.html`, `terms.html` and `cookies.html` are linked from every footer, next to the line "The Digital Agila is owned and operated by JPerucho Digital Marketing Services". They describe how the site actually works (contact form via Cloudflare and Resend, inbox on Gmail, fonts and code from Google Fonts, jsDelivr and cdnjs, no analytics or tracking cookies). If you add analytics, ads or a newsletter, update the Privacy and Cookie pages and ask for consent before setting those cookies. Have them reviewed by a lawyer before relying on them.
+
+The cookie notice (in `assets/js/main.js`) shows once and remembers it was closed in local storage (`agila-cookie-notice`), the only thing the site stores on a visitor's device.

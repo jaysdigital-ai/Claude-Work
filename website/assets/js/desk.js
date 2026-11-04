@@ -896,6 +896,7 @@ async function init() {
     card:     { ui: 'card', offset: new THREE.Vector3(0.4, 3.4, 5.2), lift: 0.6 },
     printer:  { ui: 'receipt', offset: new THREE.Vector3(2.4, 4.6, 6.4), lift: 1, before: printLead },
     frame:    { ui: 'story', offset: new THREE.Vector3(1.4, 2.6, 6), lift: 0.8 },
+    founder:  { ui: 'founder', offset: new THREE.Vector3(1.6, 3.2, 7), lift: 1.2 },
   };
   function placePanel() {
     if (!focus) return;
@@ -916,7 +917,8 @@ async function init() {
     hideTip();
     document.body.classList.add('is-focused');
     if (f.before) f.before();
-    const target = f.screen ? screenView(f.screen, f.fill) : objectView(objects[id], f.offset, f.lift || 0);
+    // no 3D object for it (the founder card): open the panel without moving the camera
+    const target = f.screen ? screenView(f.screen, f.fill) : objects[id] ? objectView(objects[id], f.offset, f.lift || 0) : { pos: view.pos.clone(), look: view.look.clone() };
     flyTo(target, () => {
       placePanel();
       const el = panels[f.ui];
@@ -1005,7 +1007,8 @@ async function init() {
 
   /* Layout ---------------------------------------------------------------------------------- */
   function layout() {
-    const w = host.clientWidth, h = host.clientHeight;
+    // fall back to the window if the stage hasn't been sized yet (a 0 height breaks the eagle's path)
+    const w = host.clientWidth || window.innerWidth, h = host.clientHeight || window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -1014,7 +1017,7 @@ async function init() {
     if (!focus) { view.pos.copy(home.pos); view.look.copy(home.look); }
     else {
       const f = FOCUS[focus];
-      const t = f.screen ? screenView(f.screen, f.fill) : objectView(objects[focus], f.offset, f.lift || 0);
+      const t = f.screen ? screenView(f.screen, f.fill) : objects[focus] ? objectView(objects[focus], f.offset, f.lift || 0) : homeView({ pos: new THREE.Vector3(), look: new THREE.Vector3() });
       view.pos.copy(t.pos); view.look.copy(t.look);
     }
   }

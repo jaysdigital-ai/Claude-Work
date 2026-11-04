@@ -8,7 +8,7 @@
      TO_EMAIL        where notifications go        (default jaysperucho@gmail.com)
      FROM_EMAIL      sender on your verified domain (default The Digital Agila <hello@thedigitalagila.com>)
      REPLY_TO        where the lead's replies go    (default TO_EMAIL)
-     SITE_URL        your live address              (default https://www.thedigitalagila.com)
+     SITE_URL        your live address              (default https://thedigitalagila.com; www does not resolve yet)
      TIME_ZONE       for the "received" time        (default UTC, e.g. Asia/Manila)
    ========================================================================== */
 import { notificationEmail, confirmationEmail } from '../../server/emails.js';
@@ -23,7 +23,7 @@ function settingsFrom(env) {
     to,
     from: env.FROM_EMAIL || 'The Digital Agila <hello@thedigitalagila.com>',
     replyTo: env.REPLY_TO || to,
-    siteUrl: (env.SITE_URL || 'https://www.thedigitalagila.com').replace(/\/+$/, ''),
+    siteUrl: (env.SITE_URL || 'https://thedigitalagila.com').replace(/\/+$/, ''),
     timeZone: env.TIME_ZONE || 'UTC',
     senderName: env.SENDER_NAME || 'Jayson Perucho',
     senderTitle: env.SENDER_TITLE || 'Founder, The Digital Agila',

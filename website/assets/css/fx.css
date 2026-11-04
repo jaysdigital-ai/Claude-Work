@@ -58,26 +58,6 @@
 [data-fx~="1"] .chip input:checked + span { transform: scale(1.08); }
 [data-fx~="1"] .chip:active span { transform: scale(.94); }
 
-/* now reading counter */
-.fx-now {
-  position: fixed; left: var(--gutter); bottom: 20px; z-index: 340; display: flex; align-items: center; gap: 12px;
-  padding: 8px 10px 8px 14px; border-radius: 16px; background: var(--ink); color: var(--bg);
-  box-shadow: 0 18px 50px -14px rgba(0, 0, 0, .45);
-  opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity .5s var(--ease), transform .7s var(--ease);
-}
-.fx-now.is-on { opacity: 1; transform: none; pointer-events: auto; }
-.fx-now__num { height: 1em; overflow: hidden; font-size: 30px; font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
-.fx-now__roll, .fx-now__names { display: flex; flex-direction: column; transition: transform .8s var(--ease); }
-.fx-now__roll b { height: 1em; font-weight: 600; }
-.fx-now__text { display: flex; flex-direction: column; min-width: 150px; }
-.fx-now__text small { font-size: 11px; opacity: .55; }
-.fx-now__win { height: 22px; overflow: hidden; display: block; }
-.fx-now__names em { flex: none; height: 22px; line-height: 22px; font-size: 17px; white-space: nowrap; }
-.fx-now svg { width: 34px; height: 34px; transform: rotate(-90deg); }
-.fx-now circle { fill: none; stroke: color-mix(in srgb, var(--bg) 22%, transparent); stroke-width: 2; }
-.fx-now .fx-now__ring { stroke: var(--accent); stroke-dasharray: 1; stroke-dashoffset: 1; }
-@media (max-width: 1100px) { .fx-now { display: none; } }
-
 /* ==========================================================================
    Option 3 · Hands-on
    ========================================================================== */
@@ -174,7 +154,7 @@
 .fx-kanban { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .fx-col { border-radius: 10px; padding: 8px; background: color-mix(in srgb, var(--ink) 4%, transparent); min-height: 180px; transition: background .3s, box-shadow .3s; }
 .fx-col.is-over { background: color-mix(in srgb, var(--accent) 18%, transparent); box-shadow: inset 0 0 0 1px var(--accent); }
-.fx-col__head { display: flex; justify-content: space-between; gap: 4px; font-size: 12px; margin-bottom: 8px; }
+.fx-col__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 6px; font-size: 12px; margin-bottom: 8px; }
 .fx-col__head b { font-weight: 600; }
 .fx-col__head span { color: var(--muted); font-variant-numeric: tabular-nums; }
 .fx-col__list { display: grid; gap: 6px; }
