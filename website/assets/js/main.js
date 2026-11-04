@@ -312,6 +312,14 @@
     const status = form.querySelector('.form__status');
     const button = form.querySelector('button[type="submit"]');
     const label = button.querySelector('.btn__label');
+    const started = form.querySelector('[name="started"]');
+    if (started) started.value = String(Date.now());          // spam check: bots submit instantly
+    const showError = (text) => { status.textContent = text; status.classList.add('is-error'); };
+    // Coming back from a submission made without JavaScript
+    const params = new URLSearchParams(location.search);
+    if (params.has('sent')) form.classList.add('is-sent');
+    if (params.has('error')) showError('Sorry, that didn’t go through. Please try again, or email hello@thedigitalagila.com.');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!form.reportValidity()) return;
@@ -319,20 +327,24 @@
       button.classList.add('is-loading');
       label.textContent = 'Sending…';
       try {
-        const data = new FormData(form);
-        const services = data.getAll('services');
-        data.delete('services');
-        data.append('services', services.join(', ') || 'Not specified');
-        const res = await fetch(form.getAttribute('action') || '/', {
+        const res = await fetch(form.getAttribute('action'), {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(data).toString(),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
+          body: new URLSearchParams(new FormData(form)).toString(),
         });
-        if (!res.ok) throw new Error(res.status);
-        form.classList.add('is-sent');
+        const result = await res.json().catch(() => ({}));
+        if (res.ok && result.ok) {
+          form.classList.add('is-sent');
+          form.querySelector('.form__success').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+        } else if (res.status === 400 && result.message) {
+          showError(result.message);
+          const firstBad = result.fields && form.querySelector(`[name="${Object.keys(result.fields)[0]}"]`);
+          if (firstBad) firstBad.focus();
+        } else {
+          throw new Error(result.error || res.status);
+        }
       } catch (err) {
-        status.textContent = 'Sorry, that didn’t go through. Please try again, or email me directly.';
-        status.classList.add('is-error');
+        showError('Sorry, that didn’t go through. Please try again in a moment, or email hello@thedigitalagila.com.');
       } finally {
         button.classList.remove('is-loading');
         label.textContent = 'Send message';

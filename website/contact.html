@@ -90,9 +90,9 @@
           </ol>
         </aside>
 
-        <form class="form" id="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-contact-form data-reveal>
+        <form class="form" id="contact-form" name="contact" method="POST" action="/api/contact" data-contact-form data-reveal>
           <div class="form__body">
-            <input type="hidden" name="form-name" value="contact">
+            <input type="hidden" name="started" value="">
             <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
             <div class="form__grid">
               <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required></div>
@@ -131,7 +131,7 @@
           </div>
           <div class="form__success" role="status" aria-live="polite">
             <h3>Thank you. <em>Message received.</em></h3>
-            <p>We'll read through your details and reply within one business day to set up your free call.</p>
+            <p>We'll read through your details and reply within one business day to set up your free call. A confirmation is on its way to your inbox (check spam if you don't see it).</p>
             <a class="link" href="services.html">Browse services in the meantime</a>
           </div>
         </form>
