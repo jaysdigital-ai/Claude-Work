@@ -52,7 +52,7 @@ The picture frame on the desk shows `assets/img/eagle-flight.jpg`. `assets/img/e
 - Check the "Within 1 business day" reply-time claim on contact.html
 
 ## Contact form (Cloudflare Pages Function + Resend)
-The form on contact.html posts to `/api/contact`, a Cloudflare Pages Function in `functions/api/contact.js` (repo root, next to this `website` folder). For each real inquiry it sends two emails through [Resend](https://resend.com):
+The form on contact.html posts to `/api/contact`, a Cloudflare Pages Function in `functions/api/contact.js` (inside this `website` folder, which is the Cloudflare project's root directory). For each real inquiry it sends two emails through [Resend](https://resend.com):
 - **To you** (`TO_EMAIL`, default jaysperucho@gmail.com): "New inquiry from {name}", with every field and a one-click reply. Its reply-to is the lead, so hitting reply answers them directly.
 - **To the lead**: "Thanks, {first name}. We received your inquiry", with next steps and a copy of what they sent. Its reply-to is you.
 
@@ -64,7 +64,7 @@ Email designs live in `server/emails.js`. Spam protection: a hidden honeypot fie
    - `RESEND_API_KEY` = the key from step 1, added as **Secret** (required)
    - `FROM_EMAIL` (optional): defaults to `The Digital Agila <hello@thedigitalagila.com>`; any sender must be on the domain you verified in Resend
    - Optional: `TO_EMAIL` (where notifications go), `REPLY_TO` (where leads' replies go, defaults to `TO_EMAIL`), `SITE_URL` (your live address, used in the emails), `TIME_ZONE` (for the "received" time, e.g. `Asia/Manila`; default UTC)
-3. **Cloudflare build settings** (Settings → Build): **Root directory** must be the repository root (blank or `/`), and **Build output directory** must be `website`. If the root directory is set to `website`, Cloudflare won't find the `functions` folder: either change the setting, or move `functions/` and `server/` inside `website/`.
+3. **Cloudflare build settings** (Settings → Build): the **Root directory** is `website`, so `functions/` must stay directly inside this folder or Cloudflare won't deploy the form backend. (`server/emails.js` is also served as a public file; it holds only email templates, no secrets.)
 4. Redeploy, send yourself a test inquiry from the live Contact page, and check both inboxes (and spam folders, the first time).
 
 If the API key is missing, visitors see a "didn't go through" message and the Cloudflare logs say `RESEND_API_KEY is not set`. If only the lead's confirmation fails (e.g. the domain isn't verified yet), you still get the notification, with a red warning line saying the confirmation could not be sent.
