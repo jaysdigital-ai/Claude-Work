@@ -19,7 +19,7 @@
 .neo h1 em, .neo .neo-panel h2 em, .neo .dark h2 em, .neo .page-hero h1 em, .neo .neo-cta h2 em, .neo h2 em {
   background: linear-gradient(100deg, #ffcf8a 10%, #fff6e6 30%, #c9a6ff 50%, #8fb6ff 70%, #ffcf8a 90%) 0 0 / 250% 100%;
   -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
-  animation: fxFlow 12s linear infinite; filter: drop-shadow(0 0 18px rgba(201, 166, 255, .35)); padding-right: .06em;
+  animation: fxFlow 12s linear infinite; padding-right: .06em;
 }
 .neo-page section.section:not(.dark):not(.page-hero) h2 em, .neo #founder h2 em {
   background-image: linear-gradient(100deg, #9a5b00 10%, #5b2fc0 40%, #2856c8 70%, #9a5b00 90%); filter: none;
@@ -39,8 +39,8 @@
 @keyframes fxComet { 0% { transform: translate(-260px, 0) rotate(8deg); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translate(calc(100vw + 40px), 90px) rotate(8deg); opacity: 0; } }
 
 /* Aurora in the page title */
-.fx-aurora { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; mix-blend-mode: screen; opacity: .5; }
-.fx-aurora::before, .fx-aurora::after { content: ""; position: absolute; left: -20%; right: -20%; top: -10%; height: 70%; filter: blur(50px);
+.fx-aurora { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: .45; }
+.fx-aurora::before, .fx-aurora::after { content: ""; position: absolute; left: -20%; right: -20%; top: -10%; height: 70%; will-change: transform;
   background: linear-gradient(90deg, transparent 5%, rgba(40, 240, 190, .45) 20%, rgba(140, 90, 255, .5) 45%, rgba(255, 90, 200, .35) 65%, rgba(40, 240, 190, .4) 85%, transparent 95%);
   -webkit-mask: linear-gradient(180deg, transparent, #000 30%, #000 50%, transparent); mask: linear-gradient(180deg, transparent, #000 30%, #000 50%, transparent);
   animation: fxAurora 14s ease-in-out infinite alternate; transform-origin: 50% 0; }
@@ -97,3 +97,17 @@
   .neo h1 em, .neo h2 em, .neo em .fx-ch, .fx-aurora::before, .fx-aurora::after { animation: none !important; }
 }
 @media print { .fx-trail, .fx-hole { display: none; } }
+
+/* Phones: the 3D stage takes the full screen height, so the address bar
+   sliding in and out while scrolling does not resize and redraw the scene */
+.neo-stage { bottom: auto; height: 100vh; height: 100lvh; }
+
+/* Big screens with a mouse get the soft-focus aurora; phones skip the blur */
+@media (hover: hover) and (min-width: 901px) {
+  .fx-aurora::before, .fx-aurora::after { filter: blur(44px); }
+}
+/* Phones and tablets: accent words keep their gold-violet colour but stop
+   shimmering, which would otherwise repaint the text on every frame */
+@media (hover: none), (max-width: 900px) {
+  .neo h1 em, .neo h2 em, .neo em .fx-ch { animation: none !important; }
+}

@@ -7,7 +7,8 @@
    pulls back to a distant emblem.
    ========================================================================== */
 import * as THREE from 'three';
-import { loadEagleCanvas, makeEagle } from './eagle.js?v=20261108';
+import { loadEagleCanvas, makeEagle } from './eagle.js?v=20261109';
+import { LITE, adaptiveResolution, put6 } from './eagle-shared.js?v=20261109';
 
 // Starlight colours: gold and violet rings, warm white and lilac streaks
 const ringColour = (i) => (i % 3 === 0 ? '#ffcf8a' : '#6a4cff');
@@ -15,8 +16,8 @@ const streakColour = () => new THREE.Color(Math.random() < 0.7 ? '#fff3dc' : '#c
 
 const { onFrame, small } = window.neo;
 const host = document.querySelector('[data-neo-stage]');
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const renderer = new THREE.WebGLRenderer({ antialias: !LITE, alpha: true, powerPreference: 'high-performance' });
+const tuneQuality = adaptiveResolution(renderer);   // keeps frames smooth on any device
 host.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(40, 1, 1, 20000);
@@ -52,7 +53,9 @@ scene.add(streakLines);
 
 let W = 0, H = 0, dist = 1000;
 function resize() {
-  W = innerWidth; H = innerHeight;
+  const w = host.clientWidth || innerWidth, h = host.clientHeight || innerHeight;
+  if (w === W && h === H) return;                  // the address bar moved: nothing to redo
+  W = w; H = h;
   renderer.setSize(W, H, false);
   camera.aspect = W / H;
   dist = (H / 2) / Math.tan(THREE.MathUtils.degToRad(40 / 2));
@@ -99,11 +102,12 @@ onFrame((st, dt) => {
     if (s.z > dist) s.z -= RINGS * GAP;
     const x = Math.cos(s.a) * s.rad * R, y = Math.sin(s.a) * s.rad * R;
     const len = s.len * (1 + speed / 600);
-    sPos.set([x, y, s.z, x, y, s.z - len], i * 6);
+    put6(sPos, i * 6, x, y, s.z, x, y, s.z - len);
     const f = Math.min(1, (s.z + RINGS * GAP) / (RINGS * GAP)) * tunnelO;
-    sCol.set([s.c.r * f, s.c.g * f, s.c.b * f, 0, 0, 0], i * 6);
+    put6(sCol, i * 6, s.c.r * f, s.c.g * f, s.c.b * f, 0, 0, 0);
   });
   sGeo.attributes.position.needsUpdate = true;
   sGeo.attributes.color.needsUpdate = true;
+  tuneQuality(dt);
   renderer.render(scene, camera);
 });

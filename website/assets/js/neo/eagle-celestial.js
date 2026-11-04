@@ -7,7 +7,10 @@
    small galaxy. Scrolling fast makes the stars burn brighter.
    ========================================================================== */
 import * as THREE from 'three';
-import { BEAT, NOISE, samplePoints } from './eagle-shared.js?v=20261108';
+import { BEAT, NOISE, samplePoints, LITE } from './eagle-shared.js?v=20261109';
+
+// Phones and modest devices: fewer noise layers and simpler cloud shapes
+const LITE_DEFS = LITE ? '#define LITE\n#define FBM_OCT 2' : '';
 
 /* A flat disk of stardust turning around the eagle, like a small galaxy.
    flat: how flat the orbits are (0..1). */
@@ -79,6 +82,7 @@ export function makeCelestial(canvas, { boost = 1.25, halo = 0.35 } = {}) {
       ${BEAT}
       void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(beat(position), 1.0); }`,
     fragmentShader: `
+      ${LITE_DEFS}
       uniform sampler2D uMap; uniform float uOpacity, uBoost, uTime, uReveal, uFx, uEnergy;
       varying vec2 vUv;
       ${NOISE}
@@ -86,12 +90,19 @@ export function makeCelestial(canvas, { boost = 1.25, halo = 0.35 } = {}) {
         vec2 uv = vUv;
         float t = uTime;
         vec4 c = texture2D(uMap, uv);
+        if (c.a < 0.004) discard;                       // empty sky around the eagle: skip the work
         float lum = dot(c.rgb, vec3(0.3, 0.5, 0.2));
         // drifting nebula: violet and magenta clouds, teal wisps, a golden core
+        #ifdef LITE
+        float n = fbm(uv * 3.0 + vec2(t * 0.03, -t * 0.02));
+        float wisp = vnoise(uv * 6.0 - t * 0.05);
+        #else
         vec2 q = vec2(fbm(uv * 2.4 + t * 0.03), fbm(uv * 2.4 + vec2(3.1, 7.7) - t * 0.025));
         float n = fbm(uv * 3.0 + q * 2.2 + t * 0.02);
+        float wisp = fbm(uv * 5.0 - t * 0.02);
+        #endif
         vec3 neb = mix(vec3(0.22, 0.06, 0.55), vec3(0.98, 0.35, 0.78), smoothstep(0.32, 0.72, n));
-        neb = mix(neb, vec3(0.25, 0.92, 1.0), smoothstep(0.58, 0.86, fbm(uv * 5.0 - t * 0.02)));
+        neb = mix(neb, vec3(0.25, 0.92, 1.0), smoothstep(0.58, 0.86, wisp));
         neb = mix(neb, vec3(1.0, 0.86, 0.55), pow(lum, 2.5) * 0.7);
         // stars inside the body
         vec2 g = uv * 85.0; vec2 id = floor(g); float h = hash2(id);
@@ -107,9 +118,22 @@ export function makeCelestial(canvas, { boost = 1.25, halo = 0.35 } = {}) {
         gl_FragColor = vec4(col * a * uBoost, a);
       }`,
   });
-  const wings = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 80, 80), mat);
-  const haloMat = mat.clone();
-  haloMat.uniforms = { ...uniforms, uBoost: { value: halo }, uFx: { value: 0 } };
+  const wings = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, LITE ? 48 : 80, LITE ? 48 : 80), mat);
+  // the soft glow behind: just the artwork, faint, with none of the nebula work
+  const haloMat = new THREE.ShaderMaterial({
+    uniforms: { uMap: uniforms.uMap, uTime: uniforms.uTime, uFlap: uniforms.uFlap, uOpacity: uniforms.uOpacity, uReveal: uniforms.uReveal, uBoost: { value: halo } },
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, premultipliedAlpha: true, side: THREE.DoubleSide,
+    vertexShader: mat.vertexShader,
+    fragmentShader: `
+      uniform sampler2D uMap; uniform float uOpacity, uBoost, uReveal;
+      varying vec2 vUv;
+      void main() {
+        vec4 c = texture2D(uMap, vUv);
+        float a = c.a * uOpacity * uReveal;
+        if (a < 0.003) discard;
+        gl_FragColor = vec4(c.rgb * a * uBoost, a);
+      }`,
+  });
   const glow = new THREE.Mesh(wings.geometry, haloMat);
   glow.scale.setScalar(1.2);
   glow.position.z = -0.06;
@@ -121,17 +145,23 @@ export function makeCelestial(canvas, { boost = 1.25, halo = 0.35 } = {}) {
     uniforms: auroraU, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
     vertexShader: 'varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
     fragmentShader: `
+      ${LITE_DEFS}
       uniform float uTime, uOpacity;
       varying vec2 vUv;
       ${NOISE}
       void main() {
         vec2 uv = vUv;
-        // vertical curtains that sway
-        float x = uv.x * 3.0 + fbm(vec2(uv.y * 1.5, uTime * 0.08)) * 1.2;
-        float curtain = pow(fbm(vec2(x * 2.0, uTime * 0.06)), 2.0) * 2.2;
-        float rays = 0.6 + 0.4 * vnoise(vec2(x * 24.0, uTime * 0.4));
         float v = smoothstep(0.0, 0.45, uv.y) * smoothstep(1.0, 0.55, uv.y);
         float edge = smoothstep(0.0, 0.25, uv.x) * smoothstep(1.0, 0.75, uv.x);
+        if (v * edge * uOpacity < 0.005) discard;        // outside the veil: skip the work
+        // vertical curtains that sway
+        #ifdef LITE
+        float x = uv.x * 3.0 + vnoise(vec2(uv.y * 1.5, uTime * 0.08)) * 1.2;
+        #else
+        float x = uv.x * 3.0 + fbm(vec2(uv.y * 1.5, uTime * 0.08)) * 1.2;
+        #endif
+        float curtain = pow(fbm(vec2(x * 2.0, uTime * 0.06)), 2.0) * 2.2;
+        float rays = 0.6 + 0.4 * vnoise(vec2(x * 24.0, uTime * 0.4));
         vec3 col = mix(vec3(0.15, 0.95, 0.75), vec3(0.6, 0.3, 1.0), smoothstep(0.3, 0.8, uv.y));
         col = mix(col, vec3(1.0, 0.35, 0.8), smoothstep(0.7, 1.0, uv.y) * 0.6);
         float a = curtain * rays * v * edge * uOpacity;

@@ -3,7 +3,7 @@
    loadEagleCanvas(): the artwork with its purple background removed.
    makeEagle(): the eagle as a living constellation (neo/eagle-celestial.js).
    ========================================================================== */
-import { makeCelestial } from './eagle-celestial.js?v=20261108';
+import { makeCelestial } from './eagle-celestial.js?v=20261109';
 
 export const makeEagle = (canvas, opts) => makeCelestial(canvas, opts);
 

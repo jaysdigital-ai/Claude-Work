@@ -8,7 +8,8 @@
    a faint emblem as you scroll into the content. The pointer adds parallax.
    ========================================================================== */
 import * as THREE from 'three';
-import { loadEagleCanvas, makeEagle } from './neo/eagle.js?v=20261108';
+import { loadEagleCanvas, makeEagle } from './neo/eagle.js?v=20261109';
+import { LITE, adaptiveResolution, put6 } from './neo/eagle-shared.js?v=20261109';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const small = () => innerWidth < 900;
@@ -19,14 +20,16 @@ const host = document.createElement('div');
 host.className = 'neo-stage';
 host.setAttribute('aria-hidden', 'true');
 document.body.prepend(host);
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const renderer = new THREE.WebGLRenderer({ antialias: !LITE, alpha: true, powerPreference: 'high-performance' });
+const tuneQuality = adaptiveResolution(renderer);   // keeps frames smooth on any device
 host.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(40, 1, 1, 30000);
 let W = 0, H = 0, dist = 1000;
 function resize() {
-  W = innerWidth; H = innerHeight;
+  const w = host.clientWidth || innerWidth, h = host.clientHeight || innerHeight;
+  if (w === W && h === H) return;                  // the address bar moved: nothing to redo
+  W = w; H = h;
   renderer.setSize(W, H, false);
   camera.aspect = W / H;
   dist = (H / 2) / Math.tan(THREE.MathUtils.degToRad(20));
@@ -108,10 +111,10 @@ if (kind === 'grid') {
       s.y += s.v * dt;
       if (s.y > 1100) s.y = 0;
       const base = -H * 0.62;
-      sPos.set([s.x, base + s.y, s.z, s.x, base + s.y + s.len, s.z], i * 6);
+      put6(sPos, i * 6, s.x, base + s.y, s.z, s.x, base + s.y + s.len, s.z);
       const c = i % 4 ? accent : white;
       const f = Math.sin(Math.min(1, s.y / 1100) * Math.PI) * (0.4 + 0.6 * k);
-      sCol.set([0, 0, 0, c.r * f, c.g * f, c.b * f], i * 6);
+      put6(sCol, i * 6, 0, 0, 0, c.r * f, c.g * f, c.b * f);
     });
     sg.attributes.position.needsUpdate = true;
     sg.attributes.color.needsUpdate = true;
@@ -192,6 +195,7 @@ function frame() {
   update.forEach((fn) => fn(time, dt, y, k, vel));
   camera.position.set(mx * 50, -my * 30, dist);
   camera.lookAt(0, 0, 0);
+  tuneQuality(dt);
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
 }
