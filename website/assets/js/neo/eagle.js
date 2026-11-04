@@ -1,10 +1,11 @@
 /* ==========================================================================
    The neon eagle, shared by the home page and the inner pages.
    loadEagleCanvas(): the artwork with its purple background removed.
-   makeEagle(): the artwork on a bendable 3D surface whose wings beat in a
-   slow wave from the body out to the tips, with a soft halo behind it.
+   makeEagle(): the eagle as a living constellation (neo/eagle-celestial.js).
    ========================================================================== */
-import * as THREE from 'three';
+import { makeCelestial } from './eagle-celestial.js?v=20261108';
+
+export const makeEagle = (canvas, opts) => makeCelestial(canvas, opts);
 
 let cached = null;
 export function loadEagleCanvas() {
@@ -16,7 +17,7 @@ export function loadEagleCanvas() {
       const S = img.naturalWidth;
       const c = document.createElement('canvas');
       c.width = c.height = S;
-      const g = c.getContext('2d');
+      const g = c.getContext('2d', { willReadFrequently: true });
       g.drawImage(img, 0, 0);
       const d = g.getImageData(0, 0, S, S);
       const p = d.data;
@@ -35,53 +36,4 @@ export function loadEagleCanvas() {
     img.src = 'assets/img/neon-eagle.jpg';
   });
   return cached;
-}
-
-export function makeEagle(canvas, { boost = 1.25, halo = 0.35 } = {}) {
-  const tex = new THREE.CanvasTexture(canvas);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  tex.anisotropy = 8;
-  const uniforms = { uMap: { value: tex }, uTime: { value: 0 }, uOpacity: { value: 0 }, uFlap: { value: 1 }, uBoost: { value: boost } };
-  const wingMat = new THREE.ShaderMaterial({
-    uniforms, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, premultipliedAlpha: true, side: THREE.DoubleSide,
-    vertexShader: `
-      uniform float uTime, uFlap;
-      varying vec2 vUv;
-      void main() {
-        vUv = uv;
-        vec3 p = position;
-        float ax = abs(p.x);
-        float wing = smoothstep(0.06, 0.5, ax) * smoothstep(-0.35, 0.15, p.y);   // wings, not body or tail
-        float beat = sin(uTime * 2.1 - ax * 2.6);
-        p.z += beat * 0.16 * wing * uFlap;
-        p.y += beat * 0.035 * wing * uFlap;
-        p.z -= ax * ax * 0.25;                                                 // a gentle curve, wings forward
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
-      }`,
-    fragmentShader: `
-      uniform sampler2D uMap; uniform float uOpacity, uBoost;
-      varying vec2 vUv;
-      void main() {
-        vec4 c = texture2D(uMap, vUv);
-        // premultiplied: the alpha must follow the light, or the page behind turns black
-        float a = c.a * uOpacity;
-        gl_FragColor = vec4(c.rgb * a * uBoost, a);
-      }`,
-  });
-  const wings = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 80, 80), wingMat);
-  const haloMat = wingMat.clone();
-  haloMat.uniforms = { ...uniforms, uBoost: { value: halo } };
-  const glow = new THREE.Mesh(wings.geometry, haloMat);
-  glow.scale.setScalar(1.18);
-  glow.position.z = -0.06;
-  const rig = new THREE.Group();
-  rig.add(glow, wings);
-  return {
-    rig,
-    set(time, opacity, flap = 1) {
-      uniforms.uTime.value = time;
-      uniforms.uOpacity.value = opacity;
-      uniforms.uFlap.value = flap;
-    },
-  };
 }

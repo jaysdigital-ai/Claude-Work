@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Celestial layer, on every page (assets/js/future.js)
+   A black-hole cursor with a stardust trail, labels that gather out of
+   stardust, a comet across each section, an aurora in the page title,
+   starlight on mockups and buttons, gold-and-violet accent words, and a
+   wormhole page transition. Switches off for reduced motion.
+   ========================================================================== */
+.fx-scan-host, .fx-holo-host { position: relative; }
+.fx-trail { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 299; pointer-events: none; }
+@keyframes fxSpin2 { to { transform: rotate(360deg); } }
+@keyframes fxFlow { to { background-position: 300% 0; } }
+
+/* Page transition label */
+.fx-warp { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 14px; text-align: center; color: #f4f6ff; }
+.fx-warp span { font: 600 11px/1 "Instrument Sans", Arial, sans-serif; letter-spacing: .3em; }
+.fx-warp b { font: 400 italic clamp(1.6rem, 4vw, 2.6rem)/1 "Instrument Serif", Georgia, serif; }
+
+/* Accent words: starlight drifting through gold and violet */
+.neo h1 em, .neo .neo-panel h2 em, .neo .dark h2 em, .neo .page-hero h1 em, .neo .neo-cta h2 em, .neo h2 em {
+  background: linear-gradient(100deg, #ffcf8a 10%, #fff6e6 30%, #c9a6ff 50%, #8fb6ff 70%, #ffcf8a 90%) 0 0 / 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  animation: fxFlow 12s linear infinite; filter: drop-shadow(0 0 18px rgba(201, 166, 255, .35)); padding-right: .06em;
+}
+.neo-page section.section:not(.dark):not(.page-hero) h2 em, .neo #founder h2 em {
+  background-image: linear-gradient(100deg, #9a5b00 10%, #5b2fc0 40%, #2856c8 70%, #9a5b00 90%); filter: none;
+}
+
+/* Labels gather out of stardust */
+.fx-dust { display: inline-block; white-space: pre; opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.3); filter: blur(4px); }
+.fx-dust-in .fx-dust { opacity: 1; transform: none; filter: none; text-shadow: 0 0 0 transparent;
+  transition: opacity .8s var(--d), transform 1.2s cubic-bezier(.2, .7, .2, 1) var(--d), filter 1s var(--d); animation: fxTwinkle 1.4s var(--d) 1; }
+@keyframes fxTwinkle { 30% { text-shadow: 0 0 12px #fff3dc, 0 0 2px #fff; } 100% { text-shadow: 0 0 0 transparent; } }
+
+/* A comet across each section */
+.fx-comet { position: absolute; left: 0; top: 20%; z-index: 3; width: 220px; height: 2px; pointer-events: none; border-radius: 2px; transform-origin: 100% 50%;
+  background: linear-gradient(90deg, transparent, rgba(201, 166, 255, .5) 60%, #fff6e6); box-shadow: 0 0 12px rgba(255, 220, 160, .6);
+  animation: fxComet 1.6s cubic-bezier(.4, 0, .2, 1) forwards; }
+.fx-comet::after { content: ""; position: absolute; right: -3px; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 14px 4px rgba(255, 220, 160, .8); }
+@keyframes fxComet { 0% { transform: translate(-260px, 0) rotate(8deg); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translate(calc(100vw + 40px), 90px) rotate(8deg); opacity: 0; } }
+
+/* Aurora in the page title */
+.fx-aurora { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; mix-blend-mode: screen; opacity: .5; }
+.fx-aurora::before, .fx-aurora::after { content: ""; position: absolute; left: -20%; right: -20%; top: -10%; height: 70%; filter: blur(50px);
+  background: linear-gradient(90deg, transparent 5%, rgba(40, 240, 190, .45) 20%, rgba(140, 90, 255, .5) 45%, rgba(255, 90, 200, .35) 65%, rgba(40, 240, 190, .4) 85%, transparent 95%);
+  -webkit-mask: linear-gradient(180deg, transparent, #000 30%, #000 50%, transparent); mask: linear-gradient(180deg, transparent, #000 30%, #000 50%, transparent);
+  animation: fxAurora 14s ease-in-out infinite alternate; transform-origin: 50% 0; }
+.fx-aurora::after { top: 5%; opacity: .6; animation-duration: 19s; animation-direction: alternate-reverse; }
+@keyframes fxAurora { 0% { transform: translateX(-8%) skewX(-12deg) scaleY(.8); } 50% { transform: translateX(4%) skewX(8deg) scaleY(1.1); } 100% { transform: translateX(10%) skewX(-6deg) scaleY(.9); } }
+
+/* Mockups: starlight sparkles and a violet rim */
+.fx-star-host { position: relative; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.fx-starlight { position: absolute; inset: 0; z-index: 4; pointer-events: none; border-radius: inherit; opacity: 0; transition: opacity .5s;
+  background-image: radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 28% 72%, #fff, transparent), radial-gradient(2px 2px at 64% 30%, #fff6e6, transparent), radial-gradient(1px 1px at 82% 64%, #fff, transparent), radial-gradient(1.5px 1.5px at 46% 88%, #c9a6ff, transparent), radial-gradient(1px 1px at 90% 12%, #fff, transparent);
+  box-shadow: inset 0 0 0 1px rgba(201, 166, 255, .55), 0 0 50px -6px rgba(140, 90, 255, .55); }
+.fx-star-host:hover > .fx-starlight { opacity: 1; animation: fxSparkle 1.6s ease-in-out infinite alternate; }
+@keyframes fxSparkle { from { filter: brightness(.6); } to { filter: brightness(1.6); } }
+
+/* Buttons: a soft starlit halo */
+.btn { transition: box-shadow .6s, background .5s; }
+.btn:hover { box-shadow: 0 0 0 6px rgba(201, 166, 255, .12), 0 0 40px rgba(255, 207, 138, .35); }
+
+/* Black-hole cursor */
+.cursor:not(.is-view) { opacity: 0 !important; }
+.fx-hole { position: fixed; top: 0; left: 0; z-index: 301; pointer-events: none; width: 0; height: 0; opacity: 0; transition: opacity .3s; }
+.has-cursor .fx-hole { opacity: 1; }
+.fx-hole i { position: absolute; left: -14px; top: -14px; width: 28px; height: 28px; border-radius: 50%;
+  background: radial-gradient(circle, #000 34%, transparent 36%), conic-gradient(from 0deg, transparent, #ffcf8a, #fff6e6, #c9a6ff, transparent 70%);
+  -webkit-mask: radial-gradient(circle, #000 60%, transparent 72%); mask: radial-gradient(circle, #000 60%, transparent 72%);
+  box-shadow: 0 0 18px rgba(255, 207, 138, .5); animation: fxSpin2 1.2s linear infinite; transition: transform .5s cubic-bezier(.2, .9, .3, 1.3); }
+.fx-hole b { position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: #fff6e6; box-shadow: 0 0 6px #ffcf8a; animation: fxOrbit 2.2s linear infinite; --r: 22px; }
+.fx-hole b:nth-of-type(2) { animation-duration: 3.1s; animation-direction: reverse; --r: 28px; background: #c9a6ff; }
+.fx-hole b:nth-of-type(3) { animation-duration: 4s; --r: 34px; width: 3px; height: 3px; }
+@keyframes fxOrbit { from { transform: rotate(0deg) translateX(var(--r)); } to { transform: rotate(360deg) translateX(var(--r)); } }
+.fx-hole.is-big i { transform: scale(2); }
+.fx-hole.is-big b { --r: 40px; }
+
+/* Page transition: a wormhole */
+.neo .curtain { background: radial-gradient(circle at 50% 50%, #1a0f40 0%, #050318 60%); overflow: hidden; }
+.neo .curtain::before { content: ""; position: absolute; left: 50%; top: 50%; width: 200vmax; height: 200vmax; margin: -100vmax 0 0 -100vmax; opacity: .7;
+  background: repeating-conic-gradient(from 0deg, rgba(201, 166, 255, 0) 0deg 10deg, rgba(201, 166, 255, .22) 14deg, rgba(255, 207, 138, 0) 20deg);
+  -webkit-mask: radial-gradient(circle, transparent 4%, #000 20%, transparent 60%); mask: radial-gradient(circle, transparent 4%, #000 20%, transparent 60%);
+  animation: fxSpin2 3s linear infinite; }
+.fx-warp i { width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, #000 40%, transparent 42%), conic-gradient(#ffcf8a, #fff6e6, #c9a6ff, #8fb6ff, #ffcf8a);
+  box-shadow: 0 0 50px 10px rgba(201, 166, 255, .45); animation: fxSpin2 1s linear infinite; }
+.fx-warp span { color: #ffcf8a; }
+
+
+/* Headings whose words are split into letters (fx.js): colour each letter */
+.neo em:has(.fx-ch) { background: none !important; -webkit-text-fill-color: currentColor; animation: none; filter: none; }
+.neo em .fx-ch { -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(100deg, #ffcf8a 10%, #fff6e6 30%, #c9a6ff 50%, #8fb6ff 70%, #ffcf8a 90%); background-size: 500% 100%; animation: fxFlow 9s linear infinite; }
+.neo em .fx-ch:nth-child(2n) { animation-delay: -.6s; }
+.neo em .fx-ch:nth-child(3n) { animation-delay: -1.2s; }
+.neo-page section.section:not(.dark):not(.page-hero) em .fx-ch { background-image: linear-gradient(100deg, #9a5b00 10%, #5b2fc0 40%, #2856c8 70%, #9a5b00 90%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .neo h1 em, .neo h2 em, .neo em .fx-ch, .fx-aurora::before, .fx-aurora::after { animation: none !important; }
+}
+@media print { .fx-trail, .fx-hole { display: none; } }

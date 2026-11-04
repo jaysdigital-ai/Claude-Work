@@ -1,13 +1,17 @@
 /* ==========================================================================
    Home · Hyperspace eagle
    The artwork on a bendable 3D surface: its wings beat in a slow wave from
-   the body out to the tips. It flies down a tunnel of neon rings with light
+   the body out to the tips. It flies down a tunnel of starlight rings with light
    streaks rushing past. Scrolling speeds the tunnel up (and widens the lens
    for a warp feel); the dive through the eagle goes to full warp, then it
    pulls back to a distant emblem.
    ========================================================================== */
 import * as THREE from 'three';
-import { loadEagleCanvas, makeEagle } from './eagle.js';
+import { loadEagleCanvas, makeEagle } from './eagle.js?v=20261108';
+
+// Starlight colours: gold and violet rings, warm white and lilac streaks
+const ringColour = (i) => (i % 3 === 0 ? '#ffcf8a' : '#6a4cff');
+const streakColour = () => new THREE.Color(Math.random() < 0.7 ? '#fff3dc' : '#c9a6ff');
 
 const { onFrame, small } = window.neo;
 const host = document.querySelector('[data-neo-stage]');
@@ -24,7 +28,7 @@ const RINGS = 26, GAP = 420;
 const ringGeo = new THREE.RingGeometry(0.985, 1, 96);
 const rings = [];
 for (let i = 0; i < RINGS; i++) {
-  const m = new THREE.MeshBasicMaterial({ color: i % 3 === 0 ? '#b26bff' : '#3fe6ff', transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+  const m = new THREE.MeshBasicMaterial({ color: ringColour(i), transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
   const r = new THREE.Mesh(ringGeo, m);
   r.position.z = -i * GAP - 200;
   r.userData.spin = (Math.random() - 0.5) * 0.2;
@@ -38,7 +42,7 @@ const sPos = new Float32Array(STREAKS * 6), sCol = new Float32Array(STREAKS * 6)
 const streaks = [];
 for (let i = 0; i < STREAKS; i++) {
   const a = Math.random() * Math.PI * 2, rad = 0.35 + Math.random() * 0.65;
-  streaks.push({ a, rad, z: -Math.random() * RINGS * GAP, len: 60 + Math.random() * 200, c: Math.random() < 0.7 ? new THREE.Color('#3fe6ff') : new THREE.Color('#ff4fd8') });
+  streaks.push({ a, rad, z: -Math.random() * RINGS * GAP, len: 60 + Math.random() * 200, c: streakColour() });
 }
 const sGeo = new THREE.BufferGeometry();
 sGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3));
@@ -60,7 +64,7 @@ window.addEventListener('resize', resize);
 let speed = 0;
 onFrame((st, dt) => {
   const intro = st.intro * st.intro * (3 - 2 * st.intro);
-  eagle.set(st.time, st.o * intro * (1 - st.burst * 0.7), 0.6 + 0.4 * Math.sin(st.time * 0.4) + st.burst);
+  eagle.set(st.time, st.o * intro * (1 - st.burst * 0.7), 0.6 + 0.4 * Math.sin(st.time * 0.4) + st.burst, Math.min(1, Math.abs(st.vel) / 3000));
 
   // warp: lens widens with scroll speed and the dive
   const warp = Math.min(1, Math.abs(st.vel) / 2500) * 0.6 + st.burst;

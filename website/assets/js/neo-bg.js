@@ -8,7 +8,7 @@
    a faint emblem as you scroll into the content. The pointer adds parallax.
    ========================================================================== */
 import * as THREE from 'three';
-import { loadEagleCanvas, makeEagle } from './neo/eagle.js';
+import { loadEagleCanvas, makeEagle } from './neo/eagle.js?v=20261108';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const small = () => innerWidth < 900;
@@ -186,7 +186,7 @@ function frame() {
   eagle.rig.scale.setScalar(es);
   eagle.rig.rotation.y = mx * 0.55 + (kind === 'stars' ? Math.sin(time * 0.3) * 0.15 : 0);
   eagle.rig.rotation.x = my * 0.3;
-  eagle.set(time, eo * iv, kind === 'grid' ? 1.1 : 0.85);
+  eagle.set(time, eo * iv, kind === 'grid' ? 1.1 : 0.85, Math.min(1, Math.abs(vel) / 3000));
   if (signalAt) signalAt.copy(eagle.rig.position);
 
   update.forEach((fn) => fn(time, dt, y, k, vel));
