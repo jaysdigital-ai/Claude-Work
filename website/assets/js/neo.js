@@ -95,7 +95,7 @@
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-    import('./neo/hyperspace.js?v=20261104').catch((err) => console.error('The eagle failed to load', err));
+    import('./neo/hyperspace.js?v=20261105').catch((err) => console.error('The eagle failed to load', err));
   }
   if (window.agila && window.agila.ready) start();
   else window.addEventListener('agila:ready', start, { once: true });

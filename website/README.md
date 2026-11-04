@@ -86,8 +86,8 @@ The local preview server (`serve.ps1`) can't run Cloudflare Functions, so submit
 The cookie notice (in `assets/js/main.js`) shows once and remembers it was closed in local storage (`agila-cookie-notice`), the only thing the site stores on a visitor's device.
 
 ## Updating the site: bump the version stamp
-thedigitalagila.com lets browsers reuse scripts and styles for up to 4 hours. Every page links them with a version stamp (`?v=20261104`), and `fx.js` and `neo.js` use the same stamp when they load their parts. When you change any CSS or JS, replace the stamp everywhere with a new one (for example today's date) so visitors get the new files straight away:
+thedigitalagila.com lets browsers reuse scripts and styles for up to 4 hours. Every page links them with a version stamp (`?v=20261105`), and `fx.js` and `neo.js` use the same stamp when they load their parts. When you change any CSS or JS, replace the stamp everywhere with a new one (for example today's date) so visitors get the new files straight away:
 
 ```
-grep -rl "v=20261104" . | xargs sed -i "s/v=20261104/v=NEWDATE/g"
+grep -rl "v=20261105" . | xargs sed -i "s/v=20261105/v=NEWDATE/g"
 ```

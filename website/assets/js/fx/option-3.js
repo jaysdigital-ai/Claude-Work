@@ -88,7 +88,7 @@ const DEMOS = {
       <div class="fx-seg" role="group" aria-label="Device"><button type="button" aria-pressed="true" data-d="desk">Desktop</button><button type="button" aria-pressed="false" data-d="phone">Phone</button></div>
       <div class="fx-site">
         <div class="fx-browser" data-d="desk">
-          <div class="fx-browser__bar"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
+          <div class="fx-browser__bar"><i></i><i></i><i></i><span>yourbusiness.example</span></div>
           <div class="fx-browser__page">
             <div class="fx-b fx-b--nav"></div>
             <div class="fx-b fx-b--h1"></div><div class="fx-b fx-b--h1 fx-b--short"></div>
@@ -116,7 +116,7 @@ const DEMOS = {
 
   crm() {
     const cols = ['New', 'Contacted', 'Proposal', 'Won'];
-    const deals = [['Santos Bakery', 1800, 0], ['Rivera Dental', 3200, 0], ['Kim Fitness', 2400, 1], ['Lopez Law', 4100, 2], ['Cruz Studio', 1500, 3]];
+    const deals = [['Brioloo Bakehouse', 1800, 0], ['Molarvia Dental', 3200, 0], ['Kettlewisp Fitness', 2400, 1], ['Arvenhall Law', 4100, 2], ['Lumiquay Studio', 1500, 3]];
     const c = card('Sales pipeline', 'Drag a deal, or tap it to move it on', `
       <div class="fx-kanban">${cols.map((n, i) => `<div class="fx-col" data-col="${i}"><div class="fx-col__head"><b>${n}</b><span>$0</span></div><div class="fx-col__list"></div></div>`).join('')}</div>
       <p class="fx-kanban__won">Won this month: <b>$0</b></p>`);
@@ -212,11 +212,11 @@ const DEMOS = {
   },
 
   seo() {
-    const others = ['competitor-one.com', 'bigdirectory.com', 'citylistings.net', 'reviewsite.com', 'oldblog.org', 'another-studio.com', 'marketplace.com', 'news-site.com'];
+    const others = ['competitor-one.example', 'city-directory.example', 'local-listings.example', 'review-hub.example', 'old-blog.example', 'another-studio.example', 'marketplace.example', 'news-site.example'];
     const c = card('Search ranking', 'Scroll to watch it climb · example', `
       <div class="fx-serp">
         <div class="fx-serp__q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>bakery near me</div>
-        <ol class="fx-serp__list">${others.map((o) => `<li><b>${o}</b><span></span></li>`).join('')}<li class="is-you"><b>yourbusiness.com</b><span></span></li></ol>
+        <ol class="fx-serp__list">${others.map((o) => `<li><b>${o}</b><span></span></li>`).join('')}<li class="is-you"><b>yourbusiness.example</b><span></span></li></ol>
         <div class="fx-serp__pos">Position <b>#9</b></div>
       </div>`);
     const rows = $$('.fx-serp__list li', c), you = rows[rows.length - 1], posB = c.querySelector('.fx-serp__pos b');
@@ -237,8 +237,8 @@ const DEMOS = {
   graphics() {
     const c = card('Before / after', 'Drag the handle', `
       <div class="fx-ba" style="--split:50%">
-        <div class="fx-ad fx-ad--after"><small>Santos Bakery</small><b>Fresh <em>ensaymada</em>, every morning.</b><span class="fx-ad__cta">Pre-order now</span><i class="fx-ad__sun"></i></div>
-        <div class="fx-ad fx-ad--before"><b>SANTOS BAKERY!!! WE HAVE BREAD AND PASTRIES. ORDER NOW. CALL US OR MESSAGE US. OPEN DAILY.</b></div>
+        <div class="fx-ad fx-ad--after"><small>Brioloo Bakehouse</small><b>Fresh <em>ensaymada</em>, every morning.</b><span class="fx-ad__cta">Pre-order now</span><i class="fx-ad__sun"></i></div>
+        <div class="fx-ad fx-ad--before"><b>BRIOLOO BAKEHOUSE!!! WE HAVE BREAD AND PASTRIES. ORDER NOW. CALL US OR MESSAGE US. OPEN DAILY.</b></div>
         <span class="fx-ba__tag fx-ba__tag--l">Before</span><span class="fx-ba__tag fx-ba__tag--r">After</span>
         <span class="fx-ba__handle"><i></i></span>
         <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">

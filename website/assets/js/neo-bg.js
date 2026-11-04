@@ -154,7 +154,8 @@ const eagle = makeEagle(await loadEagleCanvas(), { boost: 1.2, halo: 0.3 });
 scene.add(eagle.rig);
 const hero = document.querySelector('.page-hero');
 
-let mx = 0, my = 0, tmx = 0, tmy = 0, time = 0, intro = reduce ? 1 : 0, lastY = window.scrollY, vel = 0;
+// ?still skips the fly-in (used to take still screenshots of the page)
+let mx = 0, my = 0, tmx = 0, tmy = 0, time = 0, intro = reduce || /[?&]still\b/.test(location.search) ? 1 : 0, lastY = window.scrollY, vel = 0;
 window.addEventListener('pointermove', (e) => { tmx = e.clientX / innerWidth - 0.5; tmy = e.clientY / innerHeight - 0.5; }, { passive: true });
 const mix = (a, b, t) => a + (b - a) * t;
 const ease = (t) => t * t * (3 - 2 * t);

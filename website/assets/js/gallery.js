@@ -18,7 +18,7 @@
   const TILES = {
     post: () => `
       <div class="mk mk--post">
-        <div class="mk__bar"><i class="mk__avatar" style="--a:#c2562b"></i><b>santosbakery</b><span>Sponsored</span></div>
+        <div class="mk__bar"><i class="mk__avatar" style="--a:#c2562b"></i><b>brioloo.bakehouse</b><span>Sponsored</span></div>
         <div class="mk__media mk__media--bake">
           <span class="mk__kicker">Weekends only</span>
           <strong>Ube <em>ensaymada</em></strong>
@@ -26,14 +26,14 @@
           <span class="mk__pill">Pre-order now</span>
         </div>
         <div class="mk__actions">${icon.heart}${icon.chat}${icon.send}<span></span>${icon.save}</div>
-        <p class="mk__cap"><b>1,284 likes</b> <b>santosbakery</b> Soft, buttery, and gone by 10am…</p>
+        <p class="mk__cap"><b>1,284 likes</b> <b>brioloo.bakehouse</b> Soft, buttery, and gone by 10am…</p>
       </div>`,
 
     story: () => `
       <div class="mk mk--phone mk--story">
         <div class="mk__screen">
           <div class="mk__progress"><i></i><i></i><i></i></div>
-          <div class="mk__bar mk__bar--light"><i class="mk__avatar" style="--a:#1f6f5c"></i><b>kimfitness</b></div>
+          <div class="mk__bar mk__bar--light"><i class="mk__avatar" style="--a:#1f6f5c"></i><b>kettlewisp.fit</b></div>
           <strong>New year,<br><em>new routine.</em></strong>
           <p>First class free for new members</p>
           <span class="mk__cta">Book a class</span>
@@ -43,7 +43,7 @@
     laptop: () => `
       <div class="mk mk--laptop">
         <div class="mk__lid"><div class="mk__screen">
-          <div class="mk__nav"><b>Rivera Dental</b><span></span><span></span><span></span><i>Book online</i></div>
+          <div class="mk__nav"><b>Molarvia Dental</b><span></span><span></span><span></span><i>Book online</i></div>
           <div class="mk__hero">
             <div><small>Family dentistry</small><strong>Healthy smiles, <em>zero waiting.</em></strong><p>Same-week appointments and clear prices before we start.</p><span class="mk__cta">Book a check-up</span>
               <div class="mk__proof">${stars(5)}<span>4.9 from 312 patients</span></div></div>
@@ -71,7 +71,7 @@
 
     email: () => `
       <div class="mk mk--email">
-        <div class="mk__ehead"><i class="mk__avatar" style="--a:#3a4fb8"></i><div><b>Lopez Law</b><span>to you · 8:02 AM</span></div></div>
+        <div class="mk__ehead"><i class="mk__avatar" style="--a:#3a4fb8"></i><div><b>Arvenhall Law</b><span>to you · 8:02 AM</span></div></div>
         <div class="mk__ebody">
           <div class="mk__ebanner"><small>Free guide inside</small><strong>5 contract mistakes <em>small businesses</em> make</strong></div>
           <p>Hi Ana, most of the disputes we see start with one missing line in a contract…</p>
@@ -95,7 +95,7 @@
       <div class="mk mk--listing">
         <div class="mk__map"><i class="mk__road"></i><i class="mk__road mk__road--v"></i><i class="mk__road mk__road--d"></i><span class="mk__pin">${icon.pin}</span></div>
         <div class="mk__lcard">
-          <b>Cruz Studio · Photography</b>
+          <b>Lumiquay Studio · Photography</b>
           <div>${stars(5)} <span>4.9 (128)</span></div>
           <p><em>Open</em> · Closes 7 PM · 1.2 km</p>
           <div class="mk__lbtns"><span>Call</span><span>Directions</span><span>Website</span></div>
@@ -126,24 +126,24 @@
 
     banner: () => `
       <div class="mk mk--banners">
-        <div class="mk__banner mk__banner--a"><div><small>Ad · Rivera Dental</small><strong>Toothache? <em>Seen today.</em></strong></div><span class="mk__cta">Book now</span></div>
-        <div class="mk__banner mk__banner--b"><div><small>Ad · Kim Fitness</small><strong>Your first class <em>is on us</em></strong></div><span class="mk__cta">Claim it</span></div>
+        <div class="mk__banner mk__banner--a"><div><small>Ad · Molarvia Dental</small><strong>Toothache? <em>Seen today.</em></strong></div><span class="mk__cta">Book now</span></div>
+        <div class="mk__banner mk__banner--b"><div><small>Ad · Kettlewisp Fitness</small><strong>Your first class <em>is on us</em></strong></div><span class="mk__cta">Claim it</span></div>
       </div>`,
 
     brand: () => `
       <div class="mk mk--brand">
-        <div class="mk__bhead"><b>Santos Bakery</b><span>Brand kit</span></div>
+        <div class="mk__bhead"><b>Brioloo Bakehouse</b><span>Brand kit</span></div>
         <div class="mk__aa"><b>Aa</b><em>Aa</em></div>
         <div class="mk__swatches"><i style="--s:#c2562b"></i><i style="--s:#f3d9b1"></i><i style="--s:#5b2a86"></i><i style="--s:#2b211c"></i></div>
-        <div class="mk__logo"><i></i><b>santos</b></div>
+        <div class="mk__logo"><i></i><b>brioloo</b></div>
       </div>`,
 
     serp: () => `
       <div class="mk mk--serp">
         <div class="mk__q">${icon.search}<span>family dentist near me</span></div>
-        <div class="mk__res mk__res--you"><small>riveradental.com</small><b>Rivera Dental · Same-week appointments</b><p>${stars(5)} 4.9 · Open today · Clear prices before we start</p><span class="mk__rank">#1</span></div>
-        <div class="mk__res"><small>example-clinic.com</small><b>Dental clinic in your area</b><p></p></div>
-        <div class="mk__res"><small>directory-site.com</small><b>Top 10 dentists near you</b><p></p></div>
+        <div class="mk__res mk__res--you"><small>molarvia.example</small><b>Molarvia Dental · Same-week appointments</b><p>${stars(5)} 4.9 · Open today · Clear prices before we start</p><span class="mk__rank">#1</span></div>
+        <div class="mk__res"><small>dental-clinic.example</small><b>Dental clinic in your area</b><p></p></div>
+        <div class="mk__res"><small>dentist-directory.example</small><b>Top 10 dentists near you</b><p></p></div>
       </div>`,
   };
 
