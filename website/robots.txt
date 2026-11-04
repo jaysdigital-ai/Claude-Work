@@ -1,4 +1,9 @@
+# The Digital Agila — https://thedigitalagila.com
+# Everything is open to search engines except the contact form's backend
+# and the email templates it uses.
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /server/
 
-Sitemap: https://www.thedigitalagila.com/sitemap.xml
+Sitemap: https://thedigitalagila.com/sitemap.xml
