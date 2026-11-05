@@ -316,3 +316,37 @@
   .tools[data-anim] .tool, .orbit__ring, .tool__orb { animation: none !important; }
   .tools[data-anim]:not(.is-in) .tool { opacity: 1; }
 }
+
+/* ---- Tool labels: every tool shows its name and use ------------------------ */
+/* Orbit: the rings' full-size boxes must not catch the pointer, or only the
+   outer ring could be hovered. The ring holding the hovered tool rises above
+   the others so its card isn't covered. */
+.orbit__ring, .orbit__core { pointer-events: none; }
+.orbit .tool { pointer-events: auto; }
+.orbit__ring:has(.tool:hover), .orbit__ring:has(.tool:focus-visible), .orbit__ring:has(.tool:focus) { z-index: 5; }
+.orbit:has(.tool:focus-visible) .orbit__ring, .orbit:has(.tool:focus-visible) .tool__orb { animation-play-state: paused; }
+/* cards near the screen edge open inward */
+.orbit .tool[data-side="left"] .tool__tip { left: 0; transform: translateY(4px); }
+.orbit .tool[data-side="right"] .tool__tip { left: auto; right: 0; transform: translateY(4px); }
+.orbit .tool[data-side="left"]:hover .tool__tip, .orbit .tool[data-side="left"]:focus-visible .tool__tip,
+.orbit .tool[data-side="right"]:hover .tool__tip, .orbit .tool[data-side="right"]:focus-visible .tool__tip { transform: none; }
+
+/* Grid: the card shows the name too, and may grow past the tile if it needs to */
+.tools__grid .tool__tip { inset: 0 0 auto; min-height: 100%; place-content: center; font-size: 12px; z-index: 3; }
+.tools__grid .tool__tip::before { content: attr(data-name); display: block; margin-bottom: 4px; font-weight: 600; font-size: 12.5px; color: #ffcf8a; }
+.tools__grid .tool:hover, .tools__grid .tool:focus-visible { z-index: 4; }
+
+/* Touch screens: no hover, so a tap opens a panel at the bottom of the screen */
+.tools__detail { position: fixed; left: 50%; bottom: 16px; z-index: 395; display: flex; align-items: center; gap: 14px; width: min(520px, calc(100vw - 32px)); padding: 14px 16px; border-radius: 18px;
+  background: radial-gradient(120% 120% at 0% 0%, rgba(40, 26, 100, .98), rgba(10, 7, 34, .98)); box-shadow: inset 0 0 0 1px rgba(255, 207, 138, .45), 0 20px 50px -16px rgba(0, 0, 0, .7);
+  transform: translate(-50%, 140%); opacity: 0; pointer-events: none; transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .3s; }
+.tools__detail.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.tools__detail .tool__mark { flex: none; color: #ffcf8a; }
+.tools__detail p { margin: 0; font-size: 14px; line-height: 1.4; color: #dfe3f7; }
+.tools__detail b { display: block; color: #ffcf8a; font-size: 15px; }
+.tool.is-picked { box-shadow: inset 0 0 0 1px rgba(255, 207, 138, .7), 0 0 24px rgba(255, 207, 138, .25); }
+.tool.is-picked .tool__mark { color: #ffcf8a; }
+@media (hover: none) { .tool__tip { display: none; } .tool { cursor: pointer; } }
+@media (hover: hover) { .tools__detail { display: none; } }
+.tools__hint { margin: 18px 0 0; font-size: 13.5px; color: #dfe3f7; }
+.tools__hint + .tools__note { margin-top: 6px; }

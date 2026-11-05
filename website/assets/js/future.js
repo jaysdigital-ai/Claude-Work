@@ -181,6 +181,41 @@
     let filter = 'all';
     tools.forEach((t) => { const tip = t.querySelector('.tool__tip'); tip.dataset.name = t.querySelector('.tool__name').textContent; });
 
+    // Every tool shows its name and what it's for: on hover or keyboard focus
+    // (the card on the tile), and on touch screens a panel at the bottom of the
+    // screen when a tool is tapped. Cards near the screen edge open inward.
+    const touch = matchMedia('(hover: none)');
+    const detail = document.createElement('div');
+    detail.className = 'tools__detail';
+    detail.setAttribute('role', 'status');
+    detail.setAttribute('aria-live', 'polite');
+    detail.innerHTML = '<span class="tool__mark" aria-hidden="true"></span><p><b></b><span></span></p>';
+    box.appendChild(detail);
+    let hideTimer = 0;
+    const describe = (t) => {
+      detail.querySelector('.tool__mark').innerHTML = t.querySelector('.tool__mark').innerHTML;
+      detail.querySelector('.tool__mark').className = t.querySelector('.tool__mark').className;
+      detail.querySelector('b').textContent = t.querySelector('.tool__tip').dataset.name;
+      detail.querySelector('p span').textContent = t.querySelector('.tool__tip').textContent;
+    };
+    const side = (t) => {
+      const r = t.getBoundingClientRect();
+      t.dataset.side = r.left < 120 ? 'left' : r.right > innerWidth - 120 ? 'right' : '';
+    };
+    tools.forEach((t) => {
+      t.addEventListener('pointerenter', () => side(t));
+      t.addEventListener('focus', () => side(t));
+      t.addEventListener('click', () => {
+        if (!touch.matches) return;
+        describe(t);
+        tools.forEach((x) => x.classList.toggle('is-picked', x === t));
+        detail.classList.add('is-on');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => { detail.classList.remove('is-on'); t.classList.remove('is-picked'); }, 4500);
+      });
+    });
+    detail.addEventListener('click', () => { detail.classList.remove('is-on'); tools.forEach((x) => x.classList.remove('is-picked')); });
+
     buttons.forEach((b) => b.addEventListener('click', () => {
       filter = b.dataset.filter;
       buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
