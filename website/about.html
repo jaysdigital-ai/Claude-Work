@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="assets/css/fx.css?v=20261105">
   <link rel="stylesheet" href="assets/css/neo.css?v=20261106">
   <link rel="stylesheet" href="assets/css/neo-pages.css?v=20261105">
-  <link rel="stylesheet" href="assets/css/future.css?v=20261110">
+  <link rel="stylesheet" href="assets/css/future.css?v=20261111">
   <script>(function(){var d=document.documentElement;d.dataset.theme='a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="application/ld+json">
@@ -89,10 +89,29 @@
     <!-- THE NAME -->
     <section class="section">
       <div class="wrap grid12 story">
-        <div class="define" data-reveal>
-          <b>a·gi·la</b>
-          <small>noun, Filipino</small>
-          <span class="serif">Eagle.</span>
+        <div class="story__side">
+          <!-- The eagle's-eye view: the word, a scope scanning the customer
+               journey, and the three-step method. Same height as the story. -->
+          <div class="eye" data-eye data-reveal>
+            <div class="define eye__define">
+              <b>a·gi·la</b>
+              <small>noun, Filipino</small>
+              <span class="serif">Eagle.</span>
+            </div>
+            <div class="eye__scope" aria-hidden="true">
+              <span class="eye__ring eye__ring--1"></span>
+              <span class="eye__ring eye__ring--2"></span>
+              <span class="eye__ring eye__ring--3"></span>
+              <span class="eye__sweep"></span>
+              <svg class="eye__path" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36"/></svg>
+              <img class="eye__icon" src="assets/img/logo-icon.svg" alt="" width="60" height="46">
+              <span class="eye__node" style="--a:-60deg;--d:.5s"><i></i><b>Found</b></span>
+              <span class="eye__node" style="--a:30deg;--d:2s"><i></i><b>Seen</b></span>
+              <span class="eye__node" style="--a:120deg;--d:3.5s"><i></i><b>Replied</b></span>
+              <span class="eye__node" style="--a:210deg;--d:5s"><i></i><b>Converted</b></span>
+            </div>
+            <p class="eye__caption"><em>The eagle's-eye view.</em> Every step of your customer journey, seen at once.</p>
+          </div>
         </div>
         <div class="story__text">
           <div class="label" data-reveal style="margin-bottom:28px">Why Agila</div>
@@ -214,10 +233,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
   <script src="assets/js/gallery.js?v=20261105" defer></script>
-  <script src="assets/js/main.js?v=20261105" defer></script>
+  <script src="assets/js/main.js?v=20261111" defer></script>
   <script src="assets/js/future.js?v=20261108" defer></script>
   <script src="assets/js/bio.js?v=20261105" defer></script>
-  <script src="assets/js/fx.js?v=20261105" defer></script>
+  <script src="assets/js/fx.js?v=20261111" defer></script>
   <script type="module" src="assets/js/neo-bg.js?v=20261109"></script>
 </body>
 </html>

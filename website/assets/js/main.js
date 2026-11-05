@@ -17,23 +17,58 @@
 
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-  /* Cookie notice: shown once; the site only uses essential storage -------- */
-  let noticeSeen = false;
-  try { noticeSeen = localStorage.getItem('agila-cookie-notice') === '1'; } catch (e) { /* storage unavailable */ }
-  if (!noticeSeen) {
+  /* Analytics, only with consent --------------------------------------------
+     Google Analytics (G-4ZYP9XDZJ4) loads only after the visitor clicks
+     "Allow" on the cookie banner. The choice is kept in local storage
+     (agila-consent: granted | denied) and can be changed from the Cookie
+     Policy page (any element with data-cookie-settings). */
+  const GA_ID = 'G-4ZYP9XDZJ4';
+  const CONSENT_KEY = 'agila-consent';
+  const getConsent = () => { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } };
+  const setConsent = (v) => { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) { /* storage unavailable */ } };
+  function loadAnalytics() {
+    if (window.__agilaGa) return;
+    window.__agilaGa = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(s);
+  }
+  // removes Google Analytics cookies when someone withdraws consent
+  function clearAnalytics() {
+    const host = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => /^_ga/.test(n)).forEach((n) => {
+      [`domain=.${host}`, `domain=${host}`, ''].forEach((d) => { document.cookie = `${n}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; ${d}`; });
+    });
+  }
+  function consentBanner() {
+    if (document.querySelector('.cookie-note')) return;
     const note = document.createElement('div');
     note.className = 'cookie-note';
     note.setAttribute('role', 'region');
-    note.setAttribute('aria-label', 'Cookie notice');
-    note.innerHTML = '<p>This site uses no tracking or advertising cookies, only what it needs to run. <a href="cookies.html">Cookie Policy</a></p><button type="button">OK</button>';
+    note.setAttribute('aria-label', 'Cookie choice');
+    note.innerHTML = '<p>Can we use Google Analytics cookies to see how visitors use this site? They stay off unless you allow them. <a href="cookies.html">Cookie Policy</a></p>'
+      + '<div class="cookie-note__actions"><button type="button" data-choice="denied" class="cookie-note__no">No thanks</button><button type="button" data-choice="granted">Allow</button></div>';
     document.body.appendChild(note);
     requestAnimationFrame(() => note.classList.add('is-in'));
-    note.querySelector('button').addEventListener('click', () => {
-      try { localStorage.setItem('agila-cookie-notice', '1'); } catch (e) { /* storage unavailable */ }
+    note.querySelectorAll('[data-choice]').forEach((b) => b.addEventListener('click', () => {
+      const choice = b.dataset.choice;
+      const was = getConsent();
+      setConsent(choice);
+      if (choice === 'granted') loadAnalytics();
+      else { clearAnalytics(); if (was === 'granted') location.reload(); }   // reload unloads Analytics
       note.classList.remove('is-in');
       setTimeout(() => note.remove(), 500);
-    });
+    }));
   }
+  const consent = getConsent();
+  if (consent === 'granted') loadAnalytics();
+  else if (consent !== 'denied') consentBanner();
+  document.querySelectorAll('[data-cookie-settings]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); consentBanner(); }));
 
   /* Smooth scroll ---------------------------------------------------------- */
   let lenis = null;
@@ -288,7 +323,8 @@
       // Big CTA word drifts sideways with scroll
       document.querySelectorAll('[data-drift]').forEach((el) => {
         gsap.fromTo(el, { xPercent: 6, scale: 1.45 }, {
-          xPercent: -4, scale: 1, ease: 'none', transformOrigin: '0% 50%',
+          // settles exactly on the page margin (it used to overshoot past it)
+          xPercent: 0, scale: 1, ease: 'none', transformOrigin: '0% 50%',
           scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom 30%', scrub: true },
         });
       });

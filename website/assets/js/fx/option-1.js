@@ -78,9 +78,12 @@ function inkFill(p) {
   p.textContent = '';
   p.appendChild(frag);
   if (!animate) return;
-  gsap.fromTo(words, { opacity: 0.3 }, {
+  // words start readable (never fainter than 60%) and are fully inked by the
+  // time the paragraph reaches the middle of the screen; clamp() makes sure
+  // it finishes even near the bottom of the page or on tall screens
+  gsap.fromTo(words, { opacity: 0.6 }, {
     opacity: 1, ease: 'none', stagger: 0.1,
-    scrollTrigger: { trigger: p, start: 'top 82%', end: 'bottom 48%', scrub: 0.4 },
+    scrollTrigger: { trigger: p, start: 'clamp(top 92%)', end: 'clamp(bottom 62%)', scrub: 0.4 },
   });
 }
 $$('.story__text p, .svc__body > p, .cta__row p, .head-row p').forEach(inkFill);

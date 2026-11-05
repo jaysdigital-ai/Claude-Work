@@ -8,7 +8,7 @@
   document.documentElement.dataset.fx = '1 3';
   const start = async () => {
     for (const p of ['1', '3']) {
-      try { await import(`./fx/option-${p}.js?v=20261105`); } catch (err) { console.error('Effects failed to load', err); }
+      try { await import(`./fx/option-${p}.js?v=20261111`); } catch (err) { console.error('Effects failed to load', err); }
     }
   };
   if (window.agila && window.agila.ready) start();
