@@ -117,3 +117,42 @@
 .quote figcaption { font-size: 14px; color: var(--muted); }
 .quote figcaption b { display: block; font-weight: 500; color: var(--ink); }
 @media (max-width: 900px) { .quote { grid-column: 1 / -1; } }
+
+/* Branding case study: logo and palette, 4 facts, flipped split ------------ */
+.cs-facts dl.cs-facts--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cs-split--flip .brand-kit { grid-column: 6 / span 7; grid-row: 1; }
+.cs-split--flip figcaption { grid-column: 1 / span 4; grid-row: 1; }
+.brand-kit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(20px, 3vw, 44px); padding: clamp(24px, 3.5vw, 48px); border-radius: 22px; background: #ffffff; box-shadow: 0 0 0 1px rgba(11, 10, 36, .08), 0 50px 100px -50px rgba(11, 10, 36, .45); }
+.brand-kit__logo { display: block; width: 100%; max-width: 260px; height: auto; justify-self: center; }
+.brand-kit__swatches { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.brand-kit__swatches li { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; align-items: center; font-size: 12.5px; color: #4f5572; letter-spacing: .02em; }
+.brand-kit__swatches i { grid-row: span 2; width: 44px; height: 44px; border-radius: 12px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(11, 10, 36, .08); }
+.brand-kit__swatches b { font-weight: 500; font-size: 15px; color: #0b0a24; letter-spacing: -0.01em; }
+.cs-build--wide { grid-column: 1 / -1; }
+.cs-results__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.cs-results__grid li { padding: 26px 24px 8px 0; }
+.cs-results__grid li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+.cs-results__grid small { display: block; font-size: 13px; color: var(--accent); margin-bottom: clamp(28px, 4vw, 56px); }
+.cs-results__grid h3 { font-size: clamp(1.3rem, 2vw, 1.75rem); margin-bottom: 10px; }
+.cs-results__grid p { color: var(--muted); margin: 0; }
+.brand-tile { display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: 16px; background: #ffffff; box-shadow: 0 0 0 1px rgba(11, 10, 36, .08), 0 30px 60px -40px rgba(11, 10, 36, .5); }
+.brand-tile img { width: 38%; height: auto; }
+.brand-tile__dots { display: flex; gap: 8px; }
+.brand-tile__dots i { width: 22px; height: 22px; border-radius: 50%; background: var(--c); }
+@media (max-width: 900px) {
+  .cs-facts dl.cs-facts--4 { grid-template-columns: 1fr 1fr; }
+  .cs-split--flip .brand-kit, .cs-split--flip figcaption { grid-column: 1 / -1; grid-row: auto; }
+  .cs-results__grid { grid-template-columns: 1fr 1fr; }
+  .cs-results__grid li:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .cs-results__grid li:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 640px) {
+  .cs-facts dl.cs-facts--4 { grid-template-columns: 1fr; }
+  .brand-kit { grid-template-columns: 1fr; }
+  .brand-kit__logo { max-width: 200px; }
+  .brand-kit__swatches { grid-template-columns: 1fr 1fr; }
+  .cs-results__grid { grid-template-columns: 1fr; }
+  .cs-results__grid li, .cs-results__grid li + li { padding-left: 0; border-left: 0; }
+  .cs-results__grid li + li { border-top: 1px solid var(--line); }
+  .cs-results__grid small { margin-bottom: 12px; }
+}
