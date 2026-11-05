@@ -188,7 +188,7 @@ function cardTexture(accent) {
     g.fillText('The Digital', 50, 120);
     g.font = font(64, 600); g.fillText('Agila', 50, 185);
     g.fillStyle = accent; g.fillRect(50, 215, 80, 6);
-    g.fillStyle = '#333'; g.font = font(26, 500); g.fillText('Jayson Perucho', 50, 300);
+    g.fillStyle = '#333'; g.font = font(26, 500); g.fillText('Jayson', 50, 300);
     g.fillStyle = '#777'; g.font = font(21); g.fillText('Digital Marketing Professional', 50, 335);
     g.fillText('hello@thedigitalagila.com', 50, 370);
   });

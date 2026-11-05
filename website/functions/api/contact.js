@@ -25,7 +25,7 @@ function settingsFrom(env) {
     replyTo: env.REPLY_TO || to,
     siteUrl: (env.SITE_URL || 'https://thedigitalagila.com').replace(/\/+$/, ''),
     timeZone: env.TIME_ZONE || 'UTC',
-    senderName: env.SENDER_NAME || 'Jayson Perucho',
+    senderName: env.SENDER_NAME || 'Jayson',
     senderTitle: env.SENDER_TITLE || 'Founder, The Digital Agila',
   };
 }
