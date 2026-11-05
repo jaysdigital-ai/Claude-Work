@@ -197,3 +197,10 @@
   .flow-map__steps span { grid-row: span 2; margin: 3px 0 0; }
   .flow-map__steps li:not(:last-child)::after { top: auto; bottom: -9px; right: auto; left: 34px; transform: rotate(135deg); }
 }
+
+/* A logo badge on the corner of a website shot (logo + website projects) */
+.work-card__shot--badge { position: relative; }
+.logo-badge { position: absolute; left: clamp(-10px, -1vw, -4px); bottom: clamp(-18px, -2vw, -10px); width: clamp(76px, 22%, 132px); aspect-ratio: 1; display: grid; place-items: center; padding: 0; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 1px rgba(11, 10, 36, .08), 0 18px 40px -16px rgba(11, 10, 36, .55); transition: transform .6s var(--ease); }
+.logo-badge img { display: block; width: 80%; height: auto; }
+.work-card:hover .logo-badge { transform: translateY(-4px) rotate(-6deg); }
