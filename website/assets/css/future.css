@@ -350,3 +350,13 @@
 @media (hover: hover) { .tools__detail { display: none; } }
 .tools__hint { margin: 18px 0 0; font-size: 13.5px; color: #dfe3f7; }
 .tools__hint + .tools__note { margin-top: 6px; }
+
+/* Home hero (desktop): the heading and intro widen to reach the eagle, so
+   there is no empty gap between them. The eagle sits at 70% of the screen
+   width and is min(46vw, 82vh) wide (assets/js/neo.js), so the text stops a
+   safe margin before its left wing. */
+@media (min-width: 901px) {
+  .neo-hero__copy { max-width: min(100%, max(640px, calc(70vw - min(23vw, 41vh) - 50px))); }
+  .neo-hero h1 { max-width: none; }
+  .neo-hero .neo-lead { max-width: 56ch; }
+}
