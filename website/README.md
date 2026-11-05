@@ -18,6 +18,9 @@ Once one is chosen, make it the default and remove the switcher (`.palette` in s
 ## Home: the neon eagle
 `index.html` is a scrolling page over a fixed 3D scene: the neon eagle (`assets/img/neon-eagle.jpg`, its purple background removed in code) beats its wings in a tunnel of neon rings. `assets/js/neo.js` sets where the eagle is, how big and how bright for each part of the page (hover in the hero, dive through it, faint while you read, full size again at the end); `assets/js/neo/hyperspace.js` draws it with Three.js. Styles: `assets/css/neo.css`. The text sections sit on near-solid panels so the copy stays readable. A larger eagle image (2048px PNG) would make it sharper.
 
+## Work and case studies
+`work.html` lists the case studies (`case-study-*.html`); styles in `assets/css/work.css`, images in `assets/img/work/`. Each page header has its own eagle scene from `assets/js/neo-bg.js`, set with `data-scene` on `<body>`: Work uses `showcase` (drifting project frames), and the case studies alternate `updraft` (rising light) and `growth` (a bar chart drawn up to the eagle). Add `?scene=showcase`, `?scene=updraft` or `?scene=growth` to any page address to preview a scene. A new case study gets the next scene in the alternation, a card on `work.html`, a "Next" link from the previous case study and a line in `sitemap.xml`.
+
 ## desk.html: the previous home page
 `desk.html` (not linked, noindex) is the earlier interactive desk, kept for reference. It is a full-screen 3D desk (`assets/js/desk.js`, styles in `assets/css/desk.css`), built entirely in code with no 3D model downloads. Every object responds:
 - Laptop → services desktop (links to services.html)
