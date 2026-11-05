@@ -238,6 +238,9 @@
         gsap.from(inners, {
           yPercent: 115, duration: 1.4, ease: 'expo.out', stagger: 0.09, delay: inHero ? introDelay : 0,
           scrollTrigger: inHero ? undefined : { trigger: el, start: 'top 88%' },
+          // once the words have slid in, the lines stop clipping, so tall
+          // letters, descenders, italic tails and lifted letters show in full
+          onComplete: () => el.querySelectorAll('.line').forEach((l) => l.classList.add('is-open')),
         });
       });
 

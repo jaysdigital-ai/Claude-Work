@@ -376,3 +376,27 @@
    curtain lift, the page shows straight away. Between our own pages the warp
    curtain still plays. */
 .fx-direct .curtain.is-reveal { animation: none; visibility: hidden; }
+
+/* ==========================================================================
+   Readable headings: no cropped or faded letters
+   ========================================================================== */
+/* Each heading line hides its words while they slide up into view. The box
+   gets extra room above, below and to the right (cancelled out by negative
+   margins, so the layout doesn't move), and once the words are in place the
+   line stops clipping altogether (main.js adds .is-open). */
+.line { padding: .16em .12em .24em 0; margin: -.16em -.12em -.24em 0; }
+.line.is-open { overflow: visible; }
+
+/* Accent words: one fixed gold-to-lilac gradient, no pale stops and no
+   sliding, so every letter stays rich and easy to read */
+.neo h1 em, .neo .neo-panel h2 em, .neo .dark h2 em, .neo .page-hero h1 em, .neo .neo-cta h2 em, .neo h2 em {
+  background: linear-gradient(100deg, #ffc766 0%, #ffb38a 40%, #c99bff 100%) 0 0 / 100% 100%;
+  -webkit-background-clip: text; background-clip: text; animation: none;
+}
+.neo-page section.section:not(.dark):not(.page-hero) h2 em, .neo #founder h2 em {
+  background-image: linear-gradient(100deg, #8a5200, #6b35c8); background-size: 100% 100%; animation: none;
+}
+/* headings split into single letters (hover effect): each letter gets the
+   same fixed colours */
+.neo em .fx-ch { background-image: linear-gradient(180deg, #ffc766 15%, #c99bff 95%); background-size: 100% 100%; animation: none; }
+.neo-page section.section:not(.dark):not(.page-hero) em .fx-ch { background-image: linear-gradient(180deg, #8a5200, #6b35c8); }
