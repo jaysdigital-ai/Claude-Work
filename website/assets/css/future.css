@@ -400,3 +400,13 @@
    same fixed colours */
 .neo em .fx-ch { background-image: linear-gradient(180deg, #ffc766 15%, #c99bff 95%); background-size: 100% 100%; animation: none; }
 .neo-page section.section:not(.dark):not(.page-hero) em .fx-ch { background-image: linear-gradient(180deg, #8a5200, #6b35c8); }
+
+/* Coloured accent words paint their gradient as a background clipped to the
+   letters. A background only covers the word's own box, and italic serif
+   letters (J, g, y, f) reach below and to the left of it, so those parts had
+   no colour and looked cut off. Extra padding (cancelled by negative margins,
+   so nothing moves) makes the coloured area cover every stroke. */
+.neo h1 em, .neo h2 em, .neo em .fx-ch {
+  padding: .3em .18em .36em .16em; margin: -.3em -.18em -.36em -.16em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}

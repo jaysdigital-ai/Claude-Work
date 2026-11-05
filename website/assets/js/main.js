@@ -206,8 +206,12 @@
 
     const lines = [];
     let top = null;
+    // group words by where their text sits (box top + top padding): accent
+    // words carry extra padding so their colour covers tall letters, which
+    // moves their box up without moving the text
     words.forEach((w) => {
-      if (top === null || Math.abs(w.offsetTop - top) > 4) { lines.push([]); top = w.offsetTop; }
+      const t = w.offsetTop + (parseFloat(getComputedStyle(w).paddingTop) || 0);
+      if (top === null || Math.abs(t - top) > 4) { lines.push([]); top = t; }
       lines[lines.length - 1].push(w);
     });
     el.textContent = '';
