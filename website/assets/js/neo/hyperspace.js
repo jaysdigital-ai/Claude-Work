@@ -64,7 +64,7 @@ function resize() {
 resize();
 window.addEventListener('resize', resize);
 
-let speed = 0;
+let speed = 0, announced = false;
 onFrame((st, dt) => {
   const intro = st.intro * st.intro * (3 - 2 * st.intro);
   eagle.set(st.time, st.o * intro * (1 - st.burst * 0.7), 0.6 + 0.4 * Math.sin(st.time * 0.4) + st.burst, Math.min(1, Math.abs(st.vel) / 3000));
@@ -110,4 +110,5 @@ onFrame((st, dt) => {
   sGeo.attributes.color.needsUpdate = true;
   tuneQuality(dt);
   renderer.render(scene, camera);
+  if (!announced) { announced = true; window.dispatchEvent(new Event('neo:scene')); }   // neo.js fades the still eagle out
 });

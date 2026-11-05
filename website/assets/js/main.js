@@ -227,7 +227,8 @@
   if (animate) {
     const { gsap, ScrollTrigger } = window;
     gsap.registerPlugin(ScrollTrigger);
-    const introDelay = curtain ? 0.55 : 0.1;
+    // the curtain only plays between our own pages (see the head script)
+    const introDelay = curtain && !doc.classList.contains('fx-direct') ? 0.55 : 0.1;
 
     const run = () => {
       document.querySelectorAll('[data-lines]').forEach((el) => {

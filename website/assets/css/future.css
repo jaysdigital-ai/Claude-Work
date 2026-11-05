@@ -360,3 +360,19 @@
   .neo-hero h1 { max-width: none; }
   .neo-hero .neo-lead { max-width: 56ch; }
 }
+
+/* Home: the still eagle shown until the 3D scene has loaded (assets/js/neo.js
+   places it on the same spot as the 3D eagle, then fades it out) */
+.neo-poster { position: absolute; left: 0; top: 0; width: min(46vw, 82vh); height: auto; pointer-events: none; transform-origin: 0 0;
+  transform: translate(calc(70vw - min(23vw, 41vh)), calc(47vh - min(23vw, 41vh)));
+  mix-blend-mode: screen; -webkit-mask: radial-gradient(closest-side, #000 62%, transparent 100%); mask: radial-gradient(closest-side, #000 62%, transparent 100%);
+  transition: opacity 1.4s ease; }
+.neo-poster.is-leaving { opacity: 0 !important; }
+@media (max-width: 899px) {
+  .neo-poster { width: calc(min(95vw, 50vh) * .95); transform: translate(calc(50vw - min(95vw, 50vh) * .475), calc(27vh - min(95vw, 50vh) * .475)); }
+}
+
+/* Arriving from outside the site (search, a link, typing the address): no
+   curtain lift, the page shows straight away. Between our own pages the warp
+   curtain still plays. */
+.fx-direct .curtain.is-reveal { animation: none; visibility: hidden; }

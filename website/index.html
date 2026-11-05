@@ -21,11 +21,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/neon-eagle.jpg" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/style.css?v=20261105">
   <link rel="stylesheet" href="assets/css/neo.css?v=20261106">
-  <link rel="stylesheet" href="assets/css/future.css?v=20261117">
-  <script>(function(){var d=document.documentElement;d.dataset.theme='a';if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
-  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
+  <link rel="stylesheet" href="assets/css/future.css?v=20261118">
+  <script>(function(){var d=document.documentElement;d.dataset.theme='a';try{if(!document.referrer||new URL(document.referrer).origin!==location.origin)d.classList.add('fx-direct')}catch(e){d.classList.add('fx-direct')}if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,7 +70,7 @@
 <body class="neo">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="curtain is-reveal" aria-hidden="true"></div>
-  <div class="neo-stage" data-neo-stage aria-hidden="true"></div>
+  <div class="neo-stage" data-neo-stage aria-hidden="true"><img class="neo-poster" src="assets/img/neon-eagle.jpg" alt="" width="512" height="512" fetchpriority="high" decoding="async"></div>
 
   <header class="header">
     <a class="brand" href="index.html" aria-label="The Digital Agila, home">
@@ -109,7 +110,7 @@
           <a class="link" href="services.html">See our services</a>
         </div>
         <a class="neo-meet" href="#founder" data-reveal="3">
-          <img src="assets/img/portrait-cutout.png" alt="" width="489" height="950">
+          <img src="assets/img/portrait-avatar.webp" alt="" width="132" height="132" decoding="async">
           <span><b>Hi, I'm Jayson</b> Founder · meet me</span>
           <i aria-hidden="true">→</i>
         </a>
@@ -249,7 +250,7 @@
     <section class="section neo-panel neo-founder" id="founder" data-neo-key="founder" aria-labelledby="founder-title">
       <div class="wrap grid12">
         <figure class="neo-founder__photo bio" data-bio data-reveal>
-          <div class="bio__stage"><span class="bio__halo"></span><span class="bio__ring"></span><span class="bio__floor"></span><img class="bio__img" src="assets/img/portrait-cutout.png" alt="Jayson, founder of The Digital Agila, holding a laptop" width="489" height="950" loading="lazy"><span class="bio__tag" style="--a:-58deg">Funnels</span><span class="bio__tag" style="--a:58deg">Automation</span><span class="bio__tag" style="--a:-118deg">CRM</span><span class="bio__tag" style="--a:118deg">SEO</span></div>
+          <div class="bio__stage"><span class="bio__halo"></span><span class="bio__ring"></span><span class="bio__floor"></span><img class="bio__img" src="assets/img/portrait-cutout.webp" alt="Jayson, founder of The Digital Agila, holding a laptop" width="489" height="950" loading="lazy"><span class="bio__tag" style="--a:-58deg">Funnels</span><span class="bio__tag" style="--a:58deg">Automation</span><span class="bio__tag" style="--a:-118deg">CRM</span><span class="bio__tag" style="--a:118deg">SEO</span></div>
           <figcaption><b>Jayson</b><span>Founder</span></figcaption>
         </figure>
         <div class="neo-founder__text">
@@ -311,9 +312,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-  <script src="assets/js/main.js?v=20261111" defer></script>
+  <script src="assets/js/main.js?v=20261118" defer></script>
   <script src="assets/js/future.js?v=20261116" defer></script>
   <script src="assets/js/bio.js?v=20261105" defer></script>
-  <script src="assets/js/neo.js?v=20261109" defer></script>
+  <script src="assets/js/neo.js?v=20261118" defer></script>
 </body>
 </html>

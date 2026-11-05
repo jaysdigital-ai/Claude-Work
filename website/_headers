@@ -1,0 +1,13 @@
+# Cloudflare Pages caching rules.
+# Styles and scripts are always linked with a version stamp (?v=...), and the
+# stamp changes whenever the file does, so browsers can keep them for a year.
+# Images aren't stamped, so they're kept for a week.
+
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=604800

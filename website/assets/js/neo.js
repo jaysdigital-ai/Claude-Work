@@ -91,12 +91,54 @@
       state.progress = y / Math.max(1, document.documentElement.scrollHeight - innerHeight);
       state.w = innerWidth; state.h = innerHeight;
       state.base = small() ? Math.min(innerWidth * 0.95, innerHeight * 0.5) : Math.min(innerWidth * 0.46, innerHeight * 0.82);
+      if (poster) placePoster();
       listeners.forEach((fn) => fn(state, dt));
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-    import('./neo/hyperspace.js?v=20261109').catch((err) => console.error('The eagle failed to load', err));
+    scheduleScene();
   }
+
+  /* The 3D scene loads once the page is ready ---------------------------------
+     Building it (the 3D library, the artwork, the graphics code) is the
+     heaviest work on the page, so it waits until the visitor first moves,
+     touches, scrolls or types, or until the browser is idle a few seconds
+     after loading. Until then a still of the eagle (the poster) stands in at
+     the same spot, then fades out as the 3D eagle assembles. */
+  let poster = document.querySelector('.neo-poster');
+  function placePoster() {
+    const size = state.base * state.s;
+    poster.style.width = size.toFixed(1) + 'px';
+    poster.style.transform = `translate(${(state.x * innerWidth - size / 2).toFixed(1)}px, ${(state.y * innerHeight - size / 2).toFixed(1)}px)`;
+    poster.style.opacity = state.o.toFixed(3);
+  }
+  let sceneRequested = false;
+  function loadScene() {
+    if (sceneRequested) return;
+    sceneRequested = true;
+    TRIGGERS.forEach((t) => window.removeEventListener(t, onFirstInput, true));
+    import('./neo/hyperspace.js?v=20261118')
+      .then(() => { state.intro = reduce ? 1 : 0; })   // fly in from deep space
+      .catch((err) => { console.error('The eagle failed to load', err); });
+  }
+  const TRIGGERS = ['pointerdown', 'pointermove', 'touchstart', 'wheel', 'keydown', 'scroll'];
+  function onFirstInput(e) {
+    if (e.type === 'scroll' && window.scrollY < 40) return;     // ignore the page settling at the top
+    loadScene();
+  }
+  function scheduleScene() {
+    TRIGGERS.forEach((t) => window.addEventListener(t, onFirstInput, { passive: true, capture: true }));
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1));
+    const later = () => setTimeout(() => idle(loadScene, { timeout: 2000 }), 4500);
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+  }
+  // the 3D eagle is on screen: fade the still out, then remove it
+  window.addEventListener('neo:scene', () => {
+    if (!poster) return;
+    const p = poster;
+    p.classList.add('is-leaving');
+    setTimeout(() => { p.remove(); if (poster === p) poster = null; }, 1600);
+  }, { once: true });
   if (window.agila && window.agila.ready) start();
   else window.addEventListener('agila:ready', start, { once: true });
 })();
