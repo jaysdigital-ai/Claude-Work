@@ -410,3 +410,10 @@
   padding: .3em .18em .36em .16em; margin: -.3em -.18em -.36em -.16em;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
+
+/* Header: the full logo, circuit lines around "Agila" included (inline SVG
+   so it uses the site fonts) */
+.brand .brand__logo { display: block; height: 42px; width: auto; overflow: visible; transition: transform .8s var(--ease), filter .6s; }
+.brand:hover .brand__logo { transform: translateY(-1px) !important; filter: drop-shadow(0 0 12px rgba(111, 214, 242, .35)); }
+@media (max-width: 640px) { .brand .brand__logo { height: 34px; } }
+@media (max-width: 360px) { .brand .brand__logo { height: 30px; } }
