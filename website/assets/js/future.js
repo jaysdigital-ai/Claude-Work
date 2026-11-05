@@ -318,10 +318,45 @@
     if (mq.addEventListener) mq.addEventListener('change', swap); else mq.addListener(swap);
   }
 
+  /* Footer: an eagle flies across the open band between the link columns and
+     the logo row. It flaps a few times, glides, drifts and banks gently.
+     All motion is CSS transforms (smooth, off the main thread); it pauses
+     while the footer is off screen and holds still for reduced motion. */
+  function footerEagle() {
+    const footer = document.querySelector('.footer');
+    const top = footer && footer.querySelector('.footer__top');
+    if (!footer || !top) return;
+    const fe = document.createElement('div');
+    fe.className = 'fe';
+    fe.setAttribute('aria-hidden', 'true');
+    fe.innerHTML = '<div class="fe__x"><div class="fe__y"><i class="fe__trail"></i><i class="fe__dust"></i><i class="fe__dust"></i><i class="fe__dust"></i>'
+      + '<img class="fe__img" alt="" hidden></div></div>';
+    footer.prepend(fe);
+    // the drawing is inline so the wings can be animated
+    fetch('assets/img/footer-eagle.svg?v=20261125').then((r) => r.text()).then((svg) => {
+      fe.querySelector('.fe__img').outerHTML = svg.replace('<svg ', '<svg class="fe__svg" ');
+    }).catch(() => fe.remove());
+    // centre the flight in the open band, and keep the speed the same on any width
+    const place = () => {
+      const pb = parseFloat(getComputedStyle(top).paddingBottom) || 80;
+      const bandMid = top.getBoundingClientRect().bottom - pb / 2 - footer.getBoundingClientRect().top;
+      fe.style.setProperty('--fe-top', bandMid.toFixed(0) + 'px');
+      const w = fe.offsetWidth;
+      fe.style.setProperty('--fe-dur', Math.max(9, (w + 400) / 85).toFixed(1) + 's');
+    };
+    place();
+    addEventListener('resize', place);
+    if (document.fonts) document.fonts.ready.then(place);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => fe.classList.toggle('is-paused', !es[0].isIntersecting)).observe(footer);
+    }
+  }
+
   function start() {
     doc.classList.add('fx-ready');
     transitionLabel();
     toolStack();
+    footerEagle();
     celestial();
   }
   if (window.agila && window.agila.ready) start();

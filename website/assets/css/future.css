@@ -417,3 +417,63 @@
 .brand:hover .brand__logo { transform: translateY(-1px) !important; filter: drop-shadow(0 0 12px rgba(111, 214, 242, .35)); }
 @media (max-width: 640px) { .brand .brand__logo { height: 34px; } }
 @media (max-width: 360px) { .brand .brand__logo { height: 30px; } }
+
+/* ==========================================================================
+   Footer: the flying eagle (assets/js/future.js, assets/img/footer-eagle.svg)
+   ========================================================================== */
+.footer { position: relative; overflow-x: clip; }
+.fe { position: absolute; left: 0; right: 0; top: var(--fe-top, 50%); height: 0; z-index: 0; pointer-events: none; overflow: visible;
+  --fe-w: clamp(84px, 9vw, 150px); }
+.footer > .wrap { position: relative; z-index: 1; }
+/* across the footer, then a short pause off screen before the next pass */
+.fe__x { position: absolute; left: 0; top: 0; width: var(--fe-w); will-change: transform; animation: feX var(--fe-dur, 18s) linear infinite; }
+@keyframes feX {
+  0% { transform: translateX(calc(-1 * var(--fe-w) - 60px)); }
+  82%, 100% { transform: translateX(calc(100vw + 60px)); }
+}
+/* a slow rise and fall with a gentle bank */
+.fe__y { position: relative; translate: 0 -50%; animation: feY 6.4s cubic-bezier(.45, 0, .55, 1) infinite; will-change: transform; }
+@keyframes feY { 0%, 100% { transform: translateY(-9px) rotate(-3deg); } 50% { transform: translateY(9px) rotate(2.5deg); } }
+.fe__svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 0 10px rgba(140, 120, 255, .45)) drop-shadow(0 0 2px rgba(124, 211, 242, .4)); }
+/* wingbeats: two strong flaps, then a long glide */
+.fe-wing { transform-box: view-box; animation: feFlap 3.2s cubic-bezier(.45, 0, .55, 1) infinite; will-change: transform; }
+.fe-wing--near { transform-origin: 110px 66px; }
+.fe-wing--far { transform-origin: 117px 65px; animation-name: feFlapFar; animation-delay: .05s; }
+@keyframes feFlap {
+  0% { transform: scaleY(.42); }
+  10% { transform: scaleY(1); }
+  22% { transform: scaleY(-.72); }
+  34% { transform: scaleY(1); }
+  46% { transform: scaleY(-.72); }
+  58% { transform: scaleY(.9); }
+  70%, 100% { transform: scaleY(.42); }
+}
+@keyframes feFlapFar {
+  0% { transform: scaleY(.46); }
+  10% { transform: scaleY(1); }
+  22% { transform: scaleY(-.6); }
+  34% { transform: scaleY(1); }
+  46% { transform: scaleY(-.6); }
+  58% { transform: scaleY(.9); }
+  70%, 100% { transform: scaleY(.46); }
+}
+/* a faint light trail and stardust behind the tail */
+.fe__trail { position: absolute; right: 70%; top: 66%; width: 140%; height: 2px; border-radius: 2px; transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, rgba(185, 143, 255, .18) 55%, rgba(124, 211, 242, .45)); filter: blur(1px); }
+.fe__dust { position: absolute; left: 18%; top: 66%; width: 3px; height: 3px; border-radius: 50%; background: #fff6e6; box-shadow: 0 0 6px #c9a6ff; opacity: 0; animation: feDust 2.4s ease-out infinite; }
+.fe__dust:nth-of-type(3) { animation-delay: .8s; top: 60%; }
+.fe__dust:nth-of-type(4) { animation-delay: 1.6s; top: 72%; }
+@keyframes feDust { 0% { opacity: .9; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(-90px, 6px) scale(.3); } }
+/* off screen: everything rests */
+.fe.is-paused .fe__x, .fe.is-paused .fe__y, .fe.is-paused .fe-wing, .fe.is-paused .fe__dust { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .fe__x, .fe__y, .fe-wing, .fe__dust { animation: none !important; }
+  .fe__x { transform: translateX(calc(100vw - var(--fe-w) - 12vw)); }
+  .fe-wing { transform: scaleY(.42); }
+}
+/* phones and tablets: the open band is shorter, so a smaller eagle with a softer drift */
+@media (max-width: 900px) {
+  .fe { --fe-w: 70px; }
+  .fe__y { animation-name: feYsmall; }
+  @keyframes feYsmall { 0%, 100% { transform: translateY(-4px) rotate(-3deg); } 50% { transform: translateY(4px) rotate(2.5deg); } }
+}
