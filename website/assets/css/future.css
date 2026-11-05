@@ -200,3 +200,6 @@
 .cookie-note__actions { margin-left: auto; }
 .legal__choice { border: 0; border-radius: 99px; padding: 10px 20px; background: #0b0830; color: #fff; font: 600 14px/1 "Instrument Sans", Arial, sans-serif; cursor: pointer; transition: background .3s, box-shadow .3s; }
 .legal__choice:hover { background: #1d1456; box-shadow: 0 0 0 4px rgba(111, 214, 242, .2); }
+
+/* Footer: more room between the logo and "Book a free call" once they stack */
+@media (max-width: 900px) { .footer__sign { row-gap: 36px; } }
