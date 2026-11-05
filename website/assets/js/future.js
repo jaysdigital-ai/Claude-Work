@@ -166,9 +166,127 @@
     }
   }
 
+  /* Home tool stack ----------------------------------------------------------
+     Filter buttons light up one group of tools. On wide screens the tools
+     orbit a glowing core in three rings; on tablets and phones they sit in
+     a grid that twinkles, with gold lines joining a group on hover or filter. */
+  function toolStack() {
+    const box = document.querySelector('[data-tools]');
+    if (!box) return;
+    const stage = box.querySelector('.tools__stage');
+    const grid = box.querySelector('.tools__grid');
+    const tools = [...grid.querySelectorAll('.tool')];
+    const buttons = [...box.querySelectorAll('[data-filter]')];
+    const wide = () => matchMedia('(min-width: 900px)').matches;
+    let filter = 'all';
+    tools.forEach((t) => { const tip = t.querySelector('.tool__tip'); tip.dataset.name = t.querySelector('.tool__name').textContent; });
+
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      filter = b.dataset.filter;
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      box.classList.toggle('is-filtered', filter !== 'all');
+      tools.forEach((t) => t.classList.toggle('is-on', filter === 'all' || t.dataset.cat === filter));
+      box.dispatchEvent(new CustomEvent('tools:filter'));
+    }));
+
+    // play the entrance once the tools scroll into view
+    const enter = () => { box.classList.remove('is-in'); void box.offsetWidth; box.classList.add('is-in'); };
+    let seen = false;
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { seen = true; io.disconnect(); enter(); } }, { threshold: 0.15 });
+      io.observe(stage);
+    } else { seen = true; box.classList.add('is-in'); }
+
+    const centre = (el) => { const s = stage.getBoundingClientRect(), r = el.getBoundingClientRect(); return [r.left - s.left + r.width / 2, r.top - s.top + r.height / 2]; };
+
+    /* 1 · Constellation: twinkling tiles, gold lines join a group ---------- */
+    function constellation() {
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('class', 'tools__lines');
+      svg.setAttribute('aria-hidden', 'true');
+      stage.appendChild(svg);
+      let hoverCat = null;
+      const draw = () => {
+        const cat = hoverCat || (filter !== 'all' ? filter : null);
+        svg.innerHTML = '';
+        if (!cat) return;
+        const s = stage.getBoundingClientRect();
+        svg.setAttribute('viewBox', `0 0 ${s.width} ${s.height}`);
+        const pts = tools.filter((t) => t.dataset.cat === cat).map(centre);
+        if (pts.length < 2) return;
+        const path = document.createElementNS(NS, 'polyline');
+        path.setAttribute('points', pts.map((p) => p.join(',')).join(' '));
+        svg.appendChild(path);
+        pts.forEach(([x, y]) => { const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', 3); svg.appendChild(c); });
+      };
+      const on = (e) => { hoverCat = e.currentTarget.dataset.cat; draw(); };
+      const off = () => { hoverCat = null; draw(); };
+      tools.forEach((t) => { t.addEventListener('pointerenter', on); t.addEventListener('pointerleave', off); t.addEventListener('focus', on); t.addEventListener('blur', off); });
+      box.addEventListener('tools:filter', draw);
+      addEventListener('resize', draw);
+      // a few tools sparkle now and then
+      const timer = reduce ? 0 : setInterval(() => {
+        if (document.hidden) return;
+        for (let k = 0; k < 2; k++) {
+          const t = tools[(Math.random() * tools.length) | 0];
+          t.classList.add('is-twinkle');
+          setTimeout(() => t.classList.remove('is-twinkle'), 1600);
+        }
+      }, 900);
+      return () => {
+        clearInterval(timer); svg.remove(); box.removeEventListener('tools:filter', draw); removeEventListener('resize', draw);
+        tools.forEach((t) => { t.removeEventListener('pointerenter', on); t.removeEventListener('pointerleave', off); t.removeEventListener('focus', on); t.removeEventListener('blur', off); t.classList.remove('is-twinkle'); });
+      };
+    }
+
+    /* 2 · Orbit: three rings of logos circling a core (wide screens) ------- */
+    function orbit() {
+      if (!wide()) return constellation();
+      const SIZES = [11, 18, 26];                 // inner, middle, outer
+      const RADII = [0.2, 0.33, 0.46];            // share of the stage width
+      const wrap = document.createElement('div');
+      wrap.className = 'orbit';
+      wrap.innerHTML = '<div class="orbit__core" aria-hidden="true"><img src="assets/img/logo-icon.svg" alt=""><b>' + tools.length + '</b><span>tools</span></div>';
+      const rings = SIZES.map((n, k) => { const ul = document.createElement('ul'); ul.className = 'orbit__ring orbit__ring--' + (k + 1); ul.setAttribute('aria-label', 'Tools we work with'); wrap.appendChild(ul); return ul; });
+      let at = 0;
+      [2, 1, 0].forEach((k) => {
+        const n = SIZES[k];
+        for (let j = 0; j < n && at < tools.length; j++, at++) {
+          const t = tools[at];
+          t.style.setProperty('--a', (j / n) * 360 + (k * 7) + 'deg');
+          const orb = document.createElement('span');
+          orb.className = 'tool__orb';
+          while (t.firstChild) orb.appendChild(t.firstChild);
+          t.appendChild(orb);
+          rings[k].appendChild(t);
+        }
+      });
+      stage.appendChild(wrap);
+      grid.hidden = true;
+      const size = () => { const w = wrap.offsetWidth; rings.forEach((r, k) => r.style.setProperty('--R', Math.round(w * RADII[k]) + 'px')); };
+      size();
+      addEventListener('resize', size);
+      return () => {
+        removeEventListener('resize', size);
+        tools.forEach((t) => { const orb = t.querySelector('.tool__orb'); if (orb) { while (orb.firstChild) t.appendChild(orb.firstChild); orb.remove(); } t.style.removeProperty('--a'); grid.appendChild(t); });
+        wrap.remove(); grid.hidden = false;
+      };
+    }
+
+    // Orbit on wide screens, the constellation grid on tablets and phones;
+    // rebuilt when the screen crosses that width
+    box.dataset.anim = '2';
+    let cleanup = orbit() || (() => {});
+    const mq = matchMedia('(min-width: 900px)');
+    const swap = () => { cleanup(); cleanup = orbit() || (() => {}); if (seen) enter(); };
+    if (mq.addEventListener) mq.addEventListener('change', swap); else mq.addListener(swap);
+  }
+
   function start() {
     doc.classList.add('fx-ready');
     transitionLabel();
+    toolStack();
     celestial();
   }
   if (window.agila && window.agila.ready) start();
