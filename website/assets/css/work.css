@@ -156,3 +156,22 @@
   .cs-results__grid li + li { border-top: 1px solid var(--line); }
   .cs-results__grid small { margin-bottom: 12px; }
 }
+
+/* Canva case study: page count, page chips, results beside a quote ------- */
+.page-count { display: flex; align-items: baseline; gap: 14px; margin: 14px 0 12px; }
+.page-count b { font-size: clamp(3rem, 5vw, 4.6rem); font-weight: 500; letter-spacing: -0.05em; line-height: 1; }
+.page-count b:first-child { color: var(--muted); }
+.page-count svg { width: 30px; height: 30px; color: var(--accent-deep); align-self: center; }
+.page-count span { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--accent-deep); }
+.page-chips { list-style: none; margin: 0 0 26px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.page-chips li { padding: 6px 12px; border-radius: 99px; font-size: 13.5px; box-shadow: inset 0 0 0 1px var(--line-strong); }
+.page-chips li:first-child { background: #0b0a24; color: #fff; box-shadow: none; }
+.cs-results__grid--2 { grid-column: 1 / span 6; grid-template-columns: 1fr 1fr; }
+.cs-results__grid--2 li:nth-child(odd) { padding-left: 0; border-left: 0; }
+.cs-results__grid--2 li:nth-child(n+3) { border-top: 1px solid var(--line); }
+.cs-results__grid--2 small { margin-bottom: 18px; }
+@media (max-width: 900px) { .cs-results__grid--2 { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .cs-results__grid--2 { grid-template-columns: 1fr; } .cs-results__grid--2 li:nth-child(n+2) { border-top: 1px solid var(--line); } }
+.cs-results__side { grid-column: 8 / span 5; display: grid; gap: 20px; align-content: start; }
+.cs-results__side .quote, .cs-results__side .serp { grid-column: auto; }
+@media (max-width: 900px) { .cs-results__side { grid-column: 1 / -1; max-width: 560px; } }
