@@ -9,7 +9,7 @@
    a faint emblem as you scroll into the content. The pointer adds parallax.
    ========================================================================== */
 import * as THREE from 'three';
-import { loadEagleCanvas, makeEagle } from './neo/eagle.js?v=20261109';
+import { loadEagleCanvas, makeEagle } from './neo/eagle.js?v=20261126';
 import { LITE, adaptiveResolution, put6 } from './neo/eagle-shared.js?v=20261109';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

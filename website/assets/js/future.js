@@ -16,8 +16,9 @@
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   doc.classList.add('fx-on');
 
-  const PAGE_NAMES = { '': 'Home', index: 'Home', about: 'About', services: 'Services', contact: 'Contact', privacy: 'Privacy', terms: 'Terms', cookies: 'Cookies' };
-  const pageName = (path) => PAGE_NAMES[path.split('/').pop().replace(/\.html$/, '')] || 'The Digital Agila';
+  const PAGE_NAMES = { '': 'Home', index: 'Home', about: 'About', services: 'Services', work: 'Work', blog: 'Blog', contact: 'Contact', privacy: 'Privacy', terms: 'Terms', cookies: 'Cookies' };
+  const pageName = (path) => (path.startsWith('/blog/') ? 'Blog'
+    : PAGE_NAMES[path.replace(/\/$/, '').split('/').pop().replace(/\.html$/, '')] || 'The Digital Agila');
 
   /* The page transition says where you're going, and where you've arrived */
   function transitionLabel() {
@@ -282,7 +283,7 @@
       const RADII = [0.2, 0.33, 0.46];            // share of the stage width
       const wrap = document.createElement('div');
       wrap.className = 'orbit';
-      wrap.innerHTML = '<div class="orbit__core" aria-hidden="true"><img src="assets/img/logo-icon.svg" alt=""><b>' + tools.length + '</b><span>tools</span></div>';
+      wrap.innerHTML = '<div class="orbit__core" aria-hidden="true"><img src="/assets/img/logo-icon.svg" alt=""><b>' + tools.length + '</b><span>tools</span></div>';
       const rings = SIZES.map((n, k) => { const ul = document.createElement('ul'); ul.className = 'orbit__ring orbit__ring--' + (k + 1); ul.setAttribute('aria-label', 'Tools we work with'); wrap.appendChild(ul); return ul; });
       let at = 0;
       [2, 1, 0].forEach((k) => {

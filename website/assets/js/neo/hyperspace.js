@@ -7,7 +7,7 @@
    pulls back to a distant emblem.
    ========================================================================== */
 import * as THREE from 'three';
-import { loadEagleCanvas, makeEagle } from './eagle.js?v=20261109';
+import { loadEagleCanvas, makeEagle } from './eagle.js?v=20261126';
 import { LITE, adaptiveResolution, put6 } from './eagle-shared.js?v=20261109';
 
 // Starlight colours: gold and violet rings, warm white and lilac streaks

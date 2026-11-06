@@ -33,7 +33,7 @@ export function loadEagleCanvas() {
       g.putImageData(d, 0, 0);
       resolve(c);
     };
-    img.src = 'assets/img/neon-eagle.jpg';
+    img.src = new URL('../../img/neon-eagle.jpg', import.meta.url).href;
   });
   return cached;
 }

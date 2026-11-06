@@ -51,7 +51,7 @@
     note.className = 'cookie-note';
     note.setAttribute('role', 'region');
     note.setAttribute('aria-label', 'Cookie choice');
-    note.innerHTML = '<p>Can we use Google Analytics cookies to see how visitors use this site? They stay off unless you allow them. <a href="cookies.html">Cookie Policy</a></p>'
+    note.innerHTML = '<p>Can we use Google Analytics cookies to see how visitors use this site? They stay off unless you allow them. <a href="/cookies.html">Cookie Policy</a></p>'
       + '<div class="cookie-note__actions"><button type="button" data-choice="denied" class="cookie-note__no">No thanks</button><button type="button" data-choice="granted">Allow</button></div>';
     document.body.appendChild(note);
     requestAnimationFrame(() => note.classList.add('is-in'));

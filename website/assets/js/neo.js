@@ -117,7 +117,7 @@
     if (sceneRequested) return;
     sceneRequested = true;
     TRIGGERS.forEach((t) => window.removeEventListener(t, onFirstInput, true));
-    import('./neo/hyperspace.js?v=20261118')
+    import('./neo/hyperspace.js?v=20261126')
       .then(() => { state.intro = reduce ? 1 : 0; })   // fly in from deep space
       .catch((err) => { console.error('The eagle failed to load', err); });
   }
