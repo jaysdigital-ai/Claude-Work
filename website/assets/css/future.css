@@ -410,6 +410,10 @@
   padding: .3em .18em .36em .16em; margin: -.3em -.18em -.36em -.16em;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
+/* Animated headings wrap each accent word in its own <em>. The negative side
+   margins above then swallowed the space between two accent words
+   ("builtfrom"), so here only the left padding is cancelled. */
+.neo h1 .line em, .neo h2 .line em { margin-right: 0; }
 
 /* Header: the full logo, circuit lines around "Agila" included (inline SVG
    so it uses the site fonts) */
