@@ -62,6 +62,22 @@
 .post__share a { color: var(--ink); text-decoration: none; }
 .post__share a:hover { color: var(--accent-deep); }
 
+/* References: grouped by fix, numbered straight through */
+.post__refs { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--line-strong); counter-reset: ref; }
+.post__refs > h2 { margin-top: 0; }
+.post__refs h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 32px 0 6px; font-size: 1.05rem; }
+.post__refs h3 span { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-deep); }
+.post__refs ol { list-style: none; padding: 0; margin: 0; }
+.post__refs li { counter-increment: ref; position: relative; margin: 0; padding: 14px 0 14px 44px; border-bottom: 1px solid var(--line); line-height: 1.5; }
+.post__refs li:last-child { border-bottom: 0; }
+.post__refs li::before { content: counter(ref, decimal-leading-zero); position: absolute; left: 0; top: 16px; font-size: 13px; font-weight: 600; color: var(--accent-deep); font-variant-numeric: tabular-nums; }
+.post__refs li a { color: var(--ink); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.post__refs li a::after { content: "\2197"; display: inline-block; margin-left: 6px; font-weight: 400; color: var(--accent-deep); transition: transform .3s; }
+.post__refs li a:hover { color: var(--accent-deep); text-decoration: underline; }
+.post__refs li a:hover::after { transform: translate(2px, -2px); }
+.post__ref-src { display: block; margin-top: 2px; font-size: 13px; color: var(--accent-deep); }
+.post__refs li p { margin: 4px 0 0; font-size: .94em; line-height: 1.55; }
+
 /* FAQ under the article: the home page's FAQ on white */
 .post-faq .faq-wrap > h2 { grid-column: 1 / span 4; font-size: clamp(2rem, 3.6vw, 3.4rem); }
 
