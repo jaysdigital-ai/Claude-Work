@@ -94,3 +94,10 @@ thedigitalagila.com lets browsers reuse scripts and styles for up to 4 hours. Ev
 ```
 grep -rl "v=20261105" . | xargs sed -i "s/v=20261105/v=NEWDATE/g"
 ```
+
+## Demo projects
+`demo-projects.html` is the hub for live demos (linked as "Demos" in the menu and footer of every page). It targets the search terms "AI automation" and "AI workflow specialist": title, description, headings, FAQ and structured data (CollectionPage with an ItemList of demos, Service, BreadcrumbList, FAQPage).
+
+To add a demo: copy the `work-card` block on `demo-projects.html`, add a `ListItem` to the ItemList in its structured data, add the new page to `sitemap.xml`, and give the demo page a breadcrumb back to Demo projects.
+
+`demo-dental-automation.html` is the first demo (styles in `assets/css/demo.css`, script in `assets/js/demo-dental.js`). It calls the `demo-api` function on the Supabase project `dental-clinic-automation-demo`. Each visitor gets a private sandbox kept for the browser tab (a random id in session storage), messages are logged and never sent, and sandboxes are cleared after 24 hours. The API only answers requests from thedigitalagila.com, its Cloudflare preview addresses and localhost.

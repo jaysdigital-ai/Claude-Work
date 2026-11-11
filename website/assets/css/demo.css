@@ -191,3 +191,6 @@
 .dd-flash { animation: dd-flash 1.4s ease-out 1; }
 @keyframes dd-flash { 0% { box-shadow: 0 0 0 3px var(--dd-amber); } 100% { box-shadow: 0 0 0 3px rgba(255, 207, 138, 0); } }
 @media (prefers-reduced-motion: reduce) { .dd button { transition: none; } .dd .dd-card:hover { transform: none; } .dd-flash { animation: none; } }
+
+/* Demo projects hub (demo-projects.html) */
+.demo-more { margin: clamp(28px, 4vw, 48px) 0 0; color: var(--muted); max-width: 60ch; }
