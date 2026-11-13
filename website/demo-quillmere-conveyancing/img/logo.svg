@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 630" role="img" aria-label="Quillmere Conveyancing">
+  <circle cx="300" cy="315" r="232" fill="#1b3766"/>
+  <path d="M168 338 L300 206 L432 338" fill="none" stroke="#78b843" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M214 330 V440 H386 V330" fill="none" stroke="#f3efe7" stroke-width="34" stroke-linejoin="round"/>
+  <rect x="276" y="368" width="48" height="72" fill="#78b843"/>
+  <text x="590" y="318" font-family="'Instrument Sans','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="118" fill="#1b3766" textLength="640" lengthAdjust="spacingAndGlyphs">QUILLMERE</text>
+  <text x="592" y="412" font-family="'Instrument Sans','Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="66" fill="#4f8a25" textLength="636" lengthAdjust="spacingAndGlyphs">CONVEYANCING</text>
+</svg>
