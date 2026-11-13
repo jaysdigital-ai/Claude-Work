@@ -39,15 +39,14 @@ if (quotes.length) {
   if (!reduced) timer = setInterval(() => show((qi + 1) % quotes.length), 7000);
 }
 
-// Tasmanian transfer duty (general rate)
+// NSW transfer duty, general rate, 2026/27 (Revenue NSW). An estimate: no concessions or surcharges.
 function duty(v) {
-  if (v <= 3000) return 50;
-  if (v <= 25000) return 50 + (v - 3000) * 0.0175;
-  if (v <= 75000) return 435 + (v - 25000) * 0.0225;
-  if (v <= 200000) return 1560 + (v - 75000) * 0.035;
-  if (v <= 375000) return 5935 + (v - 200000) * 0.04;
-  if (v <= 725000) return 12935 + (v - 375000) * 0.0425;
-  return 27810 + (v - 725000) * 0.045;
+  if (v <= 18000) return Math.max(20, v * 0.0125);
+  if (v <= 38000) return 225 + (v - 18000) * 0.015;
+  if (v <= 103000) return 525 + (v - 38000) * 0.0175;
+  if (v <= 387000) return 1662 + (v - 103000) * 0.035;
+  if (v <= 1290000) return 11602 + (v - 387000) * 0.045;
+  return 52237 + (v - 1290000) * 0.055;
 }
 const price = $('#price'), range = $('#priceRange');
 if (price) {
