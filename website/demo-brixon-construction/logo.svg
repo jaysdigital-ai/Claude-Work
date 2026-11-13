@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="6" fill="#0F1316"/>
+  <!-- three courses of block, stepped like a rising wall -->
+  <rect x="12" y="42" width="40" height="10" fill="#FFC60A"/>
+  <rect x="12" y="27" width="27" height="10" fill="#ECEAE4"/>
+  <rect x="12" y="12" width="14" height="10" fill="#1570B8"/>
+  <rect x="44" y="27" width="8" height="10" fill="#FFC60A"/>
+</svg>

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Demo: 3D Construction Supplier Website Concept | The Digital Agila</title>
+<meta name="description" content="A website design demo by The Digital Agila: a 3D, interactive site concept for a made-up construction materials supplier.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://thedigitalagila.com/demo-brixon-construction/">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<a class="demo-pill" href="../demo-projects.html"><b>Demo site</b> by The Digital Agila <span>All demos &rarr;</span></a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Brixon home">
+    <img src="logo.svg" alt="" width="44" height="44">
+    <span>Brixon<small>Materials Trading &amp; Services</small></span>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Primary">
+    <a href="#about">Company</a>
+    <a href="#products">Products</a>
+    <a href="#materials">Materials</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#quote" class="nav-cta">Request a quote</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-pin">
+    <canvas id="build" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot"></span>Lapu-Lapu City, Cebu &nbsp;·&nbsp; Est. 2021</p>
+      <h1 data-split>Innovate to build your visions with <em>concrete</em> results.</h1>
+      <p class="lede">Materials, equipment and specialised construction services for civil, architectural, structural and MEPF work — supplied on time, at a fair rate.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn btn-ink magnetic"><span>Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#products" class="btn btn-line">See what we supply</a>
+      </div>
+    </div>
+
+    <aside class="hud" aria-hidden="true">
+      <div class="hud-level"><span class="mono">LEVEL</span><b id="lvl">00</b><span class="mono">/ 07</span></div>
+      <ol class="hud-phases" id="phases">
+        <li class="on"><i></i>Foundation</li>
+        <li><i></i>Structure</li>
+        <li><i></i>Envelope</li>
+        <li><i></i>Handover</li>
+      </ol>
+    </aside>
+
+    <div class="hero-foot" aria-hidden="true">
+      <span class="mono">SHEET A-01 &nbsp;/&nbsp; BRIXON CONSTRUCTION</span>
+      <span class="scroll-cue"><i></i>Scroll to build</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENTS ============ -->
+<section class="clients" aria-label="Clients">
+  <p class="mono">Supplying &amp; building for</p>
+  <div class="marquee"><div class="marquee-track" id="logos">
+    <span class="cl cl-a">NORTHGATE<i>Builders</i></span>
+    <span class="cl cl-b">Halden &amp; Co.</span>
+    <span class="cl cl-c">MERIDIAN WORKS</span>
+    <span class="cl cl-d">castell<i>engineering</i></span>
+    <span class="cl cl-e">ORRIN</span>
+  </div></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about wrap" id="about">
+  <div class="sec-head">
+    <span class="sec-no mono">01 — Company profile</span>
+    <h2 data-split>A Cebu trading house for everything a job site runs on.</h2>
+  </div>
+
+  <div class="about-grid">
+    <figure class="frame" data-parallax>
+      <div class="frame-inner">
+        <div class="frame-art" id="aboutArt" role="img" aria-label="Animated 3D model of a house being renovated"></div>
+      </div>
+      <figcaption class="mono">FIG. 01 — Renovation in progress</figcaption>
+    </figure>
+
+    <div class="about-copy">
+      <p class="big reveal">Brixon Construction Materials Trading distributes the materials and equipment needed for civil, architectural, structural, mechanical, electrical, plumbing and fire-protection works — including personal protective equipment and anything else a customer's project demands. Specialised construction activities are catered for too.</p>
+      <p class="reveal">A sole proprietorship established in 2021 and owned by Ms. Jane D. Sample — an Accounting Technology graduate with an entrepreneurial mindset, who runs the business on integrity, credibility, commitment and competency, and above all is spiritually oriented.</p>
+
+      <dl class="stats reveal">
+        <div><dt>2021</dt><dd>Established in Lapu-Lapu City</dd></div>
+        <div><dt>06</dt><dd>Supply categories</dd></div>
+        <div><dt>12</dt><dd>Construction service lines</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="mv">
+    <article class="mv-card reveal">
+      <h3><span class="mono">M</span>Mission</h3>
+      <ol>
+        <li>Maintain high-quality materials that meet customers' standards and needs at a fair and market-competitive rate.</li>
+        <li>Stay committed to customers' delivery lead time and after-sales service.</li>
+        <li>Build a long-term union with our customers through mutually transparent, beneficial relationships.</li>
+        <li>Help our customers improve their competitiveness through on-time delivery of their preferred products and services.</li>
+      </ol>
+    </article>
+    <article class="mv-card reveal">
+      <h3><span class="mono">V</span>Vision</h3>
+      <ol>
+        <li>Reliable and dedicated to providing preferred materials, products and services to engineering and construction firms.</li>
+        <li>Build a legacy of excellence and become part of the fast-growing construction industry.</li>
+      </ol>
+      <table class="title-block">
+        <caption class="mono">Business operation</caption>
+        <tr><th>Business Permit No.</th><td>00000000</td></tr>
+        <tr><th>DTI Certificate No.</th><td>0000000</td></tr>
+        <tr><th>Certificate of Registration (OCN)</th><td>000RC00000000000000</td></tr>
+        <tr><th>TIN (VAT registered)</th><td>000-000-000-00000</td></tr>
+        <tr><th>Bank of reference</th><td>Sample Bank — Main Branch</td></tr>
+      </table>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no mono">02 — Products offered</span>
+      <h2 data-split>Six supply lines. One purchase order.</h2>
+    </div>
+    <div class="tilt-grid" id="tiltGrid"></div>
+  </div>
+</section>
+
+<!-- ============ MATERIALS (3D) ============ -->
+<section class="materials" id="materials">
+  <div class="wrap materials-grid">
+    <div class="viewer">
+      <canvas id="mat" aria-hidden="true"></canvas>
+      <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+      <div class="viewer-label"><span class="mono" id="matNo">M—01</span><b id="matName">Concrete Hollow Blocks</b></div>
+      <span class="viewer-hint mono">Drag to rotate</span>
+    </div>
+    <div class="materials-copy">
+      <span class="sec-no mono">03 — Construction products</span>
+      <h2 data-split>The right material is the first structural decision.</h2>
+      <p class="reveal">Choosing the right construction materials is a critical decision for any project. We bring the knowledge, expertise and quality stock you need — and help you make informed choices for the success, safety and sustainability of the build.</p>
+      <ul class="mat-list" id="matList">
+        <li><button data-mat="chb" class="on"><span class="mono">01</span>Concrete Hollow Blocks</button></li>
+        <li><button data-mat="nails"><span class="mono">02</span>Concrete Nails</button></li>
+        <li><button data-mat="cement"><span class="mono">03</span>Cement</button></li>
+        <li><button data-mat="aggregates"><span class="mono">04</span>Aggregates</button></li>
+        <li><button data-mat="paint"><span class="mono">05</span>Paint</button></li>
+        <li><button data-mat="wire"><span class="mono">06</span>GI Wires</button></li>
+        <li><button data-mat="glass"><span class="mono">07</span>Glass</button></li>
+        <li><button data-mat="tiles"><span class="mono">08</span>Tiles</button></li>
+        <li><button data-mat="pipes"><span class="mono">09</span>GI Pipes</button></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services wrap" id="services">
+  <div class="sec-head">
+    <span class="sec-no mono">04 — Services offered</span>
+    <h2 data-split>We don't just deliver it. We install it.</h2>
+  </div>
+  <div class="svc-layout">
+  <div class="house" id="houseStage">
+    <canvas id="house" aria-hidden="true"></canvas>
+    <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+    <div class="house-hud"><span class="mono" id="houseNo">Pick a service</span><b id="houseName">One house. Every trade we cover.</b></div>
+    <span class="house-hint mono">Drag to orbit</span>
+  </div>
+  <ol class="svc-list" id="svcList">
+    <li>Roll-Up Doors Welding &amp; Installation</li>
+    <li>Glass &amp; Aluminum Installation / Tinting</li>
+    <li>Water Treatment Piping &amp; Installation</li>
+    <li>Fire Detection &amp; Alarm System / CCTV Installation</li>
+    <li>Building Repair &amp; Renovation</li>
+    <li>Structural &amp; Architectural Works</li>
+    <li>Mechanical, Electrical &amp; Plumbing Works</li>
+    <li>Waterproofing Installation</li>
+    <li>Epoxy Flooring Installation</li>
+    <li>Interior Designs &amp; Fit-outs</li>
+    <li>Design &amp; Build</li>
+    <li>Other specialised construction services, as your project demands</li>
+  </ol>
+  </div>
+  <a href="#quote" class="svc-cta reveal">
+    <span>Contact us for a free consultation</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</section>
+
+<!-- ============ PROJECTS (3D ring) ============ -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="sec-head light">
+      <span class="sec-no mono">05 — Projects completed / ongoing</span>
+      <h2 data-split>Recent work across Cebu and beyond.</h2>
+    </div>
+  </div>
+  <div class="ring-stage" id="ringStage">
+    <div class="ring" id="ring"></div>
+  </div>
+  <div class="ring-ui wrap">
+    <button id="ringPrev" aria-label="Previous project"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+    <span class="mono"><b id="ringNow">01</b> / 07</span>
+    <button id="ringNext" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <span class="ring-hint mono">Drag to turn</span>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="voices wrap" id="voices">
+  <div class="sec-head">
+    <span class="sec-no mono">06 — Client testimonials</span>
+    <h2 data-split>What clients say after handover.</h2>
+  </div>
+  <div class="voice-stage">
+    <div class="voice-key" id="voiceKey">
+      <canvas id="keyGl" aria-hidden="true"></canvas>
+      <span class="mono voice-tag">Keys handed over</span>
+      <div class="voice-ui">
+        <button id="voicePrev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <span class="mono"><b id="voiceNow">01</b> / 03</span>
+        <button id="voiceNext" aria-label="Next testimonial"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="voice-deck" id="voiceDeck" tabindex="0" aria-label="Client testimonials">
+    <blockquote class="vcard">
+      <p>From the very beginning, their team displayed the utmost professionalism, expertise and dedication. I couldn't be happier with the results of our home renovation.</p>
+      <footer><b>Alex Reyes</b><span class="mono">Home renovation</span></footer>
+    </blockquote>
+    <blockquote class="vcard">
+      <p>Their attention to detail and commitment to quality stood out. They transformed our outdated space into a modern, functional masterpiece.</p>
+      <footer><b>Sam Garcia</b><span class="mono">Space renovation</span></footer>
+    </blockquote>
+    <blockquote class="vcard">
+      <p>From the initial consultation to the final nail, the team demonstrated professionalism, expertise and an unwavering commitment to quality.</p>
+      <footer><b>Jordan Lim</b><span class="mono">Construction services</span></footer>
+    </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote" id="quote">
+  <div class="wrap quote-grid">
+    <div class="quote-copy">
+      <span class="sec-no mono">07 — Request a quote</span>
+      <h2 data-split>Tell us what the site needs.</h2>
+      <p>Send the list, the drawings or just the idea. We'll come back with availability, lead time and a fair rate.</p>
+      <div class="truck" id="truckStage">
+        <canvas id="truckGl" aria-hidden="true"></canvas>
+        <div class="load-ui"><span class="mono" id="loadTxt">Loaded 0 / 5</span><div class="load-bar" id="loadBar"><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+      <p class="truck-hint mono">Each detail you fill in loads the truck</p>
+      <ul class="contact">
+        <li><span class="mono">Email</span><a href="mailto:hello@example.com">hello@example.com</a></li>
+        <li><span class="mono">Phone</span><a href="tel:+630000000000">0900 000 0000</a> <a href="tel:+630000000001">0900 000 0001</a></li>
+        <li><span class="mono">Office</span>Unit 00, Sample Building, 123 Sample Street, Lapu-Lapu City, Cebu 0000</li>
+      </ul>
+    </div>
+
+    <form class="qform" id="qform" novalidate>
+      <label class="full">Service required *
+        <select name="service" required>
+          <option value="">Select one</option>
+          <option>Construction Materials</option>
+          <option>Hardware</option>
+          <option>Joinery &amp; Interiors</option>
+          <option>Sanitaryware</option>
+          <option>Wood materials</option>
+        </select>
+      </label>
+      <label>First name *<input name="first" autocomplete="given-name" required></label>
+      <label>Middle name<input name="middle" autocomplete="additional-name"></label>
+      <label class="full">Last name *<input name="last" autocomplete="family-name" required></label>
+      <label class="full">Address<input name="address" autocomplete="street-address"></label>
+      <label>Email address *<input name="email" type="email" autocomplete="email" required></label>
+      <label>Phone number *<input name="phone" type="tel" autocomplete="tel" required></label>
+      <button class="btn btn-ink full magnetic" type="submit"><span>Request quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="form-note" id="formNote" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <canvas id="city" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="foot-top">
+      <p class="foot-tag">Innovate to build your visions with concrete results.</p>
+      <nav aria-label="Footer">
+        <a href="#top">Home</a><a href="#about">Company</a><a href="#products">Products</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#quote">Request a quote</a>
+      </nav>
+    </div>
+    <div class="foot-word" aria-hidden="true">BRIXON</div>
+    <div class="foot-base mono">
+      <span>© <span id="yr"></span> Brixon Construction Materials Trading &amp; Services</span>
+      <span>Lapu-Lapu City, Cebu, Philippines</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script type="module" src="scene.js"></script>
+<script type="module" src="house.js"></script>
+<script type="module" src="products3d.js"></script>
+<script type="module" src="about3d.js"></script>
+<script type="module" src="contact3d.js"></script>
+</body>
+</html>
