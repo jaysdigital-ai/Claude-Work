@@ -1,4 +1,4 @@
-/* Brixon — testimonials (card deck + swinging handover keys) and quote form (truck that loads as you type) */
+/* Brixon — testimonials (card deck + swinging handover keys) and the quote form (a glass tower that rises as you fill it in) */
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
@@ -127,100 +127,142 @@ function keys() {
     camera.position.set(mx * 3.2, .9, R); camera.lookAt(0, .55, 0);
   });
 }
-
 /* =====================================================================
-   QUOTE — every completed field loads the truck; a sent request drives it off
+   QUOTE — a glass tower rises one storey for every detail you complete
    ===================================================================== */
-function truck() {
-  const canvas = document.getElementById('truckGl'), form = document.getElementById('qform');
+function tower() {
+  const canvas = document.getElementById('towerGl'), form = document.getElementById('qform');
   if (!canvas || !form) return;
-  const st = stageFor(canvas, 26), { scene, camera } = st;
-  scene.environmentIntensity = .7;
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xd9a400, 1.0));
-  const sun = new THREE.DirectionalLight(0xffffff, 2.3); sun.position.set(5, 11, 8); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
-  Object.assign(sun.shadow.camera, { left: -9, right: 9, top: 7, bottom: -5, near: 1, far: 40 }); sun.shadow.radius = 5; sun.shadow.bias = -0.0006; scene.add(sun);
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 30), new THREE.ShadowMaterial({ opacity: .26 })); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  const st = stageFor(canvas, 27), { scene, camera, renderer } = st;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+  scene.environmentIntensity = .8;
+  scene.add(new THREE.HemisphereLight(0x9fb8d0, 0x0a0d10, .55));
+  const key = new THREE.DirectionalLight(0xffe4bd, 2.8); key.position.set(8, 16, 10); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+  Object.assign(key.shadow.camera, { left: -12, right: 12, top: 24, bottom: -6, near: 1, far: 70 }); key.shadow.radius = 6; key.shadow.bias = -0.0005; key.shadow.normalBias = .03; scene.add(key);
+  const rim = new THREE.DirectionalLight(0x5aa9ff, 2.4); rim.position.set(-10, 7, -9); scene.add(rim);
+  const glow = new THREE.PointLight(0xffc60a, 0, 28, 1.6); scene.add(glow);
 
-  const M = { ink: std(INK, .55), paper: std(PAPER, .45), blue: std(B, .45), timber: std(0xb98a5a, .75), steel: std(0xbfc5ca, .35, .9), block: std(0xcfc9bc, 1), glass: std(0x10161b, .1, .6), red: std(0xd8321f, .5), bag: std(0xe2d8bf, .95) };
-  const rig = new THREE.Group(); scene.add(rig);           // whole truck: moves along x
-  const body = new THREE.Group(); rig.add(body);           // sprung mass: dips under load
-  // chassis + bed
-  box(body, M.ink, 6.2, .22, 1.5, -.1, .82, 0);
-  box(body, M.timber, 4.1, .12, 2.1, -1.05, 1.0, 0);
-  [-1.02, 1.02].forEach(z => box(body, M.ink, 4.1, .34, .07, -1.05, 1.22, z)); box(body, M.ink, .07, .34, 2.1, -3.08, 1.22, 0);
-  box(body, M.ink, .1, 1.15, 2.1, .98, 1.58, 0); // headboard
-  for (let i = 0; i < 4; i++) box(body, M.steel, .04, .9, .04, .92, 1.6, -.78 + i * .52);
-  // cab
-  box(body, M.paper, 1.7, 1.55, 2.0, 1.95, 1.7, 0); box(body, M.paper, .55, .7, 2.0, 3.03, 1.27, 0);
-  box(body, M.glass, .06, .72, 1.7, 2.81, 2.02, 0); [-1.005, 1.005].forEach(z => box(body, M.glass, .95, .62, .03, 2.15, 2.06, z));
-  box(body, M.blue, 1.72, .16, 2.02, 1.95, 1.28, 0);
-  box(body, M.ink, .14, .3, 2.1, 3.33, .92, 0); [-.72, .72].forEach(z => box(body, M.paper, .05, .16, .3, 3.31, 1.26, z));
-  [-.7, .7].forEach(z => box(body, M.red, .05, .14, .26, -3.2, .86, z));
-  box(body, M.ink, .5, .5, .5, .35, .62, .82); // tank
-  // wheels
-  const wheels = [];
-  [[2.25, 1], [2.25, -1], [-1.5, 1], [-1.5, -1], [-2.45, 1], [-2.45, -1]].forEach(([x, s]) => { const w = new THREE.Group(); w.position.set(x, .5, s * .95); rig.add(w);
-    put(w, new THREE.CylinderGeometry(.5, .5, .34, 28), M.ink).rotation.x = Math.PI / 2; put(w, new THREE.CylinderGeometry(.24, .24, .36, 18), M.steel).rotation.x = Math.PI / 2;
-    box(w, M.ink, .1, .44, .37, 0, 0, 0); wheels.push(w); });
+  const W = 3.6, D = 3.0, H = 3.2, NL = 5, TW = .1;
+  const concrete = std(0xcdc8bc, .85), core = std(0x39434b, .8), dark = std(0x10161b, .4, .8), spandrel = std(0x1c2833, .3, .7), steel = std(0xc3c9ce, .3, 1);
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
 
-  // cargo: slot 0 depends on the chosen service, the rest are fixed
-  const bedY = 1.06, slots = [[-2.45, 0], [-1.5, .5], [-1.5, -.5], [-.45, .5], [-.45, -.5]];
-  const cargo = slots.map(([x, z]) => { const g = new THREE.Group(); g.position.set(x, bedY, z); g.visible = false; body.add(g); return { g, on: false, k: 0, v: 0 }; });
-  const svc = {};
-  const variant = (name, build) => { const g = new THREE.Group(); build(g); g.visible = false; cargo[0].g.add(g); svc[name] = g; };
-  variant('Construction Materials', g => { for (let l = 0; l < 3; l++) for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) box(g, l === 2 && i ? std(Y, .5) : M.block, .5, .26, .82, -.26 + i * .52, .13 + l * .27, -.42 + j * .86); });
-  variant('Hardware', g => { box(g, M.blue, 1.0, .7, 1.7, 0, .35, 0); box(g, M.ink, 1.04, .1, 1.74, 0, .52, 0); [-.5, .5].forEach(z => box(g, M.steel, .3, .08, .08, 0, .78, z)); box(g, M.steel, .06, .06, 1.1, 0, .82, 0); });
-  variant('Joinery & Interiors', g => { for (let l = 0; l < 5; l++) box(g, l % 2 ? std(0xa97a4c, .7) : M.timber, 1.0, .13, 1.8, (l % 2) * .04, .07 + l * .14, 0); [-.6, .6].forEach(z => box(g, M.ink, 1.06, .74, .05, 0, .37, z)); });
-  variant('Sanitaryware', g => { box(g, M.timber, 1.0, .1, 1.8, 0, .05, 0); [-.5, .5].forEach(z => { put(g, new THREE.CylinderGeometry(.34, .26, .5, 28), M.paper, 0, .35, z); put(g, new THREE.TorusGeometry(.33, .05, 10, 28), M.paper, 0, .6, z).rotation.x = Math.PI / 2; }); });
-  variant('Wood materials', g => { [[-.24, .22, 0], [.24, .22, 0], [0, .62, 0]].forEach(([x, y]) => { const l = put(g, new THREE.CylinderGeometry(.22, .22, 1.8, 18), std(0x8a6a44, .9), x, y, 0); l.rotation.x = Math.PI / 2; [-.905, .905].forEach(z => put(g, new THREE.CylinderGeometry(.2, .2, .01, 18), std(0xd9b98b, .8), x, y, z).rotation.x = Math.PI / 2); }); });
-  { const g = cargo[1].g; box(g, M.timber, .8, .72, .8, 0, .36, 0); [[.41, 0], [-.41, 0]].forEach(([x]) => box(g, M.ink, .02, .74, .82, x, .37, 0)); box(g, M.ink, .82, .06, .82, 0, .72, 0); }
-  { const g = cargo[2].g; for (let l = 0; l < 4; l++) { const b = box(g, M.bag, .82, .19, .6, 0, .1 + l * .19, 0); b.rotation.y = l % 2 ? .12 : -.1; box(g, l % 2 ? M.blue : std(Y, .6), .2, .195, .61, 0, .1 + l * .19, 0).rotation.y = b.rotation.y; } }
-  { const g = cargo[3].g; [-.2, .2].forEach((x, i) => { put(g, new THREE.CylinderGeometry(.19, .19, .78, 24), i ? M.blue : M.ink, x, .39, i ? .1 : -.1); put(g, new THREE.TorusGeometry(.195, .02, 6, 24), M.steel, x, .55, i ? .1 : -.1).rotation.x = Math.PI / 2; }); }
-  { const g = cargo[4].g; box(g, M.ink, .8, .6, .8, 0, .3, 0); box(g, M.paper, .82, .12, .82, 0, .3, 0); for (let i = 0; i < 4; i++) { const p = put(g, new THREE.CylinderGeometry(.045, .045, 1.3, 12), M.steel, -.24 + i * .16, .66, 0); p.rotation.x = Math.PI / 2; } }
+  // ground: shadow catcher, plinth and a site-plan target
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(70, 70), new THREE.ShadowMaterial({ opacity: .5 })); floor.rotation.x = -Math.PI / 2; floor.position.y = -.35; floor.receiveShadow = true; scene.add(floor);
+  const ring = (r, o) => { const m = new THREE.Mesh(new THREE.RingGeometry(r, r + .035, 160), new THREE.MeshBasicMaterial({ color: Y, transparent: true, opacity: o, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.y = -.34; scene.add(m); return m; };
+  ring(5.8, .38); ring(8.2, .2); ring(11, .1);
+  const pulse = ring(5.8, 0);
+  box(scene, std(0x182026, .45, .35), 5.8, .35, 5.1, 0, -.175, 0);
+  box(scene, std(Y, .4, 0, { emissive: Y, emissiveIntensity: .7 }), 5.82, .025, 5.12, 0, -.02, 0).castShadow = false;
 
-  // form → load
-  const txt = document.getElementById('loadTxt'), bar = [...document.querySelectorAll('#loadBar i')];
-  let dip = 0, dipV = 0, state = 'idle', sT = 0, x = 0;
+  // the storeys
+  const L = [];
+  for (let i = 0; i < NL; i++) {
+    const g = new THREE.Group(); g.position.y = i * H; g.rotation.y = i * TW; scene.add(g);
+    const FH = H - .22;
+    const ghostMat = new THREE.LineBasicMaterial({ color: Y, transparent: true, opacity: .42, depthWrite: false });
+    const ghost = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(W + .56, H, D + .56)), ghostMat); ghost.position.y = H / 2; g.add(ghost);
+    const slab = box(g, concrete, W + .56, .22, D + .56, 0, .11, 0);
+    const fr = new THREE.Group(); fr.position.y = .22; g.add(fr);
+    box(fr, spandrel, W + .03, .46, D + .03, 0, .23, 0);
+    box(fr, core, 1.1, FH, 1.1, .55, FH / 2, -.35);
+    box(fr, dark, W + .05, .07, D + .05, 0, FH - .035, 0);
+    for (let k = 0; k <= 4; k++) [-1, 1].forEach(s => box(fr, dark, .06, FH, .06, -W / 2 + k * W / 4, FH / 2, s * (D / 2 + .02)));
+    for (let k = 1; k < 3; k++) [-1, 1].forEach(s => box(fr, dark, .06, FH, .06, s * (W / 2 + .02), FH / 2, -D / 2 + k * D / 3));
+    const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x6fb0e6, roughness: .05, metalness: .25, transparent: true, opacity: 0, envMapIntensity: 2.4, clearcoat: 1, side: THREE.DoubleSide, depthWrite: false });
+    const glass = put(fr, new THREE.BoxGeometry(W, FH - .46, D), glassMat, 0, .46 + (FH - .46) / 2, 0); glass.castShadow = false; glass.receiveShadow = false;
+    const lightMat = new THREE.MeshStandardMaterial({ color: 0x2a2f33, emissive: 0xffd9a0, emissiveIntensity: 0, roughness: .6 });
+    box(fr, lightMat, W - .5, .04, D - .5, 0, FH - .14, 0).castShadow = false;
+    L.push({ g, fr, slab, glass, glassMat, ghostMat, lightMat, p: 0, lit: 0 });
+  }
+
+  // crown: roof, edge light, plant room and a beacon mast
+  const crown = new THREE.Group(); crown.position.y = NL * H; crown.rotation.y = (NL - 1) * TW; scene.add(crown);
+  const roof = box(crown, concrete, W + .56, .26, D + .56, 0, .13, 0);
+  const edgeMat = std(Y, .4, 0, { emissive: Y, emissiveIntensity: 1.3 });
+  const edge = new THREE.Group(); edge.position.y = .26; crown.add(edge);
+  [-1, 1].forEach(s => { box(edge, edgeMat, W + .56, .08, .07, 0, .04, s * (D / 2 + .25)); box(edge, edgeMat, .07, .08, D + .56, s * (W / 2 + .25), .04, 0); });
+  box(crown, dark, 1.5, .55, 1.1, -.9, .55, .5);
+  const mast = new THREE.Group(); mast.position.set(.9, .26, -.5); crown.add(mast);
+  put(mast, new THREE.CylinderGeometry(.04, .055, 3.2, 12), steel, 0, 1.6, 0);
+  const beaconMat = std(Y, .3, 0, { emissive: Y, emissiveIntensity: 2 });
+  const beacon = put(mast, new THREE.SphereGeometry(.12, 16, 12), beaconMat, 0, 3.3, 0); beacon.castShadow = false;
+  let crownK = 0;
+
+  // drifting dust in the light
+  const NP = 90, pp = new Float32Array(NP * 3), pv = new Float32Array(NP);
+  for (let i = 0; i < NP; i++) { const a = Math.random() * Math.PI * 2, r = 3.2 + Math.random() * 8; pp.set([Math.cos(a) * r, Math.random() * 24 - 1, Math.sin(a) * r], i * 3); pv[i] = .12 + Math.random() * .3; }
+  const pgeo = new THREE.BufferGeometry(); pgeo.setAttribute('position', new THREE.BufferAttribute(pp, 3));
+  scene.add(new THREE.Points(pgeo, new THREE.PointsMaterial({ color: Y, size: .1, transparent: true, opacity: .55, depthWrite: false, blending: THREE.AdditiveBlending })));
+
+  // form state -> how many storeys stand
+  const bar = [...document.querySelectorAll('#towerBar i')], txt = document.getElementById('towerTxt'), cnt = document.getElementById('towerCount');
+  const MSG = ['Start your brief and watch it rise', 'Foundations laid', 'Frame going up', 'Facade taking shape', 'Almost topped out', 'Topped out. Ready to send'];
+  let n = 0, state = 'idle', sT = 0, flash = 0;
+  const render = () => {
+    const k = state === 'sent' ? NL : n;
+    bar.forEach((b, i) => b.classList.toggle('on', i < k));
+    cnt.textContent = k;
+    txt.textContent = state === 'sent' ? 'Request received. Your project is on our desk.' : MSG[n];
+    form.classList.toggle('ready', state === 'idle' && n === NL);
+  };
   const read = () => {
-    const f = form.elements, done = [f.service.value !== '', f.first.value.trim() !== '', f.last.value.trim() !== '', f.email.value.trim() !== '' && f.email.checkValidity(), f.phone.value.trim() !== ''];
-    Object.entries(svc).forEach(([name, g]) => g.visible = name === f.service.value);
-    done.forEach((d, i) => { const c = cargo[i]; if (d && !c.on) { c.k = 0; c.v = 0; } c.on = d; bar[i].classList.toggle('on', d); });
-    const n = done.filter(Boolean).length;
-    txt.textContent = state === 'idle' ? (n === 5 ? 'Fully loaded — ready to send' : `Loaded ${n} / 5`) : txt.textContent;
+    if (state === 'sent') return;
+    const f = form.elements;
+    n = [f.service.value !== '', f.first.value.trim() !== '', f.last.value.trim() !== '', f.email.value.trim() !== '' && f.email.checkValidity(), f.phone.value.replace(/\D/g, '').length >= 7].filter(Boolean).length;
+    render();
   };
   form.addEventListener('input', read); form.addEventListener('change', read);
-  let prevSvc = '';
-  form.elements.service.addEventListener('change', e => { if (e.target.value && prevSvc && cargo[0].on) { cargo[0].k = 0; } prevSvc = e.target.value; });
-  form.addEventListener('submit', () => { if (document.getElementById('formNote').classList.contains('ok') && state === 'idle') { state = 'leave'; sT = 0; txt.textContent = 'On its way'; bar.forEach(b => b.classList.add('on')); } });
+  form.addEventListener('quote:sent', () => { state = 'sent'; sT = 0; flash = 1; render(); });
+  form.addEventListener('quote:reset', () => { state = 'idle'; read(); });
   read();
 
   let mx = 0, tx = 0;
   const zone = canvas.parentElement;
   zone.addEventListener('pointermove', e => { const r = zone.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - .5; });
   zone.addEventListener('pointerleave', () => tx = 0);
-  zone.addEventListener('click', () => { dipV -= 1.6; }); // honk-bounce
+  zone.addEventListener('click', () => { flash = 1; });
 
   st.run((dt, t) => {
-    // cargo drops in with a small bounce and shoves the suspension
-    cargo.forEach(c => {
-      if (c.on) { const before = c.k; c.k = Math.min(1, c.k + dt * 2.4); if (before < .62 && c.k >= .62) dipV -= 1.5; } else c.k = Math.max(0, c.k - dt * 4);
-      const k = c.k, fall = k < .62 ? Math.pow(k / .62, 2) : 1, b = k < .62 ? 0 : Math.sin((k - .62) / .38 * Math.PI) * .12;
-      c.g.visible = k > .001; c.g.position.y = bedY + (c.on ? (1 - fall) * 3.4 + b : 0); c.g.scale.setScalar(c.on ? 1 : k);
-      if (state !== 'idle') { c.g.position.y = bedY; c.g.scale.setScalar(1); c.g.visible = true; }
+    if (state === 'sent') sT += dt;
+    const shown = state === 'sent' ? NL : n;
+    L.forEach((lv, i) => {
+      const target = i < shown ? 1 : 0, rate = reduce ? 99 : (target ? .85 : 1.7), was = lv.p;
+      lv.p += clamp(target - lv.p, -rate * dt, rate * dt);
+      if (was < .02 && lv.p >= .02) flash = 1;
+      const p = lv.p, slabK = easeOut(smooth(0, .4, p)), frK = easeOut(smooth(.22, .72, p)), glK = smooth(.55, .95, p), lgK = smooth(.8, 1, p);
+      lv.slab.visible = p > .001; lv.slab.position.y = .11 + (1 - slabK) * 1.8;
+      lv.fr.visible = p > .23; lv.fr.scale.y = Math.max(.001, frK);
+      lv.glass.visible = glK > .001; lv.glassMat.opacity = .3 * glK;
+      lv.ghostMat.opacity = .42 * (1 - smooth(0, .5, p));
+      lv.lit += (lgK * (shown === NL ? 3.4 : 1.6) - lv.lit) * Math.min(1, dt * 3);
+      lv.lightMat.emissiveIntensity = lv.lit;
     });
-    dipV += (-70 * dip - 9 * dipV) * dt; dip += dipV * dt;
-    let vel = 0;
-    if (state === 'leave') { sT += dt; const p = sT * sT * 9; vel = sT * 18; x = p; if (sT > 1.7) { state = 'return'; sT = 0; cargo.forEach(c => { c.on = false; c.k = 0; }); x = -24; } }
-    else if (state === 'return') { sT += dt; const k = clamp(sT / 1.6), e = 1 - Math.pow(1 - k, 3); vel = (1 - k) * 22; x = -24 * (1 - e); cargo.forEach(c => c.g.visible = false);
-      if (k >= 1) { state = 'idle'; x = 0; read(); } }
-    rig.position.x = x;
-    wheels.forEach(w => w.rotation.z -= vel * dt * 2);
-    body.position.y = dip * .12 + (reduce ? 0 : Math.sin(t * 31) * .004);
-    body.rotation.z = dip * .015 + (state === 'leave' ? Math.min(.03, sT * .05) : 0);
-    mx += (tx - mx) * .06;
-    const az = .62 + mx * .5, R = 11 * Math.max(1, 1.9 / st.aspect);
-    camera.position.set(Math.sin(az) * R, 3.3, Math.cos(az) * R); camera.lookAt(-.1, 1.2, 0);
+
+    const crownTarget = shown === NL && L[NL - 1].p > .95 ? 1 : 0;
+    crownK += clamp(crownTarget - crownK, -dt * 1.6, dt * 1.2);
+    const ck = easeOut(crownK);
+    crown.visible = crownK > .001; roof.position.y = .13 + (1 - ck) * 1.6; edge.scale.set(1, Math.max(.001, ck), 1);
+    mast.scale.y = Math.max(.001, easeOut(smooth(.35, 1, crownK))); beaconMat.emissiveIntensity = crownK > .8 ? (Math.sin(t * 4) > .3 ? 2.6 : .3) : 0;
+
+    flash = Math.max(0, flash - dt * 1.3);
+    glow.position.set(4.5, Math.max(1.2, (shown - .4) * H), 6);
+    glow.intensity = flash * 110 + (state === 'sent' ? 18 : 0);
+    const pk = state === 'sent' ? (sT % 2.4) / 2.4 : 1;
+    pulse.scale.setScalar(1 + pk * 1.9); pulse.material.opacity = state === 'sent' && sT < 7.2 ? (1 - pk) * .75 : 0;
+
+    const pa = pgeo.attributes.position;
+    for (let i = 0; i < NP; i++) { let y = pa.getY(i) + pv[i] * dt; if (y > 23) y = -1; pa.setY(i, y); }
+    pa.needsUpdate = true;
+
+    mx += (tx - mx) * .05;
+    const orbit = (reduce ? 0 : Math.sin(t * .17) * .28) + (state === 'sent' ? easeOut(clamp(sT / 3.5)) * 1.1 : 0);
+    const az = .62 + orbit + mx * .55;
+    const R = 43 * Math.max(1, .95 / st.aspect) * (1 + (state === 'sent' ? .07 * easeOut(clamp(sT / 3)) : 0));
+    camera.position.set(Math.sin(az) * R, 5, Math.cos(az) * R); camera.lookAt(0, 8.6, 0);
+    const cw = canvas.clientWidth, ch = canvas.clientHeight;
+    if (cw && ch) { if (st.aspect > 1.25) camera.setViewOffset(cw, ch, -cw * .2, ch * .03, cw, ch); else camera.setViewOffset(cw, ch, 0, ch * .085, cw, ch); }
   });
 }
 
-deck(); keys(); truck();
+deck(); keys(); tower();

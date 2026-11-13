@@ -268,43 +268,73 @@
 
 <!-- ============ QUOTE ============ -->
 <section class="quote" id="quote">
-  <div class="wrap quote-grid">
-    <div class="quote-copy">
-      <span class="sec-no mono">07 — Request a quote</span>
-      <h2 data-split>Tell us what the site needs.</h2>
-      <p>Send the list, the drawings or just the idea. We'll come back with availability, lead time and a fair rate.</p>
-      <div class="truck" id="truckStage">
-        <canvas id="truckGl" aria-hidden="true"></canvas>
-        <div class="load-ui"><span class="mono" id="loadTxt">Loaded 0 / 5</span><div class="load-bar" id="loadBar"><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="quote-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="quote-grid">
+
+      <div class="quote-head">
+        <span class="sec-no mono">07 — Request a quote</span>
+        <h2 data-split>Tell us what the site needs.</h2>
+        <p class="quote-lede reveal">Send the list, the drawings or just the idea. We'll come back with availability, lead time and a fair rate.</p>
+        <ul class="assure reveal">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Reply within one business day</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fair, market-competitive rates</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>On-time delivery and after-sales support</li>
+        </ul>
       </div>
-      <p class="truck-hint mono">Each detail you fill in loads the truck</p>
-      <ul class="contact">
-        <li><span class="mono">Email</span><a href="mailto:hello@example.com">hello@example.com</a></li>
-        <li><span class="mono">Phone</span><a href="tel:+630000000000">0900 000 0000</a> <a href="tel:+630000000001">0900 000 0001</a></li>
-        <li><span class="mono">Office</span>Unit 00, Sample Building, 123 Sample Street, Lapu-Lapu City, Cebu 0000</li>
-      </ul>
+
+      <div class="tower reveal" id="towerStage">
+        <canvas id="towerGl" aria-hidden="true"></canvas>
+        <div class="tower-ui">
+          <div class="tower-top"><span class="mono">Your project takes shape</span><span class="mono"><b id="towerCount">0</b> / 5</span></div>
+          <div class="tower-bar" id="towerBar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <p id="towerTxt">Start your brief and watch it rise</p>
+        </div>
+      </div>
+
+      <form class="qform reveal" id="qform" novalidate>
+        <div class="qform-head"><h3>Request a quote</h3><span class="mono">About one minute</span></div>
+
+        <fieldset class="chips">
+          <legend>What do you need? <em>*</em></legend>
+          <div class="chips-row">
+            <label class="chip"><input type="radio" name="service" value="Construction Materials" required><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>Construction Materials</span></label>
+            <label class="chip"><input type="radio" name="service" value="Hardware"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><circle cx="12" cy="12" r="3"/></svg>Hardware</span></label>
+            <label class="chip"><input type="radio" name="service" value="Joinery &amp; Interiors"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18"/><circle cx="15" cy="12" r=".8"/></svg>Joinery &amp; Interiors</span></label>
+            <label class="chip"><input type="radio" name="service" value="Sanitaryware"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg>Sanitaryware</span></label>
+            <label class="chip"><input type="radio" name="service" value="Wood materials"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1"/></svg>Wood materials</span></label>
+          </div>
+        </fieldset>
+
+        <div class="qgrid">
+          <label class="fld"><input name="first" autocomplete="given-name" placeholder=" " required><span>First name *</span></label>
+          <label class="fld"><input name="last" autocomplete="family-name" placeholder=" " required><span>Last name *</span></label>
+          <label class="fld"><input name="email" type="email" autocomplete="email" placeholder=" " required><span>Email address *</span></label>
+          <label class="fld"><input name="phone" type="tel" autocomplete="tel" placeholder=" " required><span>Phone number *</span></label>
+          <label class="fld full"><input name="address" autocomplete="street-address" placeholder=" "><span>Project location <small>optional</small></span></label>
+          <label class="fld full"><textarea name="details" rows="3" placeholder=" "></textarea><span>Project details <small>optional</small></span></label>
+        </div>
+
+        <button class="btn-send magnetic" type="submit"><span>Request my quote</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
+        <p class="form-note" id="formNote" role="alert"></p>
+        <p class="fine"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Free and no obligation. Your details are only used to prepare your quote.</p>
+
+        <div class="sent" id="sent" role="status" aria-live="polite">
+          <svg class="sent-check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M19 33l9 9 17-19"/></svg>
+          <h3>Request received</h3>
+          <p>Thank you, <b id="sentName"></b>. We'll reply to <b id="sentMail"></b> within one business day with availability, lead time and a fair rate.</p>
+          <dl><div><dt class="mono">Reference</dt><dd id="sentRef"></dd></div><div><dt class="mono">Service</dt><dd id="sentSvc"></dd></div></dl>
+          <button type="button" class="again" id="sentAgain">Send another request</button>
+          <small>This is a demo, so nothing was actually sent.</small>
+        </div>
+      </form>
     </div>
 
-    <form class="qform" id="qform" novalidate>
-      <label class="full">Service required *
-        <select name="service" required>
-          <option value="">Select one</option>
-          <option>Construction Materials</option>
-          <option>Hardware</option>
-          <option>Joinery &amp; Interiors</option>
-          <option>Sanitaryware</option>
-          <option>Wood materials</option>
-        </select>
-      </label>
-      <label>First name *<input name="first" autocomplete="given-name" required></label>
-      <label>Middle name<input name="middle" autocomplete="additional-name"></label>
-      <label class="full">Last name *<input name="last" autocomplete="family-name" required></label>
-      <label class="full">Address<input name="address" autocomplete="street-address"></label>
-      <label>Email address *<input name="email" type="email" autocomplete="email" required></label>
-      <label>Phone number *<input name="phone" type="tel" autocomplete="tel" required></label>
-      <button class="btn btn-ink full magnetic" type="submit"><span>Request quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      <p class="form-note" id="formNote" role="status"></p>
-    </form>
+    <ul class="contact-strip reveal">
+      <li><span class="mono">Email</span><a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li><span class="mono">Phone</span><span><a href="tel:+630000000000">0900 000 0000</a><a href="tel:+630000000001">0900 000 0001</a></span></li>
+      <li><span class="mono">Office</span><address>Unit 00, Sample Building, 123 Sample Street, Lapu-Lapu City, Cebu 0000</address></li>
+    </ul>
   </div>
 </section>
 

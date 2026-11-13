@@ -61,7 +61,7 @@
       });
     });
     // gentle tilt on the about frame and the quote form
-    [['.frame', '.frame-inner', 7], ['.qform', '.qform', 3]].forEach(([zone, target, amt]) => {
+    [['.frame', '.frame-inner', 7]].forEach(([zone, target, amt]) => {
       const z = $(zone), t = $(target);
       z.addEventListener('pointermove', e => {
         const r = z.getBoundingClientRect();
@@ -232,16 +232,43 @@
 
   /* ---------- quote form (demo: nothing is sent) ---------- */
   const form = $('#qform'), note = $('#formNote');
+  const problems = () => {
+    const bad = [];
+    if (!form.elements.service.value) bad.push($('.chips', form));
+    ['first', 'last'].forEach(n => { const f = form.elements[n]; if (!f.value.trim()) bad.push(f.closest('.fld')); });
+    const em = form.elements.email; if (!em.value.trim() || !em.checkValidity()) bad.push(em.closest('.fld'));
+    const ph = form.elements.phone; if (ph.value.replace(/\D/g, '').length < 7) bad.push(ph.closest('.fld'));
+    return bad;
+  };
   form.addEventListener('submit', e => {
     e.preventDefault();
-    let ok = true;
-    $$('[required]', form).forEach(f => { const bad = !f.checkValidity(); f.classList.toggle('bad', bad); if (bad) ok = false; });
-    if (!ok) { note.className = 'form-note err'; note.textContent = 'Please complete the highlighted fields.'; return; }
-    note.className = 'form-note ok';
-    note.textContent = `Thank you, ${form.first.value.trim()}. Your request is in — we'll be in touch shortly.`;
+    $$('.bad', form).forEach(x => x.classList.remove('bad'));
+    const bad = problems();
+    if (bad.length) {
+      bad.forEach(x => x.classList.add('bad'));
+      note.textContent = bad.length === 1 ? 'One detail still needs your attention.' : `${bad.length} details still need your attention.`;
+      form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
+      const first = bad[0].querySelector('input, textarea'); if (first) first.focus();
+      return;
+    }
+    note.textContent = '';
+    $('#sentName').textContent = form.elements.first.value.trim();
+    $('#sentMail').textContent = form.elements.email.value.trim();
+    $('#sentSvc').textContent = form.elements.service.value;
+    $('#sentRef').textContent = `BRX-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    form.classList.add('is-sent');
+    form.dispatchEvent(new CustomEvent('quote:sent'));
     form.reset();
   });
-  form.addEventListener('input', e => e.target.classList.remove('bad'));
+  form.addEventListener('input', e => {
+    const slot = e.target.closest('.fld, .chips'); if (slot) slot.classList.remove('bad');
+    if (!$('.bad', form)) note.textContent = '';
+  });
+  $('#sentAgain').addEventListener('click', () => {
+    form.classList.remove('is-sent');
+    form.dispatchEvent(new CustomEvent('quote:reset'));
+    const f = $('.chip input', form); if (f) f.focus({ preventScroll: true });
+  });
 
   $('#yr').textContent = new Date().getFullYear();
 })();
