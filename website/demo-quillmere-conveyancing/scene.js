@@ -84,7 +84,7 @@ function start() {
       W: 5.2, D: 3.6, storeys: 1, wall: 0xf4efe4, roofC: 0x1d3562, doorC: 0x6fae3d, roof: 'gable', rise: 1.55,
       front: 'veranda', boards: true, chimney: true, tank: true, hoist: true, rooms: GROUND,
       spec: { name: 'The weatherboard cottage', sub: 'Single storey · built around 1950',
-        facts: [['Bedrooms', '2'], ['Bathrooms', '1'], ['Land', '612 m²'], ['Zoning', 'General Residential']],
+        facts: [['Bedrooms', '2'], ['Bathrooms', '1'], ['Land', '612 m²'], ['Zoning', 'R2 Low Density Residential']],
         checks: ['Whether the rainwater tank and wood heater were ever approved', 'That the side fence really sits on the title boundary', 'Any easement for the sewer line across the back yard'] },
     },
     family: {
@@ -92,7 +92,7 @@ function start() {
       front: 'porch', boards: true, chimney: true,
       rooms: [['Hall & stairs', -0.31, 0, 0, 'stairs'], ['Living', 0.2, 0.25, 0, 'sofa'], ['Kitchen', 0.2, -0.3, 0, 'kitchen'], ...UPPER],
       spec: { name: 'The family two-storey', sub: 'Two storeys · weatherboard',
-        facts: [['Bedrooms', '4'], ['Bathrooms', '2'], ['Land', '780 m²'], ['Zoning', 'General Residential']],
+        facts: [['Bedrooms', '4'], ['Bathrooms', '2'], ['Land', '780 m²'], ['Zoning', 'R2 Low Density Residential']],
         checks: ['That the second storey has its completion certificate', 'Building and plumbing permits for the upstairs bathroom', 'Whether the driveway crosses a neighbour’s title'] },
     },
     bungalow: {
@@ -100,7 +100,7 @@ function start() {
       front: 'porch', plinth: 0x9c7462,
       rooms: [['Bedrooms', -0.31, -0.05, 0, 'bed'], ['Living', 0.2, 0.25, 0, 'sofa'], ['Kitchen', 0.2, -0.3, 0, 'kitchen']],
       spec: { name: 'The brick bungalow', sub: 'Single storey · brick veneer, hip roof',
-        facts: [['Bedrooms', '3'], ['Bathrooms', '1'], ['Land', '705 m²'], ['Zoning', 'General Residential']],
+        facts: [['Bedrooms', '3'], ['Bathrooms', '1'], ['Land', '705 m²'], ['Zoning', 'R2 Low Density Residential']],
         checks: ['What stays with the house: blinds, the wood heater, the shed', 'Any mortgage or caveat to be discharged before settlement', 'Rates and land tax, paid up to the day'] },
     },
     townhouse: {
@@ -109,28 +109,28 @@ function start() {
       rooms: [['Entry & stairs', -0.31, 0, 0, 'stairs'], ['Living', 0.2, 0.25, 0, 'sofa'], ['Kitchen', 0.2, -0.3, 0, 'kitchen'], ...UPPER],
       spec: { name: 'The townhouse', sub: 'Two storeys · strata title',
         facts: [['Bedrooms', '3'], ['Bathrooms', '2'], ['Lot', '240 m²'], ['Title', 'Strata']],
-        checks: ['Body corporate levies, by-laws and minutes', 'Which walls and which car space are actually yours', 'The insurance the body corporate holds'] },
+        checks: ['Owners corporation levies, by-laws and minutes', 'Which walls and which car space are actually yours', 'The insurance the owners corporation holds'] },
     },
     modern: {
       W: 6.2, D: 3.8, storeys: 1, wall: 0x3d4350, roofC: 0x23272f, doorC: 0xc98f52, roof: 'skillion', gap: 0.75,
       front: 'none', plinth: 0x2a2e37, bushes: [[2.9, 3.2, 0.4], [3.6, 3.15, 0.3], [4.4, 3.2, 0.36]],
       rooms: [['Bedrooms', -0.31, -0.05, 0, 'bed'], ['Living', 0.2, 0.25, 0, 'sofa'], ['Kitchen', 0.2, -0.3, 0, 'kitchen']],
       spec: { name: 'The new build', sub: 'Single storey · finished last year',
-        facts: [['Bedrooms', '3'], ['Bathrooms', '2'], ['Land', '550 m²'], ['Zoning', 'General Residential']],
+        facts: [['Bedrooms', '3'], ['Bathrooms', '2'], ['Land', '550 m²'], ['Zoning', 'R2 Low Density Residential']],
         checks: ['Certificate of completion and the occupancy permit', 'That the builder’s warranty is still in force', 'Duty and adjustments, worked out to the dollar'] },
     },
     corner: {
       W: 5.6, D: 3.8, storeys: 1, wall: 0xdfe3d3, roofC: 0x8a4a3c, doorC: 0x2f4f7f, roof: 'hip', rise: 1.45,
       front: 'veranda', boards: true, hoist: true, rooms: GROUND,
       spec: { name: 'The corner block', sub: 'Single storey · veranda, hip roof',
-        facts: [['Bedrooms', '3'], ['Bathrooms', '1'], ['Land', '830 m²'], ['Zoning', 'General Residential']],
+        facts: [['Bedrooms', '3'], ['Bathrooms', '1'], ['Land', '830 m²'], ['Zoning', 'R2 Low Density Residential']],
         checks: ['Two street frontages mean two sets of setbacks', 'Whether the veranda was added later, and approved', 'The stormwater easement along the side boundary'] },
     },
     shop: {
       W: 5.6, D: 4.0, storeys: 1, wall: 0xf1ece2, roofC: 0x2a3550, doorC: 0x1d3562, roof: 'flat', front: 'awning', shopfront: true,
       plinth: 0x1d3562, bushes: [],
       rooms: [['Files', -0.31, -0.05, 0, 'shelves'], ['Front desk', 0.2, 0.25, 0, 'desk'], ['Meeting room', 0.2, -0.3, 0, 'table']],
-      spec: { name: 'Our shop', sub: 'Shop 1, 12 Sample Street, Lakeview',
+      spec: { name: 'Our shop', sub: 'Shop 1, 12 Sample Street, Sydney',
         facts: [['Open', 'Mon – Fri, 9 – 5'], ['Phone', '0491 570 156'], ['Parking', 'Out the front'], ['Kettle', 'Usually on']],
         head: 'What happens here', checks: ['Contracts get read before anyone signs them', 'Emily keeps every file on schedule', 'Questions get answered, however small'],
         note: 'Not to scale. The real one has more paperwork.' },
@@ -506,7 +506,7 @@ function start() {
         world.add(this.inst);
         this.v = new Float32Array(N);
         this.j = Array.from({ length: N }, (_, i) => [Math.sin(i * 12.9) * 0.035, Math.cos(i * 7.3) * 0.035, Math.sin(i * 3.1) * 3]);
-        this.n = Math.round((window.__duty || 23348) / 1000);
+        this.n = Math.round((window.__duty || 22087) / 1000);
         addEventListener('duty', e => { this.n = Math.min(N, Math.round(e.detail.duty / 1000)); });
         this.o = new THREE.Object3D();
       },
