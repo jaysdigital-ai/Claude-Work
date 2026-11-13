@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 320" role="img" aria-label="Placeholder staff portrait">
+  <rect width="250" height="320" fill="#dfe3d3"/>
+  <circle cx="125" cy="118" r="52" fill="#a9b39a"/>
+  <path d="M22 320 C22 236 68 196 125 196 C182 196 228 236 228 320 Z" fill="#4f8a25"/>
+  <path d="M103 197 L125 236 L147 197 Z" fill="#f3efe7"/>
+  <text x="125" y="304" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" letter-spacing="1.5" fill="#f3efe7" opacity=".8">SAMPLE PHOTO</text>
+</svg>
