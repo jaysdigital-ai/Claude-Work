@@ -1,5 +1,16 @@
 # The Digital Agila website
 
+## November 2026 redesign (current)
+Home, About, Services, Work, Demo projects (`demo-projects.html`), Blog (`blog/index.html`) and Contact use the new studio design.
+- Styles: `assets/style.css` + `assets/motion.css`. Scripts: `assets/motion.js` (reveals, menu), `assets/site.js` (hero animations, contact form), `assets/digital.js` (circuit lines, dot grid), `assets/agila-eagle.js` + `assets/vendor/three-r128.min.js` (the 3D eagle on Home and About).
+- Images for these pages live in `img/` (logo, Jayson's photo, work and demo screenshots).
+- The contact form posts to `/api/contact` (`functions/api/contact.js`), same as before.
+- Case study pages, service landing pages, the blog post, legal pages and the demos keep their earlier design.
+
+## Restoring the previous site
+The site exactly as it was before the redesign is saved on the branch `backup/live-site-2026-11-18` (commit 03284ff).
+To put it back live: merge that branch into `main`, or run `git checkout backup/live-site-2026-11-18 -- website` on `main` and commit.
+
 Static site: `index.html`, `about.html`, `services.html` and `contact.html`, with assets in `assets/`. It has no build step.
 
 ## Preview locally

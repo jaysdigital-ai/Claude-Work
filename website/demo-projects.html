@@ -1,407 +1,88 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Demo Projects: Showcase Builds by The Digital Agila</title>
-  <meta name="description" content="Demo projects by The Digital Agila: showcase builds we make to show what we can do, from interactive websites to AI automations. Open one and try it.">
-  <link rel="canonical" href="https://thedigitalagila.com/demo-projects">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#050318">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Digital Agila">
-  <meta property="og:title" content="Demo projects: what The Digital Agila can build">
-  <meta property="og:description" content="Demo projects by The Digital Agila: showcase builds we make to show what we can do, from interactive websites to AI automations. Open one and try it.">
-  <meta property="og:url" content="https://thedigitalagila.com/demo-projects">
-  <meta property="og:image" content="https://thedigitalagila.com/assets/img/og-image.jpg?v=20261110">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/img/favicon.svg?v=20261110" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261105">
-  <link rel="stylesheet" href="assets/css/gallery.css?v=20261105">
-  <link rel="stylesheet" href="assets/css/fx.css?v=20261105">
-  <link rel="stylesheet" href="assets/css/neo.css?v=20261106">
-  <link rel="stylesheet" href="assets/css/neo-pages.css?v=20261105">
-  <link rel="stylesheet" href="assets/css/future.css?v=20261129">
-  <link rel="stylesheet" href="assets/css/work.css?v=20261123">
-  <link rel="stylesheet" href="assets/css/landing.css?v=20261110">
-  <link rel="stylesheet" href="assets/css/demo.css?v=20261114">
-  <script>(function(){var d=document.documentElement;d.dataset.theme='a';try{if(!document.referrer||new URL(document.referrer).origin!==location.origin)d.classList.add('fx-direct')}catch(e){d.classList.add('fx-direct')}if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('js-anim')})();</script>
-  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "@id": "https://thedigitalagila.com/demo-projects#page",
-        "url": "https://thedigitalagila.com/demo-projects",
-        "name": "Demo projects",
-        "description": "Demo projects by The Digital Agila: showcase builds we make to show what we can do, from interactive websites to AI automations. Open one and try it.",
-        "isPartOf": {
-          "@type": "WebSite",
-          "name": "The Digital Agila",
-          "url": "https://thedigitalagila.com/"
-        },
-        "about": [
-          {
-            "@type": "Thing",
-            "name": "AI automation"
-          },
-          {
-            "@type": "Thing",
-            "name": "Website design"
-          }
-        ],
-        "publisher": {
-          "@type": "ProfessionalService",
-          "@id": "https://thedigitalagila.com/#business",
-          "name": "The Digital Agila",
-          "url": "https://thedigitalagila.com/"
-        },
-        "mainEntity": {
-          "@type": "ItemList",
-          "name": "Demo projects",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "url": "https://thedigitalagila.com/demo-dental-automation",
-              "name": "Dental clinic lead-to-appointment automation demo"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "url": "https://thedigitalagila.com/demo-brixon-construction/",
-              "name": "3D construction supplier website design demo"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "url": "https://thedigitalagila.com/demo-quillmere-conveyancing/",
-              "name": "Eight-page 3D conveyancing website design demo"
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "url": "https://thedigitalagila.com/demo-southerly-air/",
-              "name": "Nine-page heating and cooling (HVAC) website design demo"
-            },
-            {
-              "@type": "ListItem",
-              "position": 5,
-              "url": "https://thedigitalagila.com/demo-solenne-dental/",
-              "name": "Six-page 3D dental clinic website design demo"
-            },
-            {
-              "@type": "ListItem",
-              "position": 6,
-              "url": "https://thedigitalagila.com/demo-kestrel-vale-vet/",
-              "name": "Eight-page veterinary clinic website design demo"
-            }
-          ]
-        }
-      },
-      {
-        "@type": "Service",
-        "name": "Website Design & AI Automation",
-        "serviceType": "Website design and AI workflow automation",
-        "description": "Website design and AI workflow automation for small businesses: fast, interactive websites, plus lead follow-up, appointment reminders and admin tasks that run on their own.",
-        "url": "https://thedigitalagila.com/demo-projects",
-        "provider": {
-          "@type": "ProfessionalService",
-          "@id": "https://thedigitalagila.com/#business",
-          "name": "The Digital Agila",
-          "url": "https://thedigitalagila.com/"
-        },
-        "areaServed": [
-          {
-            "@type": "Country",
-            "name": "Australia"
-          },
-          {
-            "@type": "Country",
-            "name": "Philippines"
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://thedigitalagila.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Demo projects",
-            "item": "https://thedigitalagila.com/demo-projects"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is an AI automation?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "An AI automation is a workflow that does a routine job without someone doing each step by hand: replying to a new enquiry, following up, sending reminders or sorting leads. Rules handle the predictable steps, and AI is added where judgment helps, such as reading a customer's reply, drafting a response or summarising a conversation."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are these demos?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "They are projects we build ourselves to showcase what The Digital Agila can do. Each one is a working example, such as an interactive website or an AI automation, made for a made-up business so you can open it, click through it and picture how it would work for yours."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are these demos real working systems?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. The automation demos run on a real database and real workflow logic, and each visitor gets a private sandbox where messages are written to a log instead of being sent. The website demos are complete, working pages. The businesses and people in them are made up, and the enquiry forms don't send anything."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can you build something like this for my business?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. I can build the same kind of website or workflow around how your business runs. Book a free 30-minute call and we'll work out what's worth building first."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website & Automation Demos | The Digital Agila</title>
+<meta name="description" content="Click through showcase builds from The Digital Agila: a dental clinic front desk automation and 3D website concepts for a construction supplier and a conveyancer.">
+<link rel="canonical" href="https://thedigitalagila.com/demo-projects">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website"><meta property="og:site_name" content="The Digital Agila">
+<meta property="og:title" content="Website &amp; Automation Demos | The Digital Agila"><meta property="og:description" content="Click through showcase builds from The Digital Agila: a dental clinic front desk automation and 3D website concepts for a construction supplier and a conveyancer.">
+<meta property="og:url" content="https://thedigitalagila.com/demo-projects"><meta property="og:image" content="https://thedigitalagila.com/assets/img/og-image.jpg">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Instrument+Sans:wght@600&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="assets/motion.css">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://thedigitalagila.com/#business", "name": "The Digital Agila", "url": "https://thedigitalagila.com/", "email": "hello@thedigitalagila.com", "logo": "https://thedigitalagila.com/assets/img/logo-512.png", "image": "https://thedigitalagila.com/img/eagle-mark.svg", "slogan": "See further. Grow higher.", "description": "Digital marketing specialist for businesses in Australia and the Philippines: websites, GoHighLevel automation, CRM, funnels and SEO.", "areaServed": [{"@type": "Country", "name": "Australia"}, {"@type": "Country", "name": "Philippines"}], "founder": {"@type": "Person", "name": "Jayson"}, "knowsAbout": ["GoHighLevel", "Marketing automation", "CRM setup", "Sales funnels", "Website design", "SEO", "Email marketing"]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's a demo site?", "acceptedAnswer": {"@type": "Answer", "text": "A sample website I build for a type of business to show what's possible, using made-up business details."}}, {"@type": "Question", "name": "Can you make one for my business?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Book a free call and tell me about your business. If it's a good fit, I'll put together a demo direction for you."}}, {"@type": "Question", "name": "Is the demo the same as the final site?", "acceptedAnswer": {"@type": "Answer", "text": "No. The demo shows the style and quality. Your real site uses your logo, photos, services and details."}}, {"@type": "Question", "name": "Are these demos real working systems?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. They're working builds you can click through, not static mock-ups. The businesses and details are made up and nothing you enter is sent anywhere."}}]}</script>
 </head>
-<body class="neo neo-page neo-page--work neo-page--landing" data-scene="showcase">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="curtain is-reveal" aria-hidden="true"></div>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="hdr"><div class="container">
+<a class="brand" href="index.html" aria-label="The Digital Agila, home"><svg xmlns="http://www.w3.org/2000/svg" class="logo-svg" viewBox="0 8 556 98" aria-hidden="true" focusable="false"> <defs> <linearGradient id="hd-body" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#7ccff2"/> <stop offset=".55" stop-color="#7ea6f4"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="hd-bar" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#62e0f2"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="hd-word" x1="0" y1="0" x2="1" y2="0"> <stop offset="0" stop-color="#2f86c8"/> <stop offset="1" stop-color="#5a4fd6"/> </linearGradient> </defs> <g transform="translate(8 18) scale(.26) translate(-24 -30)"> <path fill="url(#hd-bar)" d="M35 265 L88 238 L88 355 L35 355 Z"/> <path fill="url(#hd-bar)" d="M100 212 L155 175 L155 355 L100 355 Z"/> <path fill="url(#hd-body)" d="M207 355 L207 226 L184 216 L205 198 L178 182 L201 166 L172 141 L214 121 C232 78 280 48 330 44 C350 42 364 46 372 52 L376 108 C350 116 326 126 306 142 C284 160 266 186 262 222 L262 355 Z"/> <path fill="#e2c79a" d="M350 60 C384 46 424 52 442 82 C452 100 453 122 444 144 C437 124 425 107 405 100 C389 95 373 101 361 110 Z"/> <circle cx="390" cy="74" r="4.5" fill="#b89a68"/> <path d="M287 67 Q320 50 361 57" fill="none" stroke="#141238" stroke-width="7" stroke-linecap="round"/> <circle cx="328" cy="77" r="10.5" fill="#141238"/> <circle cx="324.5" cy="73.5" r="3.2" fill="#ffffff"/> <path d="M232 208 L259 186 L286 196" fill="none" stroke="#5a86d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M220 281 L236 265 L252 281 M220 313 L236 297 L252 313" fill="none" stroke="#6c58cc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> </g> <g fill="none" stroke="#5aa9d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"> <path d="M392 42 V20 H378"/><circle cx="373" cy="20" r="4"/> <path d="M436 42 V14 H452"/><circle cx="457" cy="14" r="4"/> <path d="M478 42 V22 H500"/><circle cx="505" cy="22" r="4"/> <path d="M506 58 H530 L540 48"/><circle cx="543.5" cy="44.5" r="4"/> <path d="M506 70 H526 L536 80"/><circle cx="539.5" cy="83.5" r="4"/> </g> <text x="134" y="78" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="52" fill="url(#hd-word)" textLength="228" lengthAdjust="spacingAndGlyphs">The Digital</text> <text x="372" y="78" font-family="'Instrument Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="44" fill="#0b0a1f" letter-spacing="-1" textLength="128" lengthAdjust="spacingAndGlyphs">Agila</text> </svg></a>
+<nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="demo-projects.html" aria-current="page">Demos</a><a href="blog/">Blog</a><a href="contact.html">Contact</a></nav>
+<a class="btn" href="contact.html">Book a free call</a>
+<button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+</div></header>
+<nav class="mnav" id="mnav" aria-label="Mobile"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="demo-projects.html">Demos</a><a href="blog/">Blog</a><a href="contact.html">Contact</a><a class="btn" href="contact.html">Book a free 30-minute call</a></nav>
+<main id="main">
 
-  <header class="header">
-    <a class="brand" href="index.html" aria-label="The Digital Agila, home">
-      <svg xmlns="http://www.w3.org/2000/svg" class="brand__logo" viewBox="0 8 556 98" aria-hidden="true" focusable="false"> <defs> <linearGradient id="lh-body" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#7ccff2"/> <stop offset=".55" stop-color="#7ea6f4"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="lh-bar" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#62e0f2"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="lh-word" x1="0" y1="0" x2="1" y2="0"> <stop offset="0" stop-color="#9eeaf5"/> <stop offset="1" stop-color="#6fd6f2"/> </linearGradient> </defs> <g transform="translate(8 18) scale(.26) translate(-24 -30)"> <path fill="url(#lh-bar)" d="M35 265 L88 238 L88 355 L35 355 Z"/> <path fill="url(#lh-bar)" d="M100 212 L155 175 L155 355 L100 355 Z"/> <path fill="url(#lh-body)" d="M207 355 L207 226 L184 216 L205 198 L178 182 L201 166 L172 141 L214 121 C232 78 280 48 330 44 C350 42 364 46 372 52 L376 108 C350 116 326 126 306 142 C284 160 266 186 262 222 L262 355 Z"/> <path fill="#e2c79a" d="M350 60 C384 46 424 52 442 82 C452 100 453 122 444 144 C437 124 425 107 405 100 C389 95 373 101 361 110 Z"/> <circle cx="390" cy="74" r="4.5" fill="#b89a68"/> <path d="M287 67 Q320 50 361 57" fill="none" stroke="#141238" stroke-width="7" stroke-linecap="round"/> <circle cx="328" cy="77" r="10.5" fill="#141238"/> <circle cx="324.5" cy="73.5" r="3.2" fill="#ffffff"/> <path d="M232 208 L259 186 L286 196" fill="none" stroke="#5a86d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M220 281 L236 265 L252 281 M220 313 L236 297 L252 313" fill="none" stroke="#6c58cc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> </g> <g fill="none" stroke="#6fd6f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"> <path d="M392 42 V20 H378"/><circle cx="373" cy="20" r="4"/> <path d="M436 42 V14 H452"/><circle cx="457" cy="14" r="4"/> <path d="M478 42 V22 H500"/><circle cx="505" cy="22" r="4"/> <path d="M506 58 H530 L540 48"/><circle cx="543.5" cy="44.5" r="4"/> <path d="M506 70 H526 L536 80"/><circle cx="539.5" cy="83.5" r="4"/> </g> <text x="134" y="78" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="52" fill="url(#lh-word)" textLength="228" lengthAdjust="spacingAndGlyphs">The Digital</text> <text x="372" y="78" font-family="'Instrument Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="44" fill="#ffffff" letter-spacing="-1" textLength="128" lengthAdjust="spacingAndGlyphs">Agila</text> </svg>
-    </a>
-    <nav class="nav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services<sup>07</sup></a>
-      <a href="work.html">Work</a>
-      <a href="demo-projects.html" aria-current="page">Demos</a>
-      <a href="blog/">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <a class="link header__cta" href="contact.html">Start a project</a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
-  </header>
-  <div class="menu" id="menu" aria-hidden="true">
-    <nav aria-label="Mobile">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="work.html">Work</a>
-      <a href="demo-projects.html" aria-current="page">Demos</a>
-      <a href="blog/">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="menu__foot"><a href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a><span class="tagline">See further. Grow higher.</span></div>
-  </div>
+<section class="page-hero"><div class="container hero-grid">
+<div><span class="kicker">Demo projects</span>
+<h1 class="h1" data-words>Showcase builds you can click through.</h1>
+<p class="lede rv" style="--d:.1s">Projects I build to show what The Digital Agila can do. Each one is a working example you can open, from websites built to win the enquiry to automations that run the follow-up on their own.</p>
+<div class="actions rv" style="--d:.2s"><a class="btn" href="#demos" data-magnetic>See the demos <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+<div class="demo-fan rv" data-fan aria-hidden="true"><div class="fan-card f0"><div class="win-bar"><i></i><i></i><i></i><span>Bright Smile Dental</span></div><img src="img/work/dental-demo.jpg" alt=""></div><div class="fan-card f1"><div class="win-bar"><i></i><i></i><i></i><span>Brixon</span></div><img src="img/work/brixon-demo.jpg" alt=""></div><div class="fan-card f2"><div class="win-bar"><i></i><i></i><i></i><span>Quillmere</span></div><img src="img/work/quillmere-demo.jpg" alt=""></div></div>
+</div></section>
+<section id="demos"><div class="container cases"><article class="case-card rv" style="--d:0.0s"><div class="stage has-shot"><div class="shot rv-img"><div class="win-bar"><i></i><i></i><i></i><span>Bright Smile Dental · front desk automation</span></div><div class="shot-img"><img class="ph-in" src="img/work/dental-demo.jpg" alt="The dental clinic automation demo: a patient pipeline from new lead to showed, a guided four-step walkthrough and a patient's text and email conversation" loading="lazy" width="1600" height="900"></div></div></div><div><div class="case-meta"><span>Dental clinic · Lead to appointment</span></div><h3>A dental clinic on autopilot</h3><p>A workflow automation that replies to every new enquiry, follows up until the patient books, sends reminders, asks for a review and brings patients back for their next check-up.</p><div class="tags"><span>Workflow automation</span><span>SMS and email follow-up</span><span>Appointment reminders</span><span>Review requests</span><span>Custom build</span></div><p class="case-links"><a class="arrow-link" href="https://thedigitalagila.com/demo-dental-automation.html">Try the live demo <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p></div></article><article class="case-card rv" style="--d:0.1s"><div class="stage has-shot"><div class="shot rv-img"><div class="win-bar"><i></i><i></i><i></i><span>Brixon · construction supplier website</span></div><div class="shot-img"><img class="ph-in" src="img/work/brixon-demo.jpg" alt="The construction supplier website demo: a 3D tower with a crane beside the headline, built floor by floor as the page scrolls" loading="lazy" width="1600" height="900"></div></div></div><div><div class="case-meta"><span>Construction supplier · Website design concept</span></div><h3>A building site in 3D</h3><p>A website concept for a construction materials supplier. A tower builds itself as you scroll, each service lights up its part of a cutaway house, and the quote form loads a truck as you fill it in. The business is made up.</p><div class="tags"><span>Website design</span><span>3D and WebGL</span><span>Interactive sections</span><span>Mobile-ready</span><span>Custom build</span></div><p class="case-links"><a class="arrow-link" href="https://thedigitalagila.com/demo-brixon-construction/">Open the live demo <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p></div></article><article class="case-card rv" style="--d:0.0s"><div class="stage has-shot"><div class="shot rv-img"><div class="win-bar"><i></i><i></i><i></i><span>Quillmere · conveyancing website</span></div><div class="shot-img"><img class="ph-in" src="img/work/quillmere-demo.jpg" alt="The conveyancing website demo: a headline beside a 3D weatherboard cottage on its block" loading="lazy" width="1600" height="900"></div></div></div><div><div class="case-meta"><span>Conveyancing practice · Website design concept</span></div><h3>A house you can look inside</h3><p>An eight-page website concept for a conveyancer. Every page has its own house and its own 3D moment: a roof that lifts off to show the inspection, a door that opens on settlement day, a car that pulls up outside, coins that stack up with the stamp duty. Click any house to look inside. The business is made up.</p><div class="tags"><span>Website design</span><span>3D and WebGL</span><span>Eight pages</span><span>Mobile-ready</span><span>Custom build</span></div><p class="case-links"><a class="arrow-link" href="https://thedigitalagila.com/demo-quillmere-conveyancing/">Open the live demo <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p></div></article><article class="case-card rv" style="--d:0.1s"><div class="stage has-shot"><div class="shot rv-img"><div class="win-bar"><i></i><i></i><i></i><span>Southerly Air Co. · heating and cooling website</span></div><div class="shot-img"><img class="ph-in" src="img/work/southerly-demo.jpg" alt="The heating and cooling website demo: a headline beside a photo of two technicians testing an air conditioner, with a live thermostat, technician arrival time and service checklist below" loading="lazy" width="1600" height="900"></div></div></div><div><div class="case-meta"><span>Heating and cooling · Website design concept</span></div><h3>Perfect air, live on screen</h3><p>A nine-page website concept for a Sydney air conditioning business. The thermostat dials itself in, a technician counts down to arrival, frost drifts across the page, and every page has its own moving hero, from a building that shows live room temperatures to a booking card that fills itself in. The business is made up.</p><div class="tags"><span>Website design</span><span>Animated heroes</span><span>Nine pages</span><span>Mobile-ready</span><span>Custom build</span></div><p class="case-links"><a class="arrow-link" href="https://thedigitalagila.com/demo-southerly-air/">Open the live demo <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p></div></article><article class="case-card rv" style="--d:0.0s"><div class="stage has-shot"><div class="shot rv-img"><div class="win-bar"><i></i><i></i><i></i><span>Solenne Dental Studio · dental clinic website</span></div><div class="shot-img"><img class="ph-in" src="img/work/solenne-demo.jpg" alt="The dental clinic website demo: a calm light blue home page with the headline Sit back, your smile is in good hands, beside a 3D tooth made of drifting particles" loading="lazy" width="1600" height="900"></div></div></div><div><div class="case-meta"><span>Dental clinic · Website design concept</span></div><h3>A calmer visit, before you arrive</h3><p>A six-page website concept for a boutique dental studio. Each page has its own 3D dental moment: a tooth that forms from particles, a cutaway that shows what sits under the enamel, a treatment chair, clinic instruments, a tube of toothpaste and a clear aligner. Myth cards flip over, the next free appointment updates live, and photos drift in parallax. The business is made up.</p><div class="tags"><span>Website design</span><span>3D and WebGL</span><span>Six pages</span><span>Mobile-ready</span><span>Custom build</span></div><p class="case-links"><a class="arrow-link" href="https://thedigitalagila.com/demo-solenne-dental/">Open the live demo <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p></div></article><article class="case-card rv" style="--d:0.1s"><div class="stage has-shot"><div class="shot rv-img"><div class="win-bar"><i></i><i></i><i></i><span>Kestrel Vale Veterinary Hospital · vet clinic website</span></div><div class="shot-img"><img class="ph-in" src="img/work/kestrel-demo.jpg" alt="The vet clinic website demo: a sage green home page with the headline Unhurried care for cats, beside a photo of a vet with a golden labrador and live heart rate, check-up and next appointment cards" loading="lazy" width="1600" height="900"></div></div></div><div><div class="case-meta"><span>Veterinary clinic · Website design concept</span></div><h3>Unhurried care, from the first click</h3><p>An eight-page website concept for a local vet hospital. A heartbeat line runs under the home page while a check-up list ticks itself off, and every page has its own moving hero, from orbiting service icons and scrolling staff portraits to a booking card that picks a time on its own. The menu slides in with icons and an emergency call card. The business is made up.</p><div class="tags"><span>Website design</span><span>Animated heroes</span><span>Eight pages</span><span>Mobile-ready</span><span>Custom build</span></div><p class="case-links"><a class="arrow-link" href="https://thedigitalagila.com/demo-kestrel-vale-vet/">Open the live demo <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p></div></article></div>
+<div class="container"><p class="muted rv" style="margin-top:48px">New showcase projects are added as they're finished.</p></div></section>
 
-  <main id="main">
-    <section class="page-hero">
-      <div class="wrap">
-        <h1 data-lines>Demo <em>projects</em></h1>
-        <div class="grid12 page-hero__foot">
-          <span class="label" data-reveal="0">Showcase projects</span>
-          <p class="lead" data-reveal="1">Projects we build to showcase what The Digital Agila can do. Each one is a working example you can open and click through, from websites built to win the enquiry to automations that run the follow-up on their own.</p>
-          <nav class="crumbs" aria-label="Breadcrumb" data-reveal="2"><a href="index.html">Home</a> / Demo projects</nav>
-        </div>
-      </div>
-    </section>
+<section class="sec" style="margin-top:clamp(40px,5vw,72px)"><div class="container">
+<span class="kicker">What these projects are</span><h2 class="h2" data-words style="margin-bottom:48px;max-width:680px">Real builds, made-up businesses.</h2>
+<div class="grid4 stg">
+<div class="card tilt"><span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.3l2.8 2.8 6.2-6.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Built by me</h3><p>Each project is designed and built in-house, as a working build rather than a mock-up.</p></div>
+<div class="card tilt" style="--d:.06s"><span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.3l2.8 2.8 6.2-6.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Safe to try</h3><p>The businesses, names and numbers are made up, and nothing you enter is sent anywhere.</p></div>
+<div class="card tilt" style="--d:.12s"><span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.3l2.8 2.8 6.2-6.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Shows what's possible</h3><p>A website that earns the enquiry, or a workflow that replies, reminds and follows up on its own.</p></div>
+<div class="card tilt" style="--d:.18s"><span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.3l2.8 2.8 6.2-6.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Yours next</h3><p>I can build the same kind of project around your business, your brand and your tools.</p></div>
+</div></div></section>
 
-    <!-- DEMOS -->
-    <section class="section" style="padding-top:clamp(56px,7vw,110px)" aria-label="Demo projects">
-      <div class="wrap">
-        <a class="work-card" href="demo-dental-automation.html" data-reveal>
-          <div class="work-card__shot">
-            <div class="browser">
-              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">Bright Smile Dental · front desk automation</span></div>
-              <img class="browser__shot" src="assets/img/work/dental-demo.jpg?v=20261112" width="2000" height="1130" alt="The dental clinic automation demo: a patient pipeline from new lead to showed, a guided four-step walkthrough and a patient's text and email conversation" decoding="async">
-            </div>
-          </div>
-          <div class="work-card__text">
-            <span class="work-card__meta">Dental clinic · Lead to appointment</span>
-            <h2>A dental clinic <em>on autopilot</em></h2>
-            <p>A workflow automation that replies to every new enquiry, follows up until the patient books, sends reminders, asks for a review and brings patients back for their next check-up.</p>
-            <div class="tags"><span>Workflow automation</span><span>SMS and email follow-up</span><span>Appointment reminders</span><span>Review requests</span><span>Custom build</span></div>
-            <span class="link">Try the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-          </div>
-        </a>
-        <a class="work-card" href="demo-brixon-construction/" data-reveal>
-          <div class="work-card__shot">
-            <div class="browser">
-              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">Brixon · construction supplier website</span></div>
-              <img class="browser__shot" src="assets/img/work/brixon-demo.jpg?v=20261113" width="800" height="451" alt="The construction supplier website demo: a 3D tower with a crane beside the headline, built floor by floor as the page scrolls" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="work-card__text">
-            <span class="work-card__meta">Construction supplier · Website design concept</span>
-            <h2>A building site <em>in 3D</em></h2>
-            <p>A website concept for a construction materials supplier. A tower builds itself as you scroll, each service lights up its part of a cutaway house, and the quote form loads a truck as you fill it in. The business is made up.</p>
-            <div class="tags"><span>Website design</span><span>3D and WebGL</span><span>Interactive sections</span><span>Mobile-ready</span><span>Custom build</span></div>
-            <span class="link">Open the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-          </div>
-        </a>
-        <a class="work-card" href="demo-quillmere-conveyancing/" data-reveal>
-          <div class="work-card__shot">
-            <div class="browser">
-              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">Quillmere · conveyancing website</span></div>
-              <img class="browser__shot" src="assets/img/work/quillmere-demo.jpg?v=20261115" width="800" height="451" alt="The conveyancing website demo: a headline beside a 3D weatherboard cottage on its block" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="work-card__text">
-            <span class="work-card__meta">Conveyancing practice · Website design concept</span>
-            <h2>A house you can <em>look inside</em></h2>
-            <p>An eight-page website concept for a conveyancer. Every page has its own house and its own 3D moment: a roof that lifts off to show the inspection, a door that opens on settlement day, a car that pulls up outside, coins that stack up with the stamp duty. Click any house to look inside. The business is made up.</p>
-            <div class="tags"><span>Website design</span><span>3D and WebGL</span><span>Eight pages</span><span>Mobile-ready</span><span>Custom build</span></div>
-            <span class="link">Open the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-          </div>
-        </a>
-        <a class="work-card" href="demo-southerly-air/" data-reveal>
-          <div class="work-card__shot">
-            <div class="browser">
-              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">Southerly Air Co. · heating and cooling website</span></div>
-              <img class="browser__shot" src="assets/img/work/southerly-demo.jpg?v=20261117" width="800" height="451" alt="The heating and cooling website demo: a headline beside a photo of two technicians testing an air conditioner, with a live thermostat, technician arrival time and service checklist below" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="work-card__text">
-            <span class="work-card__meta">Heating and cooling · Website design concept</span>
-            <h2>Perfect air, <em>live on screen</em></h2>
-            <p>A nine-page website concept for a Sydney air conditioning business. The thermostat dials itself in, a technician counts down to arrival, frost drifts across the page, and every page has its own moving hero, from a building that shows live room temperatures to a booking card that fills itself in. The business is made up.</p>
-            <div class="tags"><span>Website design</span><span>Animated heroes</span><span>Nine pages</span><span>Mobile-ready</span><span>Custom build</span></div>
-            <span class="link">Open the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-          </div>
-        </a>
-        <a class="work-card" href="demo-solenne-dental/" data-reveal>
-          <div class="work-card__shot">
-            <div class="browser">
-              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">Solenne Dental Studio · dental clinic website</span></div>
-              <img class="browser__shot" src="assets/img/work/solenne-demo.jpg?v=20261118" width="800" height="451" alt="The dental clinic website demo: a calm light blue home page with the headline Sit back, your smile is in good hands, beside a 3D tooth made of drifting particles" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="work-card__text">
-            <span class="work-card__meta">Dental clinic · Website design concept</span>
-            <h2>A calmer visit, <em>before you arrive</em></h2>
-            <p>A six-page website concept for a boutique dental studio. Each page has its own 3D dental moment: a tooth that forms from particles, a cutaway that shows what sits under the enamel, a treatment chair, clinic instruments, a tube of toothpaste and a clear aligner. Myth cards flip over, the next free appointment updates live, and photos drift in parallax. The business is made up.</p>
-            <div class="tags"><span>Website design</span><span>3D and WebGL</span><span>Six pages</span><span>Mobile-ready</span><span>Custom build</span></div>
-            <span class="link">Open the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-          </div>
-        </a>
-        <a class="work-card" href="demo-kestrel-vale-vet/" data-reveal>
-          <div class="work-card__shot">
-            <div class="browser">
-              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">Kestrel Vale Veterinary Hospital · vet clinic website</span></div>
-              <img class="browser__shot" src="assets/img/work/kestrel-demo.jpg?v=20261118" width="800" height="451" alt="The vet clinic website demo: a sage green home page with the headline Unhurried care for cats, beside a photo of a vet with a golden labrador and live heart rate, check-up and next appointment cards" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="work-card__text">
-            <span class="work-card__meta">Veterinary clinic · Website design concept</span>
-            <h2>Unhurried care, <em>from the first click</em></h2>
-            <p>An eight-page website concept for a local vet hospital. A heartbeat line runs under the home page while a check-up list ticks itself off, and every page has its own moving hero, from orbiting service icons and scrolling staff portraits to a booking card that picks a time on its own. The menu slides in with icons and an emergency call card. The business is made up.</p>
-            <div class="tags"><span>Website design</span><span>Animated heroes</span><span>Eight pages</span><span>Mobile-ready</span><span>Custom build</span></div>
-            <span class="link">Open the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-          </div>
-        </a>
-        <p class="demo-more" data-reveal>We add new showcase projects to this page as we finish them.</p>
-      </div>
-    </section>
+<section class="sec dark"><div class="container">
+<span class="kicker">Your own demo</span><h2 class="h2" data-words style="margin-bottom:56px;max-width:640px">How a demo for your business works.</h2>
+<div class="steps4 steps steps-anim" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+<div><span class="n">Step 1</span><h3>Tell me about your business</h3><p>On a free call: your services, your customers and what you want people to do.</p></div>
+<div><span class="n">Step 2</span><h3>I pick a direction</h3><p>A look that fits your industry and doesn't copy anyone else's site.</p></div>
+<div><span class="n">Step 3</span><h3>You see it first</h3><p>Look through it on your phone, then decide if you want the real thing.</p></div>
+</div></div></section>
 
-    <!-- HOW IT WORKS -->
-    <section class="section dark">
-      <div class="wrap">
-        <div class="grid12 head-row">
-          <h2 data-lines>What these projects <em>are</em></h2>
-          <p data-reveal>This page is where we show our own work. Every project here is something we built to demonstrate what The Digital Agila can do for a business like yours.</p>
-        </div>
-        <ul class="cs-results__grid" data-stagger>
-          <li><small>01</small><h3>Built by us</h3><p>Each project is designed and built in-house by The Digital Agila, as a working build rather than a mock-up.</p></li>
-          <li><small>02</small><h3>Safe to try</h3><p>The businesses, names and numbers are made up, and nothing you enter is sent anywhere. Open it and click through.</p></li>
-          <li><small>03</small><h3>Shows what we can do</h3><p>A website that earns the enquiry, or a workflow that replies, reminds and follows up without anyone doing it by hand.</p></li>
-          <li><small>04</small><h3>Yours next</h3><p>We can build the same kind of project around your business, your brand and the tools you already use.</p></li>
-        </ul>
-      </div>
-    </section>
+<section class="sec"><div class="container split">
+<div><span class="kicker">Industries</span><h2 class="h2" data-words>Demos I can build for you.</h2></div>
+<div class="chips rv"><span>Vet clinics</span><span>Dental practices</span><span>Air conditioning</span><span>Plumbers</span><span>Electricians</span><span>Coaches</span><span>Consultants</span><span>Salons &amp; spas</span><span>Landscapers</span><span>Cleaners</span><span>Cafés</span><span>Solar</span></div>
+</div></section>
 
-    <section class="section landing-where">
-      <div class="wrap grid12 head-row">
-        <h2 data-lines>Websites and <em>automation</em></h2>
-        <p data-reveal>I'm Jayson, a digital marketing specialist based in the Philippines, working remotely with businesses in Australia and the Philippines. I design and build <a href="website-designer.html">websites</a> that win the enquiry and the automations that follow it up, in <a href="gohighlevel-expert.html">GoHighLevel</a> or as custom systems you own outright. The demos here show both.</p>
-      </div>
-    </section>
+<section class="sec bt"><div class="container split">
+<div><span class="kicker">FAQ</span><h2 class="h2" data-words>About demos.</h2></div>
+<div class="faq rv"><details open><summary>What&#x27;s a demo site?</summary><p>A sample website I build for a type of business to show what&#x27;s possible, using made-up business details.</p></details><details><summary>Can you make one for my business?</summary><p>Yes. Book a free call and tell me about your business. If it&#x27;s a good fit, I&#x27;ll put together a demo direction for you.</p></details><details><summary>Is the demo the same as the final site?</summary><p>No. The demo shows the style and quality. Your real site uses your logo, photos, services and details.</p></details><details><summary>Are these demos real working systems?</summary><p>Yes. They&#x27;re working builds you can click through, not static mock-ups. The businesses and details are made up and nothing you enter is sent anywhere.</p></details></div>
+</div></section>
+<section class="container cta-wrap" style="margin-top:clamp(80px,9vw,128px)"><div class="cta rv">
+<div><h2>Want a demo for your business?</h2><p>Book a free call, tell me about your business, and I'll show you what it could look like.</p></div>
+<div class="side"><a class="btn btn-light" href="contact.html" data-magnetic>Book a free call <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="mail" href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a><small>Remote · Australia &amp; the Philippines</small></div>
+</div></section>
+</main>
+<footer class="footer dark"><div class="container">
+<div class="fgrid">
+<div><a class="brand" href="index.html" aria-label="The Digital Agila, home"><svg xmlns="http://www.w3.org/2000/svg" class="logo-svg" viewBox="0 8 556 98" aria-hidden="true" focusable="false"> <defs> <linearGradient id="ft-body" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#7ccff2"/> <stop offset=".55" stop-color="#7ea6f4"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="ft-bar" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#62e0f2"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="ft-word" x1="0" y1="0" x2="1" y2="0"> <stop offset="0" stop-color="#9eeaf5"/> <stop offset="1" stop-color="#6fd6f2"/> </linearGradient> </defs> <g transform="translate(8 18) scale(.26) translate(-24 -30)"> <path fill="url(#ft-bar)" d="M35 265 L88 238 L88 355 L35 355 Z"/> <path fill="url(#ft-bar)" d="M100 212 L155 175 L155 355 L100 355 Z"/> <path fill="url(#ft-body)" d="M207 355 L207 226 L184 216 L205 198 L178 182 L201 166 L172 141 L214 121 C232 78 280 48 330 44 C350 42 364 46 372 52 L376 108 C350 116 326 126 306 142 C284 160 266 186 262 222 L262 355 Z"/> <path fill="#e2c79a" d="M350 60 C384 46 424 52 442 82 C452 100 453 122 444 144 C437 124 425 107 405 100 C389 95 373 101 361 110 Z"/> <circle cx="390" cy="74" r="4.5" fill="#b89a68"/> <path d="M287 67 Q320 50 361 57" fill="none" stroke="#141238" stroke-width="7" stroke-linecap="round"/> <circle cx="328" cy="77" r="10.5" fill="#141238"/> <circle cx="324.5" cy="73.5" r="3.2" fill="#ffffff"/> <path d="M232 208 L259 186 L286 196" fill="none" stroke="#5a86d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M220 281 L236 265 L252 281 M220 313 L236 297 L252 313" fill="none" stroke="#6c58cc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> </g> <g fill="none" stroke="#6fd6f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"> <path d="M392 42 V20 H378"/><circle cx="373" cy="20" r="4"/> <path d="M436 42 V14 H452"/><circle cx="457" cy="14" r="4"/> <path d="M478 42 V22 H500"/><circle cx="505" cy="22" r="4"/> <path d="M506 58 H530 L540 48"/><circle cx="543.5" cy="44.5" r="4"/> <path d="M506 70 H526 L536 80"/><circle cx="539.5" cy="83.5" r="4"/> </g> <text x="134" y="78" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="52" fill="url(#ft-word)" textLength="228" lengthAdjust="spacingAndGlyphs">The Digital</text> <text x="372" y="78" font-family="'Instrument Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="44" fill="#ffffff" letter-spacing="-1" textLength="128" lengthAdjust="spacingAndGlyphs">Agila</text> </svg></a>
+<p>Websites, GoHighLevel automation, CRM, funnels and SEO for businesses in Australia and the Philippines.</p></div>
+<div><h4>Pages</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="work.html">Work</a></li><li><a href="demo-projects.html">Demos</a></li><li><a href="blog/">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div><h4>Services</h4><ul><li><a href="services.html#automation">Automation</a></li><li><a href="services.html#funnels">Funnels</a></li><li><a href="services.html#websites">Websites</a></li><li><a href="services.html#crm">CRM</a></li><li><a href="services.html#seo">SEO</a></li></ul></div>
+<div><h4>Contact</h4><ul><li><a href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a></li><li><span>Remote · AU &amp; PH</span></li><li><a href="contact.html">Book a free call</a></li></ul></div>
+</div>
+<div class="fbot"><span>© 2026 The Digital Agila</span><span class="legal"><a href="https://thedigitalagila.com/privacy.html">Privacy</a><a href="https://thedigitalagila.com/terms.html">Terms</a><a href="https://thedigitalagila.com/cookies.html">Cookies</a></span></div>
+</div></footer>
+<script src="assets/motion.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/digital.js"></script>
 
-    <!-- FAQ -->
-    <section class="section landing-faq" aria-labelledby="faq-title">
-      <div class="wrap grid12 faq-wrap">
-        <h2 id="faq-title" data-lines>Questions people ask</h2>
-        <div class="faq">
-          <details><summary>What are these demos?<i></i></summary><p>They are projects we build ourselves to showcase what The Digital Agila can do. Each one is a working example, such as an interactive website or an AI automation, made for a made-up business so you can open it, click through it and picture how it would work for yours.</p></details>
-          <details><summary>What is an AI automation?<i></i></summary><p>An AI automation is a workflow that does a routine job without someone doing each step by hand: replying to a new enquiry, following up, sending reminders or sorting leads. Rules handle the predictable steps, and AI is added where judgment helps, such as reading a customer's reply, drafting a response or summarising a conversation.</p></details>
-          <details><summary>Are these demos real working systems?<i></i></summary><p>Yes. The automation demos run on a real database and real workflow logic, and each visitor gets a private sandbox where messages are written to a log instead of being sent. The website demos are complete, working pages. The businesses and people in them are made up, and the enquiry forms don't send anything.</p></details>
-          <details><summary>Can you build something like this for my business?<i></i></summary><p>Yes. I can build the same kind of website or workflow around how your business runs. Book a free 30-minute call and we'll work out what's worth building first.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="wrap">
-        <h2 data-drift>Build <em>yours.</em></h2>
-        <div class="grid12 cta__row">
-          <p><b style="font-weight:500;color:var(--ink)">Want something like these for your business?</b> In 30 minutes we'll work out what to build first. No pressure, no obligation.</p>
-          <a class="link cta__mail" href="mailto:hello@thedigitalagila.com">hello@thedigitalagila.com</a>
-          <a class="btn" href="contact.html">Book a free call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" style="border-top:1px solid var(--line)">
-    <div class="wrap">
-      <div class="grid12 footer__top">
-        <div><p>The Digital Agila is Jayson, a full-stack digital marketing professional building sales funnels, automation, CRM, websites, email marketing and SEO.</p></div>
-        <div class="footer__col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="work.html">Work</a></li><li><a href="demo-projects.html">Demos</a></li><li><a href="blog/">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div class="footer__col"><h4>Services</h4><ul><li><a href="services.html#funnels">Sales Funnels</a></li><li><a href="gohighlevel-expert.html">GoHighLevel &amp; Automation</a></li><li><a href="website-designer.html">Website Design</a></li><li><a href="services.html#crm">CRM</a></li><li><a href="services.html#email">Email</a></li><li><a href="seo-expert.html">SEO</a></li><li><a href="services.html#graphics">Design</a></li></ul></div>
-        <div class="footer__col"><h4>Contact</h4><ul><li><a href="mailto:hello@thedigitalagila.com">Email</a></li><li><a href="contact.html">Book a call</a></li></ul></div>
-      </div>
-      <div class="footer__sign">
-        <a class="footer__logo" href="index.html" aria-label="The Digital Agila, home. See further. Grow higher."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" aria-hidden="true" focusable="false"> <defs> <linearGradient id="lf-body" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#7ccff2"/> <stop offset=".55" stop-color="#7ea6f4"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="lf-bar" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#62e0f2"/> <stop offset="1" stop-color="#8a6cf0"/> </linearGradient> <linearGradient id="lf-word" x1="0" y1="0" x2="1" y2="0"> <stop offset="0" stop-color="#9eeaf5"/> <stop offset="1" stop-color="#6fd6f2"/> </linearGradient> <linearGradient id="lf-rule" x1="336" y1="0" x2="496" y2="0" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#d9c089"/> <stop offset="1" stop-color="#6fd6f2"/> </linearGradient> </defs> <g transform="translate(8 18) scale(.26) translate(-24 -30)"> <path fill="url(#lf-bar)" d="M35 265 L88 238 L88 355 L35 355 Z"/> <path fill="url(#lf-bar)" d="M100 212 L155 175 L155 355 L100 355 Z"/> <path fill="url(#lf-body)" d="M207 355 L207 226 L184 216 L205 198 L178 182 L201 166 L172 141 L214 121 C232 78 280 48 330 44 C350 42 364 46 372 52 L376 108 C350 116 326 126 306 142 C284 160 266 186 262 222 L262 355 Z"/> <path fill="#e2c79a" d="M350 60 C384 46 424 52 442 82 C452 100 453 122 444 144 C437 124 425 107 405 100 C389 95 373 101 361 110 Z"/> <circle cx="390" cy="74" r="4.5" fill="#b89a68"/> <path d="M287 67 Q320 50 361 57" fill="none" stroke="#141238" stroke-width="7" stroke-linecap="round"/> <circle cx="328" cy="77" r="10.5" fill="#141238"/> <circle cx="324.5" cy="73.5" r="3.2" fill="#ffffff"/> <path d="M232 208 L259 186 L286 196" fill="none" stroke="#5a86d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M220 281 L236 265 L252 281 M220 313 L236 297 L252 313" fill="none" stroke="#6c58cc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/> </g> <g fill="none" stroke="#6fd6f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"> <path d="M392 42 V20 H378"/><circle cx="373" cy="20" r="4"/> <path d="M436 42 V14 H452"/><circle cx="457" cy="14" r="4"/> <path d="M478 42 V22 H500"/><circle cx="505" cy="22" r="4"/> <path d="M506 58 H530 L540 48"/><circle cx="543.5" cy="44.5" r="4"/> <path d="M506 70 H526 L536 80"/><circle cx="539.5" cy="83.5" r="4"/> </g> <text x="134" y="78" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="52" fill="url(#lf-word)" textLength="228" lengthAdjust="spacingAndGlyphs">The Digital</text> <text x="372" y="78" font-family="'Instrument Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="44" fill="#ffffff" letter-spacing="-1" textLength="128" lengthAdjust="spacingAndGlyphs">Agila</text> <text x="136" y="112" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="20" fill="#d9c089" textLength="186" lengthAdjust="spacingAndGlyphs">See further. Grow higher.</text> <path d="M336 106 H496" stroke="url(#lf-rule)" stroke-width="2" stroke-linecap="round"/> <circle cx="501" cy="106" r="4" fill="none" stroke="#6fd6f2" stroke-width="2"/> </svg></a>
-        <a class="btn" href="contact.html">Book a free call<span class="btn__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      </div>
-      <div class="footer__bottom">
-        <span>© <span data-year>2026</span> The Digital Agila. The Digital Agila is owned and operated by JPerucho Digital Marketing Services.</span>
-        <nav class="footer__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookie Policy</a></nav>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-  <script src="assets/js/gallery.js?v=20261105" defer></script>
-  <script src="assets/js/main.js?v=20261126" defer></script>
-  <script src="assets/js/future.js?v=20261126" defer></script>
-  <script src="assets/js/fx.js?v=20261111" defer></script>
-  <script type="module" src="assets/js/neo-bg.js?v=20261126"></script>
 </body>
 </html>
