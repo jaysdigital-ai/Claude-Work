@@ -2,7 +2,7 @@
 import hashlib, os, re, sys
 root = sys.argv[1]
 names = [f for f in os.listdir(os.path.join(root, "assets")) if f.endswith((".css", ".js"))]
-h = {f: hashlib.md5(open(os.path.join(root, "assets", f), "rb").read()).hexdigest()[:8] for f in names}
+h = {f: hashlib.md5(open(os.path.join(root, "assets", f), "rb").read()).hexdigest()[:10] for f in names}
 h["vendor/three-r128.min.js"] = "r128"
 pat = re.compile(r'((?:\.\./)*assets/(%s))(\?v=[\w]+)?(?=["\'])' % "|".join(re.escape(k) for k in h))
 n = 0
