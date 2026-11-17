@@ -114,3 +114,6 @@ grep -rl "v=20261105" . | xargs sed -i "s/v=20261105/v=NEWDATE/g"
 To add a demo: copy the `work-card` block on `demo-projects.html`, add a `ListItem` to the ItemList in its structured data, add the new page to `sitemap.xml`, and give the demo page a breadcrumb back to Demo projects.
 
 `demo-dental-automation.html` is the first demo (styles in `assets/css/demo.css`, script in `assets/js/demo-dental.js`). It calls the `demo-api` function on the Supabase project `dental-clinic-automation-demo`. Each visitor gets a private sandbox kept for the browser tab (a random id in session storage), messages are logged and never sent, and sandboxes are cleared after 24 hours. The API only answers requests from thedigitalagila.com, its Cloudflare preview addresses and localhost.
+
+### Version stamps on styles and scripts
+After changing any file in `assets/`, run `python3 stamp_assets.py .` from this folder. It adds `?v=<hash>` to the style and script links so visitors' browsers load the new version straight away instead of an old saved copy.
