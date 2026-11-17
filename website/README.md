@@ -5,7 +5,9 @@ Home, About, Services, Work, Demo projects (`demo-projects.html`), Blog (`blog/i
 - Styles: `assets/style.css` + `assets/motion.css`. Scripts: `assets/motion.js` (reveals, menu), `assets/site.js` (hero animations, contact form), `assets/digital.js` (circuit lines, dot grid), `assets/agila-eagle.js` + `assets/vendor/three-r128.min.js` (the 3D eagle on Home and About).
 - Images for these pages live in `img/` (logo, Jayson's photo, work and demo screenshots).
 - The contact form posts to `/api/contact` (`functions/api/contact.js`), same as before.
-- Case study pages, service landing pages, the blog post, legal pages and the demos keep their earlier design.
+- The case studies, the GoHighLevel / website designer / SEO landing pages, the blog article and the Privacy, Terms and Cookie pages use the same design: their original content sits inside the new header, hero, call-to-action and footer, styled by `assets/inner.css` (small interactions in `assets/inner.js`).
+- Google Analytics (G-4ZYP9XDZJ4) loads only after a visitor clicks Allow on the cookie banner: `assets/consent.js`, on every page in the new design.
+- The demos keep their own designs, since each one shows a different business.
 
 ## Restoring the previous site
 The site exactly as it was before the redesign is saved on the branch `backup/live-site-2026-11-18` (commit 03284ff).
