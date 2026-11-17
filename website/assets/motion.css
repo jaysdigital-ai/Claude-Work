@@ -1,0 +1,24 @@
+/* motion.css — companion to motion.js. Content is only hidden once motion.js adds .anim to <html>. */
+:root{--ease:cubic-bezier(.2,.75,.2,1)}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:currentColor;z-index:200}
+.anim .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.anim .rv.in{opacity:1;transform:none}
+.anim .rv-img{clip-path:inset(14% 10% 14% 10%);transition:clip-path 1.3s var(--ease)}
+.anim .rv-img .ph-in{transform:scale(1.1);transition:transform 1.6s var(--ease)}
+.anim .rv-img.in{clip-path:inset(0 0 0 0)}
+.anim .rv-img.in .ph-in{transform:none}
+.anim [data-words] .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.anim [data-words] .w>span{display:inline-block;transform:translateY(105%);transition:transform 1s var(--ease);transition-delay:calc(var(--i)*55ms + var(--d,0s))}
+.anim [data-words].in .w>span{transform:none}
+.anim .stg>*{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0)*110ms)}
+.anim .stg.in>*{opacity:1;transform:none}
+.anim .pop{opacity:0;transform:scale(.92);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.anim .pop.in{opacity:1;transform:none}
+.steps{position:relative}
+.steps .line{position:absolute;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;transition:transform 2s var(--ease)}
+.steps.in .line{transform:scaleX(1)}
+.tilt{transform-style:preserve-3d;transition:transform .4s var(--ease)}
+.tilt .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 45%);opacity:0;transition:opacity .4s;mix-blend-mode:soft-light}
+.tilt:hover .shine{opacity:1}
+.form-note{display:none}.form-note.on{display:block}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
