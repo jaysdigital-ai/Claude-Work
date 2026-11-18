@@ -2,7 +2,7 @@
 :root{
   --bg:#ffffff;--tint:#f6f5fa;--tint2:#efedf6;--ink:#0b0a1f;--ink2:#2a2840;--muted:#5d5a73;--line:#e7e5ee;
   --accent:#4b33b8;--accent-soft:#ece8fb;--gold:#b8963e;--ok:#1f8a5b;
-  --sans:Geist,system-ui,-apple-system,"Segoe UI",sans-serif;--serif:'Instrument Serif',Georgia,serif;
+  --sans:Geist,system-ui,-apple-system,"Segoe UI",sans-serif;--serif:'Instrument Serif',Georgia,serif;--display:Oxanium,Geist,system-ui,sans-serif;
   --r:16px;--ease:cubic-bezier(.22,.7,.2,1)
 }
 *{box-sizing:border-box}
@@ -758,3 +758,5 @@ html:not(.anim) .bio-chip,html:not(.anim) .bio-corner{opacity:1;transform:none}
 .bio-vis.in .bio-chip{animation:bio-bob 3.6s ease-in-out infinite}
 @keyframes bio-bob{0%,100%{translate:0 0}50%{translate:0 -14px}}
 @media (prefers-reduced-motion:reduce){.bio-vis .portrait-wrap.photo img{animation:none!important}}
+/* Main headings use Oxanium, the face of AGILA in the logo */
+.h1,.h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em}
