@@ -11,3 +11,41 @@
 
 /assets/img/*
   Cache-Control: public, max-age=604800
+
+# The redesigned site keeps its styles and scripts straight in /assets/ (all
+# linked with ?v=<hash>), plus three.js in /assets/vendor/.
+
+/assets/agila-eagle.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/consent.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/digital.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/inner.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/inner.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/motion.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/motion.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/site.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/style.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# llms.txt: a plain-text summary of the site for AI tools
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600

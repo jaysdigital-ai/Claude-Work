@@ -45,6 +45,9 @@
   document.querySelectorAll('.stg').forEach(function(g){Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i);});});
 
   if(reduce){return finishStatic();}
+  // the page's main headline is usually its largest text (what Google times as
+  // "Largest Contentful Paint"), so it shows straight away instead of sliding in
+  var lcp=document.querySelector('main h1[data-words]');if(lcp)lcp.classList.add('in');
   root.classList.add('anim');
 
   var targets=document.querySelectorAll('.rv,.rv-img,[data-words],.stg,.pop,.steps,.tl,[data-count]');
